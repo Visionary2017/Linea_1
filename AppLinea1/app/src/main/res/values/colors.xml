@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#27ae60</color>
+    <color name="colorPrimaryDark">#212121</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!---General Color-->
+    <color name="Black">#34495e</color>
+    <color name="White">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="blue_face">#576ea5</color>
+    <color name="primaryText">@color/White</color>
+
+    <!-- Blue Grey -->
+    <color name="BlueGrey">#607D8B</color>
+    <color name="BlueGreyOne">#90A4AE</color>
+    <color name="BlueGreyTwo">#263238</color>
+
+    <!-- Deep Orange -->
+    <color name="DeepOrange">#FF5722</color>
+    <color name="DeepOrangeOne">#FF7043</color>
+    <color name="DeepOrangeTwo">#BF360C</color>
+
+    <!-- Brown  -->
+    <color name="Brown">#795548</color>
+    <color name="BrownOne">#8D6E63</color>
+    <color name="BrownTwo">#3E2723</color>
+
+    <!-- Amber -->
+    <color name="Amber">#FFC107</color>
+    <color name="AmberOne">#FFD54F</color>
+    <color name="AmberTwo">#FF6F00</color>
+
+    <!-- Green -->
+    <color name="Green">#4CAF50</color>
+    <color name="GreenOne">#27ae60</color>
+    <color name="GreenTwo">#1B5E20</color>
+
+    <!-- Light Green -->
+    <color name="LightGreen">#8BC34A</color>
+    <color name="LightGreenOne">#C5E1A5</color>
+    <color name="LightGreenTwo">#33691E</color>
+
+    <!-- Lime -->
+    <color name="Lime">#CDDC39</color>
+    <color name="LimeOne">#DCE775</color>
+    <color name="LimeTwo">#827717</color>
+
+    <!-- Light Blue -->
+    <color name="Blue">#2196F3</color>
+    <color name="BlueOne">#64B5F6</color>
+    <color name="BlueTwo">#0D47A1</color>
+
+    <!-- Cyan -->
+    <color name="Cyan">#00BCD4</color>
+    <color name="CyanOne">#0097A7</color>
+    <color name="CyanTwo">#006064</color>
+
+    <!-- Red -->
+    <color name="Red">#F44336</color>
+    <color name="RedOne">#e74c3c</color>
+    <color name="RedTwo">#B71C1C</color>
+
+    <!-- Pink -->
+    <color name="Pink">#E91E63</color>
+    <color name="PinkOne">#C2185B</color>
+    <color name="PinkTwo">#EC407A</color>
+
+    <!-- Purple -->
+    <color name="Purple">#9C27B0</color>
+    <color name="PurpleTwo">#6A1B9A</color>
+    <color name="PurpleThree">#AB47BC</color>
+
+</resources>

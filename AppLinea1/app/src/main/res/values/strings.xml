@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Linea 1</string>
+    <string name="txt_usuario"> Usuario</string>
+    <string name="txt_contrasena"> Contraseña</string>
+    <string name="txt_acceso">Ingresar al sistema</string>
+</resources>
