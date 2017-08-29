@@ -26,24 +26,28 @@
         android:background="@color/colorPrimary"
         android:paddingBottom="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <LinearLayout
+    <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            >
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/ic_linea1_launcher"/>
-        </LinearLayout>
+            android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="0.37"
+            android:src="@drawable/ic_logo" />
+    </LinearLayout>
         <LinearLayout
             android:id="@+id/linear_login_second"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@color/colorPrimary"
             android:gravity="center"
             >
             <LinearLayout
@@ -59,20 +63,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="17sp"
-                    android:textColorHint="@color/White"
+                    android:textColorHint="@color/Black"
                     android:layout_marginBottom="5dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/White">
+                    android:textColor="@color/Black">
+
                     <EditText
                         android:id="@+id/etUsuario"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_user"
+                        android:drawablePadding="10dp"
                         android:hint="@string/txt_usuario"
                         android:inputType="text"
-                        android:textColor="@color/White"
-                        android:drawableLeft="@drawable/ic_user"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textSize="17sp"/>
+                        android:textColor="@color/Black"
+                        android:textSize="17sp" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -82,21 +88,22 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/White"
+                    android:textColorHint="@color/Black"
                     android:textSize="17sp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@color/White">
+
                     <EditText
                         android:id="@+id/etContrasena"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/txt_contrasena"
-                        android:textColor="@color/White"
                         android:drawableLeft="@drawable/ic_pass"
+                        android:drawablePadding="10dp"
+                        android:hint="@string/txt_contrasena"
                         android:inputType="textPassword"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textSize="17sp"
-                        />
+                        android:textColor="@color/Black"
+                        android:textSize="17sp" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -107,7 +114,6 @@
                     android:layout_marginTop="25dp"
                     android:gravity="center_horizontal|center"
                     android:padding="6dp"
-                    android:drawableLeft="@drawable/ic_login"
                     android:background="@drawable/btn_rectangulo"
                     android:text="@string/txt_acceso"
                     android:textColor="@color/White"
@@ -116,18 +122,41 @@
 
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_marginTop="15dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
+                android:id="@+id/tvRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿No cuentas con usuario? Crear una"
+                android:textColor="@color/Black"
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:onClick="fnOnClickRegistro"
+                />
+
+            <TextView
+                android:id="@+id/tvVisitante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ingresar como visitante"
+                android:textColor="@color/Black"
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:onClick="fnOnClickVisitante"
+                />
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Version:1.0"
-                android:textColor="@color/White"/>
-
+                android:textColor="@color/Black"/>
+            -->
             <!--<ImageView
                 android:id="@+id/ivCambioIp"
                 android:src="@drawable/ic_mundo"
@@ -139,7 +168,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true" />-->
-        </RelativeLayout>
+        </LinearLayout>
 
 
     </LinearLayout>

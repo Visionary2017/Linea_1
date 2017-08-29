@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#27ae60</color>
+    <color name="colorPrimary">#ecf0f1</color>
     <color name="colorPrimaryDark">#212121</color>
     <color name="colorAccent">#FF4081</color>
 
@@ -32,7 +32,7 @@
     <color name="AmberTwo">#FF6F00</color>
 
     <!-- Green -->
-    <color name="Green">#4CAF50</color>
+    <color name="Green">#2ecc71</color>
     <color name="GreenOne">#27ae60</color>
     <color name="GreenTwo">#1B5E20</color>
 

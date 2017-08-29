@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Linea 1</string>
-    <string name="txt_usuario"> Usuario</string>
-    <string name="txt_contrasena"> Contraseña</string>
-    <string name="txt_acceso">Ingresar al sistema</string>
+    <string name="txt_usuario">Número de Documento</string>
+    <string name="txt_contrasena">Password</string>
+    <string name="txt_acceso">Ingresar</string>
+    <string name="txt_num_doc">Número de Documento</string>
+    <string name="txt_nombre_completo">Nombres Completos</string>
+    <string name="txt_apellido_completo">Apellidos Completos</string>
+    <string name="txt_telefono">Telefono</string>
+    <string name="txt_correo">Correo Electronico</string>
+    <string name="txt_contrasena1">Contraseña</string>
+    <string name="txt_confirmar_contrasena">Confirmar Contraseña</string>
+    <string name="btn_registrar">Registrar</string>
 </resources>
