@@ -22,12 +22,7 @@
         android:paddingTop="16dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-<<<<<<< HEAD
         android:background="@color/colorPrimary"
-=======
-
->>>>>>> 7aa73561184a2f3bd36d42249c19f7dd62bddb77
-        android:paddingBottom="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <LinearLayout
             android:layout_marginTop="10dp"

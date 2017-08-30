@@ -14,8 +14,7 @@
 
         <include
             android:id="@+id/toolbarRegistro"
-            layout="@layout/toolbar"
-            android:layout_height="27dp" />
+            layout="@layout/toolbar" />
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
