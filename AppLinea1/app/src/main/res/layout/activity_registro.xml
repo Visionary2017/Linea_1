@@ -11,14 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-        <include android:id="@+id/toolbarRegistro"
-            layout="@layout/toolbar" />
+
+        <include
+            android:id="@+id/toolbarRegistro"
+            layout="@layout/toolbar"
+            android:layout_height="27dp" />
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:id="@+id/linear_registro"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="533dp"
         android:background="@color/colorPrimary"
         android:orientation="vertical"
         android:padding="16dp"

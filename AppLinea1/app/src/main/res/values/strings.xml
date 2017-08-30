@@ -11,4 +11,8 @@
     <string name="txt_contrasena1">Contraseña</string>
     <string name="txt_confirmar_contrasena">Confirmar Contraseña</string>
     <string name="btn_registrar">Registrar</string>
+
+    <item name="visible" type="id"/>
+    <item name="masked" type="id"/>
+
 </resources>
