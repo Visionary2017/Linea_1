@@ -65,13 +65,13 @@
                     app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
 
                     <EditText
-                        android:id="@+id/etUsuario"
+                        android:id="@+id/etUsua"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_user"
                         android:drawablePadding="10dp"
                         android:hint="@string/txt_usuario"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textColor="@color/Black"
                         android:textSize="17sp" />
 
@@ -107,7 +107,8 @@
                     android:background="@drawable/btn_rectangulo"
                     android:text="@string/txt_acceso"
                     android:textColor="@color/White"
-                    android:theme="@style/FaceButtonStyle" />
+                    android:theme="@style/FaceButtonStyle"
+                    android:onClick="fnOnClickRegistro"/>
             </LinearLayout>
 
         </LinearLayout>

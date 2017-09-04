@@ -48,28 +48,6 @@
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@color/Black"
-                        android:textColorHint="@color/Black"
-                        android:textSize="15sp">
-
-                        <EditText
-                            android:id="@+id/etNumeroDocumento"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:drawableLeft="@drawable/ic_user"
-                            android:drawablePadding="10dp"
-                            android:hint="@string/txt_usuario"
-                            android:inputType="number"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textColor="@color/Black"
-                            android:textSize="15sp" />
-
-                    </android.support.design.widget.TextInputLayout>
-
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -80,36 +58,13 @@
                         android:textSize="15sp">
 
                         <EditText
-                            android:id="@+id/etNombreCompleto"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:drawableLeft="@drawable/ic_user"
-                            android:drawablePadding="10dp"
-                            android:hint="@string/txt_nombre_completo"
-                            android:inputType="text"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textColor="@color/Black"
-                            android:textSize="15sp" />
-
-                    </android.support.design.widget.TextInputLayout>
-
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@color/Black"
-                        android:textColorHint="@color/Black"
-                        android:textSize="15sp">
-
-                        <EditText
-                            android:id="@+id/etApellidoCompleto"
+                            android:id="@+id/etPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/ic_user"
                             android:drawablePadding="10dp"
-                            android:hint="@string/txt_apellido_completo"
-                            android:inputType="text"
+                            android:hint="@string/txt_Contrasena"
+                            android:inputType="textPassword"
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                             android:textColor="@color/Black"
                             android:textSize="15sp" />
@@ -125,62 +80,19 @@
                         android:textSize="15sp">
 
                         <EditText
-                            android:id="@+id/etTelefono"
+                            android:id="@+id/etValidarPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/ic_user"
                             android:drawablePadding="10dp"
-                            android:hint="@string/txt_telefono"
-                            android:inputType="phone"
+                            android:hint="@string/txt_ValidadContrasena"
+                            android:inputType="textPassword"
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                             android:textColor="@color/Black"
                             android:textSize="15sp" />
 
                     </android.support.design.widget.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@color/Black"
-                        android:textColorHint="@color/Black"
-                        android:textSize="15sp">
-
-                        <EditText
-                            android:id="@+id/etCorreo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_user"
-                            android:drawablePadding="10dp"
-                            android:hint="@string/txt_correo"
-                            android:inputType="textEmailAddress"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textColor="@color/Black"
-                            android:textSize="15sp" />
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@color/Black"
-                        android:textColorHint="@color/Black"
-                        android:textSize="15sp">
-
-                        <EditText
-                            android:id="@+id/etTarjeta"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_user"
-                            android:drawablePadding="10dp"
-                            android:hint="@string/txt_Tarjeta"
-                            android:inputType="number"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textColor="@color/Black"
-                            android:textSize="15sp" />
-
-                    </android.support.design.widget.TextInputLayout>
 
 
                     <android.support.design.widget.TextInputLayout
@@ -204,16 +116,16 @@
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.v7.widget.AppCompatButton
-                        android:id="@+id/btnSiguiente"
+                        android:id="@+id/btnRegistrar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:background="@drawable/btn_rectangulo"
                         android:gravity="center_horizontal|center"
                         android:padding="6dp"
+                        android:text="@string/btn_registrar"
                         android:textColor="@color/White"
-                        android:theme="@style/FaceButtonStyle"
-                        android:text="SIGUIENTE PASO"/>
+                        android:theme="@style/FaceButtonStyle" />
 
                 </LinearLayout>
 

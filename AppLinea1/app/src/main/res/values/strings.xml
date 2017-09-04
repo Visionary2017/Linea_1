@@ -11,8 +11,12 @@
     <string name="txt_contrasena1">Contraseña</string>
     <string name="txt_confirmar_contrasena">Confirmar Contraseña</string>
     <string name="btn_registrar">Registrar</string>
+    <string name="txt_Tarjeta">Número de Tarejta</string>
+    <string name="txt_Contrasena">Password</string>
+    <string name="txt_ValidadContrasena">Verificar Password</string>
 
-    <item name="visible" type="id"/>
-    <item name="masked" type="id"/>
+
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
 
 </resources>
