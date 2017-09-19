@@ -27,12 +27,10 @@ public class RegistroActivity extends AppCompatActivity {
         etApellComple = (EditText) findViewById(R.id.etApellidoCompleto);
         etTelef = (EditText) findViewById(R.id.etTelefono);
         etCorr = (EditText) findViewById(R.id.etCorreo);
-        etNumTarjeta = (EditText)findViewById(R.id.etTarjeta);
+        //etNumTarjeta = (EditText)findViewById(R.id.etTarjeta);
         //etPass = (EditText) findViewById(R.id.etPassword);
         //etValPassword = (EditText) findViewById(R.id.etValidarPassword);
         btnSiguien = (Button) findViewById(R.id.btnSiguiente);
-
-
 
 
         btnSiguien.setOnClickListener(new View.OnClickListener() {

@@ -12,9 +12,24 @@
         android:layout_height="wrap_content"
         >
 
-        <include
-            android:id="@+id/toolbarRegistro"
-            layout="@layout/toolbar" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_top"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:minHeight="?attr/actionBarSize"
+            android:background="@drawable/btn_rectangulo"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="LÍNEA 1 - PASO 01"
+                android:textColor="@color/White"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
@@ -45,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
+                    android:layout_marginTop="50dp"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp">
 
@@ -60,7 +76,7 @@
                             android:id="@+id/etNumeroDocumento"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:drawableLeft="@drawable/ic_user"
+                            android:drawableLeft="@drawable/ic_dni"
                             android:drawablePadding="10dp"
                             android:hint="@string/txt_usuario"
                             android:inputType="number"
@@ -128,9 +144,9 @@
                             android:id="@+id/etTelefono"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_user"
+                            android:drawableLeft="@drawable/ic_celular"
                             android:drawablePadding="10dp"
-                            android:hint="@string/txt_telefono"
+                            android:hint="@string/txt_celular"
                             android:inputType="phone"
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                             android:textColor="@color/Black"
@@ -150,7 +166,7 @@
                             android:id="@+id/etCorreo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_user"
+                            android:drawableLeft="@drawable/ic_mail"
                             android:drawablePadding="10dp"
                             android:hint="@string/txt_correo"
                             android:inputType="textEmailAddress"
@@ -167,18 +183,6 @@
                         android:textColor="@color/Black"
                         android:textColorHint="@color/Black"
                         android:textSize="15sp">
-
-                        <EditText
-                            android:id="@+id/etTarjeta"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_user"
-                            android:drawablePadding="10dp"
-                            android:hint="@string/txt_Tarjeta"
-                            android:inputType="number"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textColor="@color/Black"
-                            android:textSize="15sp" />
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -211,9 +215,9 @@
                         android:background="@drawable/btn_rectangulo"
                         android:gravity="center_horizontal|center"
                         android:padding="6dp"
+                        android:text="SIGUIENTE PASO"
                         android:textColor="@color/White"
-                        android:theme="@style/FaceButtonStyle"
-                        android:text="SIGUIENTE PASO"/>
+                        android:theme="@style/FaceButtonStyle" />
 
                 </LinearLayout>
 

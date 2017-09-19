@@ -50,6 +50,7 @@ public class Registro2Activity extends AppCompatActivity {
 
                  if (pass.equals(passVal)){
                      Toast.makeText(Registro2Activity.this, "Coinciden", Toast.LENGTH_SHORT).show();
+
                  }else {
                      Toast.makeText(Registro2Activity.this, "No Coinciden", Toast.LENGTH_SHORT).show();
                  }

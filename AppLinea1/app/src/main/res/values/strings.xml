@@ -6,7 +6,7 @@
     <string name="txt_num_doc">Número de Documento</string>
     <string name="txt_nombre_completo">Nombres Completos</string>
     <string name="txt_apellido_completo">Apellidos Completos</string>
-    <string name="txt_telefono">Telefono</string>
+    <string name="txt_celular">Celular</string>
     <string name="txt_correo">Correo Electronico</string>
     <string name="txt_contrasena1">Contraseña</string>
     <string name="txt_confirmar_contrasena">Confirmar Contraseña</string>
@@ -15,8 +15,11 @@
     <string name="txt_Contrasena">Password</string>
     <string name="txt_ValidadContrasena">Verificar Password</string>
 
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
     <item name="visible" type="id" />
     <item name="masked" type="id" />
+    <string name="title_activity_principal">PrincipalActivity</string>
 
 </resources>
