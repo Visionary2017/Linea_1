@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/scheduleAppBarMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_top"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:minHeight="?attr/actionBarSize"
+            android:background="@drawable/btn_rectangulo"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="RECARGA VIRTUAL"
+                android:textColor="@color/White"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_login_principal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:src="@drawable/pago2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_login_second"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linear_login_secundary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilCuenta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="40dp"
+                    android:textSize="17sp"
+                    app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nuevo saldo disponible"
+                        android:textAlignment="center"
+                        android:textColor="@color/Black"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/txtNuevoSaldo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="0.00"
+                        android:textAlignment="center"
+                        android:textColor="@color/Black"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/MMAA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="RECARGA"
+                        android:textAlignment="center"
+                        android:textColor="@color/Black"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="146dp"
+                        android:layout_height="wrap_content"
+                        android:text="Saldo Anterior"
+                        android:textColor="@color/Black"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="146dp"
+                        android:layout_height="wrap_content"
+                        android:text="Monto de Recarga"
+                        android:textColor="@color/Black"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/txtFechadeRecarga"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha"
+                        android:textColor="@color/Black"
+                        android:textSize="17sp"
+                        android:textAlignment="center"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilCVV"
+                    android:layout_width="116dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="-61dp"
+                    android:layout_marginBottom="35dp"
+                    android:textSize="17sp"
+                    app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+                    <TextView
+                        android:id="@+id/txtSaldoAnterior"
+                        android:layout_width="141dp"
+                        android:layout_height="wrap_content"
+                        android:text="0.00"
+                        android:textAlignment="center"
+                        android:textColor="@color/Black"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtMontodeRecarga"
+                        android:layout_width="142dp"
+                        android:layout_height="wrap_content"
+                        android:text="0.00"
+                        android:textAlignment="center"
+                        android:textColor="@color/Black"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:srcCompat="@drawable/check" />
+
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

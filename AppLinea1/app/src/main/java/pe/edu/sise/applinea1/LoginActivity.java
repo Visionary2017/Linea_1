@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 public class LoginActivity extends AppCompatActivity {
 
-    View toolbar;
+    //View toolbar;
     TextView tvRegistro, tvVisitante;
 
     EditText etUsu, etPass;
@@ -29,10 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        toolbar = (View) findViewById(R.id.toolbarLogin);
+        //toolbar = (View) findViewById(R.id.toolbarLogin);
         tvRegistro = (TextView) findViewById(R.id.tvRegistro);
         tvVisitante = (TextView) findViewById(R.id.tvVisitante);
-        toolbar.setEnabled(false);
+       // toolbar.setEnabled(false);
 
 
         etUsu = (EditText) findViewById(R.id.etUsua);
@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void run() {
                                 int r = objJson(res);
                                 if(r > 0){
-                                    Intent i = new Intent(getApplicationContext(),Registro2Activity.class);
+                                    Intent i = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
                                     startActivity(i);
                                 }else{
                                     Toast.makeText(getApplicationContext(), "Usuario o Password incorrectos", Toast.LENGTH_SHORT).show();

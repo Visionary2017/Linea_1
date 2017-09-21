@@ -12,9 +12,24 @@
         android:layout_height="wrap_content"
         >
 
-        <include
-            android:id="@+id/toolbarRegistro"
-            layout="@layout/toolbar" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_top"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:minHeight="?attr/actionBarSize"
+            android:background="@drawable/btn_rectangulo"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="LÍNEA 1 - PASO 02"
+                android:textColor="@color/White"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
@@ -43,6 +58,7 @@
                     android:id="@+id/linear_login_secundary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="120dp"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:paddingLeft="16dp"
@@ -61,7 +77,7 @@
                             android:id="@+id/etPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_user"
+                            android:drawableLeft="@drawable/ic_pass"
                             android:drawablePadding="10dp"
                             android:hint="@string/txt_Contrasena"
                             android:inputType="textPassword"
@@ -83,7 +99,7 @@
                             android:id="@+id/etValidarPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_user"
+                            android:drawableLeft="@drawable/ic_pass"
                             android:drawablePadding="10dp"
                             android:hint="@string/txt_ValidadContrasena"
                             android:inputType="textPassword"
@@ -92,7 +108,6 @@
                             android:textSize="15sp" />
 
                     </android.support.design.widget.TextInputLayout>
-
 
 
                     <android.support.design.widget.TextInputLayout
@@ -123,7 +138,7 @@
                         android:background="@drawable/btn_rectangulo"
                         android:gravity="center_horizontal|center"
                         android:padding="6dp"
-                        android:text="@string/btn_registrar"
+                        android:text="Siguiente Paso"
                         android:textColor="@color/White"
                         android:theme="@style/FaceButtonStyle" />
 
