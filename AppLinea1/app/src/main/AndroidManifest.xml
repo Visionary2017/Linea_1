@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
+            android:name=".splashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,14 +20,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MenuPrincipalActivity" />
-        <activity android:name=".RegistroActivity" />
-        <activity android:name=".Registro2Activity" />
-        <activity android:name=".Registro3Activity" />
-        <activity android:name=".RecargaVirtualActivity" />
-        <activity android:name=".CantidadRecargarActivity" />
-        <activity android:name=".PagoRealizadoActivity" />
-        <activity android:name=".Lista_Estaciones"></activity>
+        <activity android:name=".LoginActivity"
+            android:label=""/>
+        <activity android:name=".MenuPrincipalActivity" android:label=""/>
+        <activity android:name=".RegistroActivity" android:label=""
+            />
+        <activity android:name=".Registro2Activity" android:label=""/>
+        <activity android:name=".Registro3Activity" android:label="" />
+        <activity android:name=".RecargaVirtualActivity" android:label=""/>
+        <activity android:name=".CantidadRecargarActivity" android:label=""/>
+        <activity android:name=".PagoRealizadoActivity" android:label=""/>
+        <activity android:name=".Lista_Estaciones" android:label="Estaciones"
+            
+            ></activity>
     </application>
 
 </manifest>

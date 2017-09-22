@@ -46,7 +46,6 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 boolean fragmentTransaction=false;
-                Fragment fragment=null;
 
                 switch (item.getItemId()){
                     case R.id.mnuUsuario:
@@ -59,8 +58,8 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
                         break;
                     case R.id.mnuEstacion:
-                        fragment=new EstacionesFragment();
-                        fragmentTransaction=true;
+                        Intent i=new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        startActivity(i);
                         break;
                     case R.id.mnuViaje:
 
@@ -69,14 +68,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
                         break;
                 }
-                if(fragmentTransaction){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,fragment)
-                            .commit();
-                    item.setChecked(true);
-                    getSupportActionBar().setTitle(item.getTitle());
-                    drawerLayout.closeDrawers();
 
-                }
                 return true;
             }
         });

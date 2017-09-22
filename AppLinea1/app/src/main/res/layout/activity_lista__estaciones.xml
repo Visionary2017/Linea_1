@@ -13,25 +13,25 @@
         android:layout_height="wrap_content"
         >
 
-        <!--<android.support.v7.widget.Toolbar-->
-            <!--android:id="@+id/toolbar_top"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@drawable/btn_rectangulo"-->
-            <!--android:elevation="4dp"-->
-            <!--android:minHeight="?attr/actionBarSize"-->
-            <!--app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_rectangulo"
+            android:elevation="4dp"
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <!--<TextView-->
-                <!--android:id="@+id/toolbar_title"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:text="Estaciones"-->
-                <!--android:textColor="@color/White"-->
-                <!--android:textSize="15sp"-->
-                <!--android:textStyle="bold" />-->
-        <!--</android.support.v7.widget.Toolbar>-->
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textColor="@color/White"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
@@ -42,4 +42,28 @@
             android:layout_marginTop="3dp" />
 
     </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navview"
+        app:headerLayout="@layout/cabecera"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        app:itemTextColor="@color/Black"
+        app:itemIconTint="@color/Black"
+        app:menu="@menu/drawermenu"
+
+        android:layout_gravity="start">
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Cerrar Sesion"
+            android:textColor="@color/White"
+            android:theme="@style/FaceButtonStyle"
+            android:background="@drawable/btn_rectangulo"
+            android:layout_gravity="bottom"/>
+
+    </android.support.design.widget.NavigationView>
+
 </android.support.v4.widget.DrawerLayout>
