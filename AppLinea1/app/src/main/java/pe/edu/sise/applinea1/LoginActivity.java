@@ -42,25 +42,27 @@ public class LoginActivity extends AppCompatActivity {
         btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Thread tr = new Thread(){
-                    @Override
-                    public void run() {
-                       final String res = enviarPost(etUsu.getText().toString(),etPass.getText().toString());
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                int r = objJson(res);
-                                if(r > 0){
-                                    Intent i = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
-                                    startActivity(i);
-                                }else{
-                                    Toast.makeText(getApplicationContext(), "Usuario o Password incorrectos", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    }
-                };
-                tr.start();
+//                Thread tr = new Thread(){
+//                    @Override
+//                    public void run() {
+//                       final String res = enviarPost(etUsu.getText().toString(),etPass.getText().toString());
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                int r = objJson(res);
+//                                if(r > 0){
+//                                    Intent i = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
+//                                    startActivity(i);
+//                                }else{
+//                                    Toast.makeText(getApplicationContext(), "Usuario o Password incorrectos", Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
+//                    }
+//                };
+//                tr.start();
+                Intent intent=new Intent(getApplicationContext(),MenuPrincipalActivity.class);
+                startActivity(intent);
             }
         });
     }

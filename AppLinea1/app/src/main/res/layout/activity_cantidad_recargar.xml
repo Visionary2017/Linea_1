@@ -16,6 +16,7 @@
             android:id="@+id/toolbar_top"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:elevation="4dp"
             android:minHeight="?attr/actionBarSize"
             android:background="@drawable/btn_rectangulo"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >

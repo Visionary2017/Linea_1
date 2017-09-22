@@ -26,7 +26,8 @@
         <activity android:name=".Registro3Activity" />
         <activity android:name=".RecargaVirtualActivity" />
         <activity android:name=".CantidadRecargarActivity" />
-        <activity android:name=".PagoRealizadoActivity"></activity>
+        <activity android:name=".PagoRealizadoActivity" />
+        <activity android:name=".Lista_Estaciones"></activity>
     </application>
 
 </manifest>
