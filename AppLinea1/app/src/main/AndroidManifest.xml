@@ -20,19 +20,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
-            android:label=""/>
-        <activity android:name=".MenuPrincipalActivity" android:label=""/>
-        <activity android:name=".RegistroActivity" android:label=""
-            />
-        <activity android:name=".Registro2Activity" android:label=""/>
-        <activity android:name=".Registro3Activity" android:label="" />
-        <activity android:name=".RecargaVirtualActivity" android:label=""/>
-        <activity android:name=".CantidadRecargarActivity" android:label=""/>
-        <activity android:name=".PagoRealizadoActivity" android:label=""/>
-        <activity android:name=".Lista_Estaciones" android:label="Estaciones"
-            
-            ></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="" />
+        <activity
+            android:name=".MenuPrincipalActivity"
+            android:label="" />
+        <activity
+            android:name=".RegistroActivity"
+            android:label="" />
+        <activity
+            android:name=".Registro2Activity"
+            android:label="" />
+        <activity
+            android:name=".Registro3Activity"
+            android:label="" />
+        <activity
+            android:name=".RecargaVirtualActivity"
+            android:label="" />
+        <activity
+            android:name=".CantidadRecargarActivity"
+            android:label="" />
+        <activity
+            android:name=".PagoRealizadoActivity"
+            android:label="" />
+        <activity
+            android:name=".Lista_Estaciones"
+            android:label="Estaciones" />
+        <activity android:name=".activity_calcular_viaje" />
+        <activity android:name=".activity_resultado_calcular_viaje"></activity>
     </application>
 
 </manifest>

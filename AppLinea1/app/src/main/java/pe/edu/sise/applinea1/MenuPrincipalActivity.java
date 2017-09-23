@@ -39,6 +39,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         navigationView=(NavigationView)findViewById(R.id.navview);
         txtTitulo=(TextView)findViewById(R.id.toolbar_title);
         recarga = (ImageButton) findViewById(R.id.btnRecargar);
+        calcu_Viaje = (ImageButton) findViewById(R.id.btnCalcular_Viaje);
         estacion=(ImageButton)findViewById(R.id.btnEstaciones);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -112,7 +113,13 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        calcu_Viaje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),activity_calcular_viaje.class);
+                startActivity(i);
+            }
+        });
 
     }
 }

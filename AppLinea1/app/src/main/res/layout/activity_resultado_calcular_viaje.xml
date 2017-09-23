@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/resultado_calcular_viaje"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pe.edu.sise.applinea1.activity_resultado_calcular_viaje"
+    android:background="@android:color/transparent"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/scheduleAppBarMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rectangulo"
+                android:elevation="4dp"
+                android:minHeight="?attr/actionBarSize"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:textAlignment="center">
+
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="CALCULAR VIAJE"
+                        android:textAlignment="center"
+                        android:textColor="@color/White"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="313dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="left"
+                    android:text="ORIGEN"
+                    android:textColor="@color/Black"
+                    android:drawableLeft="@drawable/ic_trenes"
+                    android:textSize="17sp"
+
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="313dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="SAN CARLOS"
+                    android:id="@+id/estacion_origen"
+                    android:textColor="@color/Black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="313dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="20:21"
+                    android:id="@+id/hora_origen"
+                    android:textColor="@color/Black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="313dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Proxima Llegada"
+                    android:textColor="@color/Black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="313dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="left"
+                    android:text="DESTINO"
+                    android:textColor="@color/Black"
+                    android:drawableLeft="@drawable/ic_trenes"
+                    android:textSize="17sp"
+
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:orientation="vertical"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="313dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="CABITOS"
+                    android:id="@+id/estacion_destino"
+                    android:textColor="@color/Black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="313dp"
+                android:layout_height="118dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="313dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@android:color/holo_green_dark"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="313dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.43"
+                        android:gravity="center"
+                        android:text="HORA DE LLEGADA"
+                        android:textColor="@color/Black"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/hora_llegada"
+                        android:layout_width="313dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.27"
+                        android:gravity="center"
+                        android:text="20:40"
+                        android:textColor="@color/Black"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/minutos"
+                        android:layout_width="313dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.27"
+                        android:gravity="center"
+                        android:text="19 minutos"
+                        android:textColor="@color/Black"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </android.support.design.widget.AppBarLayout>
+
+
+    </LinearLayout>
+
+
+
+</android.support.v4.widget.DrawerLayout>
