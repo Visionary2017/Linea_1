@@ -36,16 +36,19 @@ public class Lista_Estaciones extends AppCompatActivity {
 
                         break;
                     case R.id.mnuRecarga:
-
+                        Intent e=new Intent(getApplicationContext(),CantidadRecargarActivity.class);
+                        startActivity(e);
                         break;
                     case R.id.mnuSaldo:
 
                         break;
                     case R.id.mnuEstacion:
-                        item.setChecked(true);
+                        Intent o=new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        startActivity(o);
                         break;
                     case R.id.mnuViaje:
-
+                        Intent u=new Intent(getApplicationContext(),activity_calcular_viaje.class);
+                        startActivity(u);
                         break;
                     case R.id.mnuContacto:
 
@@ -55,7 +58,6 @@ public class Lista_Estaciones extends AppCompatActivity {
                 return true;
             }
         });
-
 
     }
 
