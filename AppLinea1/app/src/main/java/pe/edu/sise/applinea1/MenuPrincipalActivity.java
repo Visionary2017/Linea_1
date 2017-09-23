@@ -41,7 +41,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         recarga = (ImageButton) findViewById(R.id.btnRecargar);
         calcu_Viaje = (ImageButton) findViewById(R.id.btnCalcular_Viaje);
         estacion=(ImageButton)findViewById(R.id.btnEstaciones);
-
+        consul_Saldo = (ImageButton)findViewById(R.id.btnConsultarSaldo);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -57,7 +57,8 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                         startActivity(e);
                         break;
                     case R.id.mnuSaldo:
-
+                        Intent s=new Intent(getApplicationContext(), consulta_saldo.class);
+                        startActivity(s);
                         break;
                     case R.id.mnuEstacion:
                         Intent o=new Intent(getApplicationContext(),Lista_Estaciones.class);
@@ -122,6 +123,12 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        consul_Saldo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),consulta_saldo.class);
+                startActivity(i);
+            }
+        });
     }
 }
