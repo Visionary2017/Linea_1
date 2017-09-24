@@ -39,9 +39,6 @@
             android:name=".RecargaVirtualActivity"
             android:label="" />
         <activity
-            android:name=".CantidadRecargarActivity"
-            android:label="" />
-        <activity
             android:name=".PagoRealizadoActivity"
             android:label="" />
         <activity
