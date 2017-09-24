@@ -25,7 +25,6 @@ public class MenuPrincipalActivity extends AppCompatActivity {
      //private ActionBarDrawerToggle mToggle;
 
     ImageButton act_Usuario, recarga,consul_Saldo,estacion,calcu_Viaje,contacto;
-    TextView txtTitulo;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
@@ -37,7 +36,6 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
         drawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView=(NavigationView)findViewById(R.id.navview);
-        txtTitulo=(TextView)findViewById(R.id.toolbar_title);
         recarga = (ImageButton) findViewById(R.id.btnRecargar);
         calcu_Viaje = (ImageButton) findViewById(R.id.btnCalcular_Viaje);
         estacion=(ImageButton)findViewById(R.id.btnEstaciones);
