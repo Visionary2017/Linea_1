@@ -239,7 +239,7 @@
             android:text="Linea1 ©"
             android:textAlignment="center"
             android:textColor="@color/Black"
-            android:textSize="8sp"></TextView>
+            android:textSize="10dp"></TextView>
     </LinearLayout>
 
 

@@ -9,18 +9,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
-public class consulta_saldo extends AppCompatActivity {
+public class RecargaActivity extends AppCompatActivity {
 
+    Button btnSiguiente;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consulta_saldo);
-        drawerLayout=(DrawerLayout) findViewById(R.id.drawer_consulta);
+        setContentView(R.layout.activity_recarga);
+        drawerLayout=(DrawerLayout) findViewById(R.id.drawer_recarga);
         navigationView=(NavigationView)findViewById(R.id.navview);
+        btnSiguiente=(Button)findViewById(R.id.btnSiguienteRecargar);
         setToolbar();
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -59,7 +64,17 @@ public class consulta_saldo extends AppCompatActivity {
                 return true;
             }
         });
+        btnSiguiente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),RecargaVirtualActivity.class);
+                startActivity(i);
+            }
+        });
+
+
     }
+
     private void setToolbar(){
 
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_top);

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import pe.edu.sise.applinea1.MenuPrincipalActivity;
 import pe.edu.sise.applinea1.R;
 
 /**
@@ -15,6 +16,7 @@ import pe.edu.sise.applinea1.R;
 public class Menu_Fragment extends Fragment {
 
 
+    MenuPrincipalActivity Principal;
     public Menu_Fragment() {
         // Required empty public constructor
     }
@@ -25,7 +27,12 @@ public class Menu_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_menu,container,false);
+
         return view;
+
     }
+
+
+
 
 }

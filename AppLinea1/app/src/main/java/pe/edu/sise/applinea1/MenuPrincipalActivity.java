@@ -4,29 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.zip.Inflater;
 
 public class MenuPrincipalActivity extends AppCompatActivity {
 
-    // private DrawerLayout mdrawerLayout;
-     //private ActionBarDrawerToggle mToggle;
-
-    ImageButton act_Usuario, recarga,consul_Saldo,estacion,calcu_Viaje,contacto;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private FragmentTransaction fragmentTransaction;
+    ImageButton act_Usuario, recarga,consul_Saldo,estacion,calcu_Viaje,contacto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,31 +34,36 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         calcu_Viaje = (ImageButton) findViewById(R.id.btnCalcular_Viaje);
         estacion=(ImageButton)findViewById(R.id.btnEstaciones);
         consul_Saldo = (ImageButton)findViewById(R.id.btnConsultarSaldo);
+        this.Botones();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                boolean fragmentTransaction=false;
-
                 switch (item.getItemId()){
                     case R.id.mnuUsuario:
-
+                        Intent a= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        startActivity(a);
+                        finish();
                         break;
                     case R.id.mnuRecarga:
-                        Intent e=new Intent(getApplicationContext(),CantidadRecargarActivity.class);
+                        Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
                         startActivity(e);
+                        finish();
                         break;
                     case R.id.mnuSaldo:
-                        Intent s=new Intent(getApplicationContext(), consulta_saldo.class);
-                        startActivity(s);
+                        Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
+                        startActivity(i);
+                        finish();
                         break;
                     case R.id.mnuEstacion:
-                        Intent o=new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
                         startActivity(o);
+                        finish();
                         break;
                     case R.id.mnuViaje:
-                        Intent u=new Intent(getApplicationContext(),activity_calcular_viaje.class);
+                        Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
                         startActivity(u);
+                        finish();
                         break;
                     case R.id.mnuContacto:
 
@@ -75,7 +74,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             }
         });
 
-        Botones();
+        //Botones();
     }
 
     private void setToolbar(){
@@ -102,31 +101,36 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         recarga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),CantidadRecargarActivity.class);
-                startActivity(i);
+                Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
+                startActivity(e);
+                finish();
             }
         });
 
         estacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getApplicationContext(),Lista_Estaciones.class);
-                startActivity(i);
+                Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                startActivity(o);
+                finish();
             }
         });
         calcu_Viaje.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),activity_calcular_viaje.class);
-                startActivity(i);
+                Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
+                startActivity(u);
+                finish();
             }
         });
         consul_Saldo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),consulta_saldo.class);
+                Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
                 startActivity(i);
+                finish();
             }
         });
+
     }
 }
