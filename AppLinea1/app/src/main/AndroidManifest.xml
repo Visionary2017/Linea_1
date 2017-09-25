@@ -28,7 +28,7 @@
             android:label="" />
         <activity
             android:name=".RegistroActivity"
-            android:label="" />
+            android:label="Registro" />
         <activity
             android:name=".Registro2Activity"
             android:label="" />
@@ -44,9 +44,12 @@
         <activity
             android:name=".Lista_Estaciones"
             android:label="Estaciones" />
-        <activity android:name=".activity_calcular_viaje" />
+        <activity android:name=".activity_calcular_viaje"
+            android:label="Calcular Viaje"/>
         <activity android:name=".activity_resultado_calcular_viaje" />
-        <activity android:name=".consulta_saldo"></activity>
+        <activity android:name=".consulta_saldo" />
+        <activity android:name=".RecargaActivity"
+            android:label="Recargar Tarjeta"></activity>
     </application>
 
 </manifest>

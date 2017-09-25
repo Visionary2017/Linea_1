@@ -29,23 +29,31 @@ public class Lista_Estaciones extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                boolean fragmentTransaction=false;
-
                 switch (item.getItemId()){
                     case R.id.mnuUsuario:
-
+                        Intent a= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        startActivity(a);
+                        finish();
                         break;
                     case R.id.mnuRecarga:
-
+                        Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
+                        startActivity(e);
+                        finish();
                         break;
                     case R.id.mnuSaldo:
-
+                        Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
+                        startActivity(i);
+                        finish();
                         break;
                     case R.id.mnuEstacion:
-
+                        Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        startActivity(o);
+                        finish();
                         break;
                     case R.id.mnuViaje:
-
+                        Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
+                        startActivity(u);
+                        finish();
                         break;
                     case R.id.mnuContacto:
 

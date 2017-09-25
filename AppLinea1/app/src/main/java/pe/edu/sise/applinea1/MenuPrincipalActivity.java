@@ -11,21 +11,15 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-
-import layout.Recarga;
 
 public class MenuPrincipalActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private FragmentTransaction fragmentTransaction;
-    private FragmentManager fragmentManager;
-    Fragment selectedFragment;
     ImageButton act_Usuario, recarga,consul_Saldo,estacion,calcu_Viaje,contacto;
 
     @Override
@@ -47,25 +41,29 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.mnuUsuario:
-
+                        Intent a= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        startActivity(a);
+                        finish();
                         break;
                     case R.id.mnuRecarga:
-                        selectedFragment=new Recarga();
-                        fragmentManager=getFragmentManager();
-                        fragmentTransaction=fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.Fragment_Cuerpo,selectedFragment);
-                        fragmentTransaction.commit();
-                        drawerLayout.closeDrawers();
+                        Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
+                        startActivity(e);
+                        finish();
                         break;
                     case R.id.mnuSaldo:
-
+                        Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
+                        startActivity(i);
+                        finish();
                         break;
                     case R.id.mnuEstacion:
-
+                        Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        startActivity(o);
+                        finish();
                         break;
                     case R.id.mnuViaje:
-
-
+                        Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
+                        startActivity(u);
+                        finish();
                         break;
                     case R.id.mnuContacto:
 
@@ -103,30 +101,34 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         recarga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedFragment=new Recarga();
-                fragmentManager=getFragmentManager();
-                fragmentTransaction=fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.Fragment_Cuerpo,selectedFragment);
-                fragmentTransaction.commit();
+                Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
+                startActivity(e);
+                finish();
             }
         });
 
         estacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                startActivity(o);
+                finish();
             }
         });
         calcu_Viaje.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
+                startActivity(u);
+                finish();
             }
         });
         consul_Saldo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
+                startActivity(i);
+                finish();
             }
         });
 
