@@ -13,4 +13,7 @@ public class ClassConstante {
     //public static String ENTIDAD_PERSONA = "Entidad_Estacion.php";
     public static String ACCESO_MENU = "Acceso.php";
 
+    //Para el Add_pasajero
+    public static String ADD_PASAJERO = "add_Pasajero.php";
+
 }

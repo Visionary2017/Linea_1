@@ -1,12 +1,10 @@
 package pe.edu.sise.applinea1;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +20,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     ImageButton act_Usuario, recarga,consul_Saldo,estacion,calcu_Viaje,contacto;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +33,9 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         calcu_Viaje = (ImageButton) findViewById(R.id.btnCalcular_Viaje);
         estacion=(ImageButton)findViewById(R.id.btnEstaciones);
         consul_Saldo = (ImageButton)findViewById(R.id.btnConsultarSaldo);
+
+
+
         this.Botones();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
