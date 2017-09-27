@@ -57,7 +57,7 @@ public class splashActivity extends AppCompatActivity {
             Toast.makeText(this, "Bienvenido!!", Toast.LENGTH_SHORT).show();
             Arrancar_Splash();
         }else{
-            Toast.makeText(this, "onResume() : " + action, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "onResume() : " + action, Toast.LENGTH_SHORT).show();
         }
     }
 
