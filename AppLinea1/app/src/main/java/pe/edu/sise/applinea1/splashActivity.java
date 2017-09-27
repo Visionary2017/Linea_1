@@ -26,7 +26,7 @@ public class splashActivity extends AppCompatActivity {
             finish();
         }
 
-
+        Arrancar_Splash();
     }
 
 
