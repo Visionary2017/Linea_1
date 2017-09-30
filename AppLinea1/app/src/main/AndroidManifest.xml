@@ -2,10 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pe.edu.sise.applinea1">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.NFC" />
-    <uses-feature android:name="android.hardware.nfc" android:required="true"/>
 
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -24,13 +26,14 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.nfc.action.TAG_DISCOVERED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".LoginActivity"
             android:label="" />
-        <activity
+      <activity
             android:name=".MenuPrincipalActivity"
             android:label="" />
         <activity
@@ -51,12 +54,15 @@
         <activity
             android:name=".Lista_Estaciones"
             android:label="Estaciones" />
-        <activity android:name=".activity_calcular_viaje"
-            android:label="Calcular Viaje"/>
+        <activity
+            android:name=".activity_calcular_viaje"
+            android:label="Calcular Viaje" />
         <activity android:name=".activity_resultado_calcular_viaje" />
         <activity android:name=".consulta_saldo" />
-        <activity android:name=".RecargaActivity"
-            android:label="Recargar Tarjeta"></activity>
+        <activity
+            android:name=".RecargaActivity"
+            android:label="Recargar Tarjeta" />
+        <activity android:name=".updatePasajeroActivity"></activity>
     </application>
 
 </manifest>

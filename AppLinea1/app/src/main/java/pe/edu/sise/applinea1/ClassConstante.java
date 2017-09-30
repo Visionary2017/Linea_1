@@ -16,4 +16,8 @@ public class ClassConstante {
     //Para el Add_pasajero
     public static String ADD_PASAJERO = "add_Pasajero.php";
 
+
+    //Para el Actualizar Pasajero
+    public static String UDP_PASAJERO = "update_pasajero.php";
+
 }

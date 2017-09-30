@@ -29,6 +29,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
         drawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView=(NavigationView)findViewById(R.id.navview);
+        act_Usuario = (ImageButton) findViewById(R.id.btnActualizarUsuario);
         recarga = (ImageButton) findViewById(R.id.btnRecargar);
         calcu_Viaje = (ImageButton) findViewById(R.id.btnCalcular_Viaje);
         estacion=(ImageButton)findViewById(R.id.btnEstaciones);
@@ -100,6 +101,16 @@ public class MenuPrincipalActivity extends AppCompatActivity {
     }
 
     public void Botones(){
+        act_Usuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),updatePasajeroActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+
         recarga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
