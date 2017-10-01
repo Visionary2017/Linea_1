@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MenuPrincipalActivity extends AppCompatActivity {
 
@@ -19,6 +20,8 @@ public class MenuPrincipalActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private FragmentTransaction fragmentTransaction;
     ImageButton act_Usuario, recarga,consul_Saldo,estacion,calcu_Viaje,contacto;
+
+
 
 
     @Override
@@ -36,6 +39,10 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         consul_Saldo = (ImageButton)findViewById(R.id.btnConsultarSaldo);
 
 
+        Bundle datos = this.getIntent().getExtras();
+         final String numero_tarjeta = datos.getString("valor");
+
+        Toast.makeText(this, numero_tarjeta, Toast.LENGTH_SHORT).show();
 
         this.Botones();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -44,7 +51,8 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.mnuUsuario:
-                        Intent a= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        Intent a= new Intent(getApplicationContext(),updatePasajeroActivity.class);
+                        a.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(a);
                         finish();
                         break;

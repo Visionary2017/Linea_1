@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
                         intent.putExtra("valor",obtieneDatosJSON(new String(responseBody)).toString());
                         startActivity(intent);
+
                     }
                 }
 
@@ -113,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
 
             for (int i = 0; i < Jarray.length(); i++)
             {
-                texto = Jarray.getJSONObject(i).getString("nombres_completo");
+                texto = Jarray.getJSONObject(i).getString("nro_tarjeta");
             }
             Log.i("texto-valor ",texto);
         }catch (Exception e){

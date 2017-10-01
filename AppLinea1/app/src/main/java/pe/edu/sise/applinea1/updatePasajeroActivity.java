@@ -24,18 +24,26 @@ public class updatePasajeroActivity extends AppCompatActivity {
 
     Button btnActualizar;
     EditText nombre,apellido,celular,correo;
-
+    Bundle datos;
+    String numero_tarjeta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_pasajero);
 
+
         nombre = (EditText) findViewById(R.id.etNombreCompletoUpdate);
         apellido = (EditText) findViewById(R.id.etApellidoCompletoUpdate);
         celular = (EditText) findViewById(R.id.etTelefonoUpdate);
         correo = (EditText) findViewById(R.id.etCorreoUpdate);
         btnActualizar = (Button) findViewById(R.id.btnUpdate);
+
+        datos = this.getIntent().getExtras();
+       numero_tarjeta = datos.getString("numero_tarjeta");
+
+        Toast.makeText(this, numero_tarjeta, Toast.LENGTH_SHORT).show();
+
 
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +106,7 @@ public class updatePasajeroActivity extends AppCompatActivity {
                     params.put("apellidos_completo",apellido.getText().toString());
                     params.put("telefono",celular.getText().toString());
                     params.put("email",correo.getText().toString());
-                    params.put("numero_documento",1234);
+                    params.put("nro_tarjeta",numero_tarjeta);
 
                     client.post(URL_UPDATE, params, new AsyncHttpResponseHandler() {
                         @Override
@@ -106,14 +114,15 @@ public class updatePasajeroActivity extends AppCompatActivity {
                             if(statusCode == 200){
                                 Toast.makeText(updatePasajeroActivity.this, "Actualizado correctamente.", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
+                                i.putExtra("valor",numero_tarjeta);
                                 startActivity(i);
-                                finish();
+                               // finish();
                             }
                         }
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                            Toast.makeText(updatePasajeroActivity.this, "No se actualizó!!!", Toast.LENGTH_SHORT).show();
                         }
                     });
 

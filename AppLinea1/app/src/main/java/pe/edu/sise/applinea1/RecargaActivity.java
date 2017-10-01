@@ -32,7 +32,7 @@ public class RecargaActivity extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.mnuUsuario:
-                        Intent a= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        Intent a= new Intent(getApplicationContext(),updatePasajeroActivity.class);
                         startActivity(a);
                         finish();
                         break;
