@@ -1,22 +1,31 @@
 package pe.edu.sise.applinea1;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.text.DecimalFormat;
 
 public class RecargaActivity extends AppCompatActivity {
 
+    EditText monto_Recarga;
     Button btnSiguiente;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+
+    Bundle datos;
+    String numero_tarjeta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +34,13 @@ public class RecargaActivity extends AppCompatActivity {
         navigationView=(NavigationView)findViewById(R.id.navview);
         btnSiguiente=(Button)findViewById(R.id.btnSiguienteRecargar);
         setToolbar();
+
+        datos = this.getIntent().getExtras();
+        numero_tarjeta = datos.getString("numero_tarjeta");
+
+        Toast.makeText(this, numero_tarjeta, Toast.LENGTH_SHORT).show();
+
+        monto_Recarga = (EditText) findViewById(R.id.etMonto_Recarga);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -67,13 +83,33 @@ public class RecargaActivity extends AppCompatActivity {
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getApplicationContext(),RecargaVirtualActivity.class);
+                double monto = Double.parseDouble(monto_Recarga.getText().toString());
+
+             Intent i=new Intent(getApplicationContext(),RecargaVirtualActivity.class);
+                i.putExtra("numero_tarjeta",numero_tarjeta);
+                i.putExtra("monto",roundTwoDecimals(monto));
                 startActivity(i);
+
+            /* double monto = Double.parseDouble(monto_Recarga.getText().toString());
+
+                if(roundTwoDecimals(monto) >=0.1 && roundTwoDecimals(monto) <= 99){
+                    Toast.makeText(RecargaActivity.this, "numero dentro del rango" + roundTwoDecimals(monto), Toast.LENGTH_SHORT).show();
+                }else{
+                    monto_Recarga.setError("no está dentro del rango");
+                }*/
+
             }
         });
 
 
     }
+
+    double roundTwoDecimals(double d)
+    {
+        DecimalFormat twoDForm = new DecimalFormat("#.##");
+        return Double.valueOf(twoDForm.format(d));
+    }
+
 
     private void setToolbar(){
 

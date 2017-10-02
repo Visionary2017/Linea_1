@@ -21,8 +21,8 @@ public class MenuPrincipalActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     ImageButton act_Usuario, recarga,consul_Saldo,estacion,calcu_Viaje,contacto;
 
-
-
+    Bundle datos;
+    String numero_tarjeta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,8 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         consul_Saldo = (ImageButton)findViewById(R.id.btnConsultarSaldo);
 
 
-        Bundle datos = this.getIntent().getExtras();
-         final String numero_tarjeta = datos.getString("valor");
+         datos = this.getIntent().getExtras();
+         numero_tarjeta = datos.getString("valor");
 
         Toast.makeText(this, numero_tarjeta, Toast.LENGTH_SHORT).show();
 
@@ -58,6 +58,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                         break;
                     case R.id.mnuRecarga:
                         Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
+                        e.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(e);
                         finish();
                         break;
@@ -113,6 +114,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),updatePasajeroActivity.class);
+                i.putExtra("numero_tarjeta",numero_tarjeta.toString());
                 startActivity(i);
                 finish();
             }
@@ -123,6 +125,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
+                e.putExtra("numero_tarjeta",numero_tarjeta.toString());
                 startActivity(e);
                 finish();
             }

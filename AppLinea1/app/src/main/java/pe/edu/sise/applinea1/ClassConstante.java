@@ -20,4 +20,7 @@ public class ClassConstante {
     //Para el Actualizar Pasajero
     public static String UDP_PASAJERO = "update_pasajero.php";
 
+    //Para Verificar una tarjeta
+    public static String BUSCAR_TARJETA= "buscar_Tarjeta.php";
+
 }

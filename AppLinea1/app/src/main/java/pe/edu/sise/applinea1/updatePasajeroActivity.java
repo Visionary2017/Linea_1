@@ -116,7 +116,7 @@ public class updatePasajeroActivity extends AppCompatActivity {
                                 Intent i = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
                                 i.putExtra("valor",numero_tarjeta);
                                 startActivity(i);
-                               // finish();
+                                finish();
                             }
                         }
 

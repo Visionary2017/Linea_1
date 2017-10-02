@@ -86,22 +86,22 @@
                     app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
 
                     <EditText
-                        android:id="@+id/etNumCuenta"
+                        android:id="@+id/etNumTarjeta_Visa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_user"
                         android:drawablePadding="10dp"
-                        android:hint="Número de Cuenta"
-                        android:inputType="number"
+                        android:hint="Número de Tarjeta"
+                        android:inputType="text"
                         android:password="false"
                         android:textColor="@color/Black"
                         android:textSize="17sp"
-                        tools:inputType="number" />
+                        android:maxLength="16"/>
 
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/MMAA"
+                    android:id="@+id/tilMMAA"
                     android:layout_width="126dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="65dp"
@@ -109,16 +109,18 @@
                     app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
 
                     <EditText
-                        android:id="@+id/mmaa"
+                        android:id="@+id/etmmaa"
                         android:layout_width="121dp"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_pass"
                         android:drawablePadding="10dp"
                         android:hint="MM / AA"
-                        android:inputType="number"
+                        android:inputType="text"
+                        android:maxLength="5"
                         android:singleLine="false"
                         android:textColor="@color/Black"
-                        android:textSize="17sp" />
+                        android:textSize="17sp"
+                        android:digits="0123456789/"/>
 
 
                 </android.support.design.widget.TextInputLayout>
@@ -133,13 +135,13 @@
                     app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
 
                     <EditText
-                        android:id="@+id/cvv"
+                        android:id="@+id/etcvv"
                         android:layout_width="121dp"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_pass"
                         android:drawablePadding="10dp"
                         android:hint="CVV"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:singleLine="false"
                         android:textColor="@color/Black"
                         android:textSize="17sp" />
@@ -149,15 +151,16 @@
 
 
             </LinearLayout>
+            <ImageButton
+                android:id="@+id/imgbtn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/check"
+                android:background="@null"/>
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/imgButtonPaso2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/check"
-            android:background="@null"/>
+
 
 
     </LinearLayout>
