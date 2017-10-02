@@ -23,4 +23,7 @@ public class ClassConstante {
     //Para Verificar una tarjeta
     public static String BUSCAR_TARJETA= "buscar_Tarjeta.php";
 
+    //Para Listar las Estaciones
+    public static String LISTAR_ESTACIONES= "ListEstacion.php";
+
 }

@@ -33,13 +33,19 @@
                 android:textStyle="bold" />
         </android.support.v7.widget.Toolbar>
 
-        <android.support.v7.widget.RecyclerView
+        <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="3dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="3dp" />
+            android:id="@+id/LstEstacion"></ListView>
+
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:id="@+id/RecyclerViewEstaciones"-->
+            <!--android:layout_marginBottom="3dp"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:layout_marginTop="3dp" />-->
 
     </android.support.design.widget.AppBarLayout>
 
