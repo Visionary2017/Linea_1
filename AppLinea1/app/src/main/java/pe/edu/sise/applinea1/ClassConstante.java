@@ -26,4 +26,8 @@ public class ClassConstante {
     //Para Listar las Estaciones
     public static String LISTAR_ESTACIONES= "ListEstacion.php";
 
+
+    //Para Listar las Estaciones
+    public static String UDP_SALDO_VISA= "update_Saldo.php";
+
 }
