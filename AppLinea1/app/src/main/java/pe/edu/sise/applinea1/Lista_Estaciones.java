@@ -8,11 +8,14 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -21,24 +24,35 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import Entidades.Estaciones;
+import Entidades.EstacionesAdapter;
 
 import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
 import static pe.edu.sise.applinea1.ClassConstante.LISTAR_ESTACIONES;
 
 public class Lista_Estaciones extends AppCompatActivity {
 
-    private ListView lstEStacion;
+    private List<Estaciones> estacion;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista__estaciones);
-        lstEStacion=(ListView) findViewById(R.id.LstEstacion);
         getJson(DOMINIO+LISTAR_ESTACIONES);
+        recyclerView=(RecyclerView)findViewById(R.id.RecyclerViewEstaciones);
+        mLayoutManager=new LinearLayoutManager(this);
         drawerLayout=(DrawerLayout) findViewById(R.id.ListaEstaciones);
         navigationView=(NavigationView)findViewById(R.id.navview);
         setToolbar();
@@ -131,13 +145,31 @@ public class Lista_Estaciones extends AppCompatActivity {
     private void loadIntoListView(String json) throws JSONException {
         JSONObject object = new JSONObject(json);
         JSONArray Jarray  = object.getJSONArray("estacion");
-        String[] heroes = new String[Jarray.length()];
+        final String[] heroes = new String[Jarray.length()];
+        int id_estacion=0;
+        String Nombre = null;
+         String Direccion=null;
+        ArrayList<Estaciones> arrayList=new ArrayList<>() ;
         for (int i = 0; i < Jarray.length(); i++) {
 
-            heroes[i] = Jarray.getJSONObject(i).getString("nombre_estacion");
+            id_estacion=Jarray.getJSONObject(i).getInt("id_estacion");
+            Nombre = Jarray.getJSONObject(i).getString("nombre_estacion");
+            Direccion=Jarray.getJSONObject(i).getString("direccion");
+            arrayList.add(new Estaciones(""+Nombre,""+Direccion));
         }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, heroes);
-        lstEStacion.setAdapter(arrayAdapter);
+       ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,heroes );
+
+estacion=arrayList;
+        mAdapter=new EstacionesAdapter(estacion, R.layout.item_estaciones, new EstacionesAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Estaciones estacion, int position) {
+                Toast.makeText(Lista_Estaciones.this, "Todo bien", Toast.LENGTH_SHORT).show();
+            }
+        });
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(mAdapter);
     }
 
     private void setToolbar(){

@@ -27,6 +27,11 @@ public class Estaciones {
         this.latitud = latitud;
         this.longitud = longitud;
     }
+    public Estaciones(String nombre_estacion,  String direccion) {
+        this.nombre_estacion = nombre_estacion;
+        this.direccion = direccion;
+    }
+
 
     public int getId_estaciones() {
         return id_estaciones;
