@@ -1,10 +1,12 @@
 package pe.edu.sise.applinea1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -77,7 +79,8 @@ public class Registro3Activity extends AppCompatActivity {
     }
 
 
-    @Override
+
+  @Override
     protected void onResume(){
         super.onResume();
 
@@ -155,8 +158,6 @@ public class Registro3Activity extends AppCompatActivity {
 
 
     }
-
-
 
 
 
