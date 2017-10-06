@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -38,7 +39,7 @@ public class EstacionesAdapter extends RecyclerView.Adapter<EstacionesAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-holder.bind(estacion.get(position),itemClickListener);
+        holder.bind(estacion.get(position),itemClickListener);
     }
 
     @Override
@@ -54,23 +55,35 @@ holder.bind(estacion.get(position),itemClickListener);
         public TextView distrito;
         public TextView latitud;
         public TextView longitud;
+        public ImageView ImageViewEstacion;
         public ViewHolder(View itemView) {
             super(itemView);
 
+            id_estacion=(TextView) itemView.findViewById(R.id.txtidEstacion);
+            descipcion=(TextView)itemView.findViewById(R.id.txtDescripcion);
             nombre_estacion=(TextView) itemView.findViewById(R.id.txtNombreEstacion);
             direccion=(TextView)itemView.findViewById(R.id.txtDireccion);
+            distrito=(TextView)itemView.findViewById(R.id.txtDistrito);
+            latitud=(TextView)itemView.findViewById(R.id.txtLatitud);
+            longitud=(TextView)itemView.findViewById(R.id.txtLongitud);
+            ImageViewEstacion=(ImageView)itemView.findViewById(R.id.ImgEstaciones);
         }
-
+        //
         private void bind(final Estaciones estacion,final OnItemClickListener listener){
+            id_estacion.setText( estacion.getId_estaciones());
             nombre_estacion.setText(estacion.getNombre_estacion());
             direccion.setText(estacion.getDireccion());
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(estacion,getAdapterPosition());
-                }
-            });
+            distrito.setText(estacion.getDistrito());
+            descipcion.setText(estacion.getDescripcion());
+            latitud.setText(estacion.getLatitud());
+            longitud.setText(estacion.getLongitud());
+//            Picasso.with(context).load(estacion.getImagen()).fit().into(ImageViewEstacion);
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    listener.onItemClick(estacion,getAdapterPosition());
+//                }
+//            });
         }
     }
 

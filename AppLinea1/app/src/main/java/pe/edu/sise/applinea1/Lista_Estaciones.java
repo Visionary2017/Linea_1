@@ -46,11 +46,25 @@ public class Lista_Estaciones extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    public TextView id_estacion;
+    public TextView nombre_estacion;
+    public TextView descipcion;
+    public TextView direccion;
+    public TextView distrito;
+    public TextView latitud;
+    public TextView longitud;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista__estaciones);
         getJson(DOMINIO+LISTAR_ESTACIONES);
+        id_estacion=(TextView) findViewById(R.id.txtidEstacion);
+        descipcion=(TextView)findViewById(R.id.txtDescripcion);
+        nombre_estacion=(TextView) findViewById(R.id.txtNombreEstacion);
+        direccion=(TextView)findViewById(R.id.txtDireccion);
+        distrito=(TextView)findViewById(R.id.txtDistrito);
+        latitud=(TextView)findViewById(R.id.txtLatitud);
+        longitud=(TextView)findViewById(R.id.txtLongitud);
         recyclerView=(RecyclerView)findViewById(R.id.RecyclerViewEstaciones);
         mLayoutManager=new LinearLayoutManager(this);
         drawerLayout=(DrawerLayout) findViewById(R.id.ListaEstaciones);
@@ -113,6 +127,7 @@ public class Lista_Estaciones extends AppCompatActivity {
                 //Toast.makeText(Lista_Estaciones.this, s, Toast.LENGTH_SHORT).show();
                 try{
                     loadIntoListView(s);
+                    Toast.makeText(Lista_Estaciones.this, "Hola", Toast.LENGTH_SHORT).show();
                 }catch (JSONException e){
                     e.printStackTrace();
                 }
@@ -146,24 +161,41 @@ public class Lista_Estaciones extends AppCompatActivity {
         JSONObject object = new JSONObject(json);
         JSONArray Jarray  = object.getJSONArray("estacion");
         final String[] heroes = new String[Jarray.length()];
-        int id_estacion=0;
+        String id_estacion=null;
         String Nombre = null;
-         String Direccion=null;
+        String Direccion=null;
+        String Distrito=null;
+        String Descripcion=null;
+        String Latitud=null;
+        String Longitud=null;
         ArrayList<Estaciones> arrayList=new ArrayList<>() ;
         for (int i = 0; i < Jarray.length(); i++) {
 
-            id_estacion=Jarray.getJSONObject(i).getInt("id_estacion");
+            id_estacion=Jarray.getJSONObject(i).getString("id_estacion");
             Nombre = Jarray.getJSONObject(i).getString("nombre_estacion");
+            Distrito=Jarray.getJSONObject(i).getString("distrito");
             Direccion=Jarray.getJSONObject(i).getString("direccion");
-            arrayList.add(new Estaciones(""+Nombre,""+Direccion));
-        }
-       ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,heroes );
+            Latitud=Jarray.getJSONObject(i).getString("latitud");
+            Longitud=Jarray.getJSONObject(i).getString("longitud");
+            Descripcion=Jarray.getJSONObject(i).getString("descripcion");
 
-estacion=arrayList;
-        mAdapter=new EstacionesAdapter(estacion, R.layout.item_estaciones, new EstacionesAdapter.OnItemClickListener() {
+            arrayList.add(new Estaciones(id_estacion,Nombre,Descripcion,Direccion,Distrito,Latitud,Longitud));
+        }
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,heroes );
+
+        estacion=arrayList;
+//        mAdapter=new EstacionesAdapter(estacion, R.layout.item_estaciones, new EstacionesAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(Estaciones estacion, int position) {
+//
+//
+//            }
+//        });
+
+        mAdapter=new EstacionesAdapter(estacion,R.layout.item_estaciones, new EstacionesAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Estaciones estacion, int position) {
-                Toast.makeText(Lista_Estaciones.this, "Todo bien", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Lista_Estaciones.this, "Hola", Toast.LENGTH_SHORT).show();
             }
         });
         recyclerView.setHasFixedSize(true);
@@ -191,6 +223,7 @@ estacion=arrayList;
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 
 }
