@@ -1,5 +1,6 @@
 package pe.edu.sise.applinea1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -150,39 +151,10 @@ public class RecargaVirtualActivity extends AppCompatActivity {
 
                                                                                     }else if(statusCode == 200){
 
-                                                                                        AsyncHttpClient client4 = new AsyncHttpClient();
-
-                                                                                        try{
-
-                                                                                            String URL_MOSTRAR_SALDO = DOMINIO + MOSTRAR_SALDO;
-                                                                                            RequestParams params4 = new RequestParams();
-                                                                                            params4.put("nro_tarjeta",numero_tarjeta);
-
-                                                                                            client4.get(URL_MOSTRAR_SALDO, params4, new AsyncHttpResponseHandler() {
-                                                                                                @Override
-                                                                                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                                                                                    if(statusCode == 200 && obtieneDatosJSON4(new String(responseBody)).toString().equals("ERROR-01")){
-
-                                                                                                    }else if(statusCode == 200) {
-                                                                                                        Toast.makeText(RecargaVirtualActivity.this, obtieneDatosJSON4(new String(responseBody)).toString(), Toast.LENGTH_SHORT).show();
-                                                                                                       /* Intent i = new Intent(getApplicationContext(),PagoRealizadoActivity.class);
-                                                                                                        i.putExtra("saldo_nuevo",obtieneDatosJSON4(new String(responseBody)).toString());
-                                                                                                        i.putExtra("monto_recarga",monto_Recarga);
-                                                                                                        startActivity(i);*/
-
-                                                                                                    }
-
-                                                                                                }
-
-                                                                                                @Override
-                                                                                                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-                                                                                                }
-                                                                                            });
-
-                                                                                        }catch (Exception e){
-                                                                                            Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                                                        }
+                                                                                        Intent i = new Intent(getApplicationContext(),PagoRealizadoActivity.class);
+                                                                                        i.putExtra("numero_tarjeta",numero_tarjeta);
+                                                                                        i.putExtra("monto_recarga",monto_Recarga);
+                                                                                        startActivity(i);
                                                                                     }
                                                                                 }
 

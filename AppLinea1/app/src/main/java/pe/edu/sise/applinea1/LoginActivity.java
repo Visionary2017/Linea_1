@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     public void Acceso_Menu(){
         AsyncHttpClient client = new AsyncHttpClient();
         try {
-            String URL_LOGIN = DOMINIO + ACCESO_MENU;
+            String URL_LOGIN = DOMINIO + ACCESO_MENU ;
             RequestParams parametros = new RequestParams();
             parametros.put("usuario",etUsu.getText().toString());
             parametros.put("password",etPass.getText().toString());
