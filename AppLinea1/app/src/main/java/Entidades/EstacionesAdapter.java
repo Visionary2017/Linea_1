@@ -78,12 +78,12 @@ public class EstacionesAdapter extends RecyclerView.Adapter<EstacionesAdapter.Vi
             latitud.setText(estacion.getLatitud());
             longitud.setText(estacion.getLongitud());
 //            Picasso.with(context).load(estacion.getImagen()).fit().into(ImageViewEstacion);
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    listener.onItemClick(estacion,getAdapterPosition());
-//                }
-//            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(estacion,getAdapterPosition());
+                }
+            });
         }
     }
 
