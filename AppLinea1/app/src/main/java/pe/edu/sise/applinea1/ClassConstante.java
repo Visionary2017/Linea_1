@@ -6,7 +6,7 @@ package pe.edu.sise.applinea1;
 
 public class ClassConstante {
 
-    //public static String DOMINIO = "http://192.168.1.45:8080/Archivos_Linea1/";
+    //public static String DOMINIO = "http://192.168.1.35:8080/Archivos_Linea1/";
     public static String DOMINIO = "https://linea1.000webhostapp.com/Linea1/";
     public static String URL_IMG_MENU = "Imagenes/Estacion";
     //public static String ENTIDAD_CATEGORIA = "Entidad_Persona.php";
@@ -26,7 +26,6 @@ public class ClassConstante {
     //Para Listar las Estaciones
     public static String LISTAR_ESTACIONES= "ListEstacion.php";
 
-<<<<<<< HEAD
     //Para Restar saldo VISA
     public static String UDP_SALDO_VISA= "update_Saldo.php";
 
@@ -38,16 +37,12 @@ public class ClassConstante {
 
     //VERIFICAR ver saldo
     public static String MOSTRAR_SALDO= "ver_Saldo.php";
-=======
-
     //Para Listar las Estaciones
     public static String UDP_SALDO= "update_Saldo.php";
 
 
 
     //Para Listar las Estaciones
-    public static String UDP_SALDO_VISA= "update_Saldo.php";
-
->>>>>>> 07fbe4e6c489d980dc8413af291bbfb4b4ca0098
+    ///public static String UDP_SALDO_VISA= "update_Saldo.php";
 
 }

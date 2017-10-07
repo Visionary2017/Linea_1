@@ -87,7 +87,7 @@
                             app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
 
                             <EditText
-                                android:id="@+id/etNumCuenta"
+                                android:id="@+id/txtNumeroTarjetaSaldo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:drawableLeft="@drawable/ic_search"
@@ -104,7 +104,7 @@
                     </LinearLayout>
 
                     <android.support.v7.widget.AppCompatButton
-                        android:id="@+id/btnSiguienteRecargar"
+                        android:id="@+id/btnConsultaSaldoC"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/btn_rectangulo"
@@ -132,6 +132,7 @@
                         android:text="S/. 0.00"
                         android:textAlignment="center"
                         android:textSize="70dp"
+                        android:id="@+id/lblConsultaSaldo"
                         />
 
 
