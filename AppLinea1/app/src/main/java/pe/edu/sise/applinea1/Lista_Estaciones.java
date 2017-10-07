@@ -53,6 +53,7 @@ public class Lista_Estaciones extends AppCompatActivity {
     public TextView distrito;
     public TextView latitud;
     public TextView longitud;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,19 +71,20 @@ public class Lista_Estaciones extends AppCompatActivity {
         drawerLayout=(DrawerLayout) findViewById(R.id.ListaEstaciones);
         navigationView=(NavigationView)findViewById(R.id.navview);
         setToolbar();
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch (item.getItemId()){
                     case R.id.mnuUsuario:
-                        Intent a= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        Intent a= new Intent(getApplicationContext(),updatePasajeroActivity.class);
+                        //a.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(a);
                         finish();
                         break;
                     case R.id.mnuRecarga:
                         Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
+                        //e.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(e);
                         finish();
                         break;
@@ -109,6 +111,7 @@ public class Lista_Estaciones extends AppCompatActivity {
                 return true;
             }
         });
+
 
     }
 
@@ -184,20 +187,15 @@ public class Lista_Estaciones extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,heroes );
 
         estacion=arrayList;
-//        mAdapter=new EstacionesAdapter(estacion, R.layout.item_estaciones, new EstacionesAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(Estaciones estacion, int position) {
-//
-//
-//            }
-//        });
-
-        mAdapter=new EstacionesAdapter(estacion,R.layout.item_estaciones, new EstacionesAdapter.OnItemClickListener() {
+        mAdapter=new EstacionesAdapter(estacion, R.layout.item_estaciones, new EstacionesAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Estaciones estacion, int position) {
-                Toast.makeText(Lista_Estaciones.this, "Hola", Toast.LENGTH_SHORT).show();
+
+
             }
         });
+
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(mLayoutManager);
