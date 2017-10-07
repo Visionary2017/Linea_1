@@ -21,15 +21,15 @@ import java.util.Calendar;
 
 import cz.msebera.android.httpclient.Header;
 
-import static pe.edu.sise.applinea1.ClassConstante.ACCESO_MENU;
 import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
-import static pe.edu.sise.applinea1.ClassConstante.VER_SALDO;
+import static pe.edu.sise.applinea1.ClassConstante.MOSTRAR_SALDO;
 
 public class PagoRealizadoActivity extends AppCompatActivity {
 
     ImageButton imgButt;
     TextView nue_sal,mont,sal_ant, txt_fecha;
     String numero_tarjeta;
+    double monto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,46 +52,50 @@ public class PagoRealizadoActivity extends AppCompatActivity {
         });
 
         Bundle b = getIntent().getExtras();
-       // String nuevo_saldo = b.getString("saldo_nuevo");
+
         numero_tarjeta = b.getString("numero_tarjeta");
-        double monto = b.getDouble("monto_recarga");
-       // double saldo_anterior = Double.parseDouble(nuevo_saldo) - Double.parseDouble(monto);
+         monto = b.getDouble("monto_recarga");
+
 
         nue_sal = (TextView) findViewById(R.id.txtNuevoSaldo);
         mont = (TextView) findViewById(R.id.txtMontodeRecarga);
         sal_ant = (TextView) findViewById(R.id.txtSaldoAnterior);
         txt_fecha = (TextView) findViewById(R.id.txtFechadeRecarga);
 
-        //nue_sal.setText(""+nuevo_saldo);
-        mont.setText(numero_tarjeta+"/"+monto);
-        txt_fecha.setText(""+formattedDate);
-        //sal_ant.setText(""+saldo_anterior);
 
-            Acceso_Menu();
+        mont.setText(""+monto);
+        txt_fecha.setText(""+formattedDate);
+
+        Consultar_Saldo();
 
     }
 
-    public void Acceso_Menu(){
+    public void Consultar_Saldo(){
         AsyncHttpClient client = new AsyncHttpClient();
         try {
-            String URL_saldo = DOMINIO + VER_SALDO;
+            String URL_SALDO = DOMINIO + MOSTRAR_SALDO;
             RequestParams parametros = new RequestParams();
             parametros.put("nro_tarjeta",numero_tarjeta);
 
-            client.get(URL_saldo, parametros, new AsyncHttpResponseHandler() {
+            client.get(URL_SALDO, parametros, new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     if (statusCode == 200 && obtieneDatosJSON(new String(responseBody)).toString().equals("ERROR-01")) {
-
+                        Toast.makeText(getApplicationContext(), "Tarjeta Incorrecta.", Toast.LENGTH_SHORT).show();
                     }else if(statusCode == 200){
-                        Toast.makeText(PagoRealizadoActivity.this, obtieneDatosJSON(new String(responseBody)).toString(), Toast.LENGTH_SHORT).show();
+                        /*session.createLoginSession("Android Hive", "anroidhive@gmail.com");*/
+                        String value  = obtieneDatosJSON(new String(responseBody)).toString();
+                        nue_sal.setText("S/. " + value);
+                    double saldo_anterior = Double.parseDouble(value) - Double.parseDouble(mont.getText().toString());
+                    sal_ant.setText(""+saldo_anterior);
+
+                    Toast.makeText(getApplicationContext(), "Respuesta Exitosa.", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     Toast.makeText(getApplicationContext(), "onFail", Toast.LENGTH_SHORT).show();
-
                 }
             });
 
@@ -100,17 +104,15 @@ public class PagoRealizadoActivity extends AppCompatActivity {
         }
     }
 
-
     public String obtieneDatosJSON(String response){
         String texto="";
         try {
-
             JSONObject object = new JSONObject(response);
             JSONArray Jarray  = object.getJSONArray("tarjeta");
 
             for (int i = 0; i < Jarray.length(); i++)
             {
-                texto = Jarray.getJSONObject(i).getString("nro_Tarjeta");
+                texto = Jarray.getJSONObject(i).getString("saldo");
             }
             Log.i("texto-valor ",texto);
         }catch (Exception e){
