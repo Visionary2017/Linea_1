@@ -80,23 +80,22 @@ public class RecargaActivity extends AppCompatActivity {
                 return true;
             }
         });
+
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //LEO MI VARIABLE DDE ENTRADA
                 double monto = Double.parseDouble(monto_Recarga.getText().toString());
 
-             Intent i=new Intent(getApplicationContext(),RecargaVirtualActivity.class);
-                i.putExtra("numero_tarjeta",numero_tarjeta);
-                i.putExtra("monto",roundTwoDecimals(monto));
-                startActivity(i);
-
-            /* double monto = Double.parseDouble(monto_Recarga.getText().toString());
-
                 if(roundTwoDecimals(monto) >=0.1 && roundTwoDecimals(monto) <= 99){
-                    Toast.makeText(RecargaActivity.this, "numero dentro del rango" + roundTwoDecimals(monto), Toast.LENGTH_SHORT).show();
+                    Intent i=new Intent(getApplicationContext(),RecargaVirtualActivity.class);
+                    i.putExtra("numero_tarjeta",numero_tarjeta);
+                    i.putExtra("monto",roundTwoDecimals(monto));
+                    startActivity(i);
                 }else{
-                    monto_Recarga.setError("no está dentro del rango");
-                }*/
+                    monto_Recarga.setError("Saldo no está dentro del rango.");
+                }
 
             }
         });

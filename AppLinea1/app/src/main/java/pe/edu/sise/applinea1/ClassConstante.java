@@ -26,14 +26,16 @@ public class ClassConstante {
     //Para Listar las Estaciones
     public static String LISTAR_ESTACIONES= "ListEstacion.php";
 
-<<<<<<< HEAD
-    //Para Listar las Estaciones
-    public static String UDP_SALDO= "update_Saldo.php";
-
-=======
-
-    //Para Listar las Estaciones
+    //Para Restar saldo VISA
     public static String UDP_SALDO_VISA= "update_Saldo.php";
->>>>>>> 26ba8f6889950d6fa86475ac25183cadde1cee44
+
+    //VERIFICAR SI TIENE SALDO
+    public static String VER_SALDO= "verificar_saldo.php";
+
+    //VERIFICAR Sumar saldo METRO
+    public static String SUMAR_SALDO_METRO= "udp_Saldo_Metro.php";
+
+    //VERIFICAR ver saldo
+    public static String MOSTRAR_SALDO= "ver_Saldo.php";
 
 }
