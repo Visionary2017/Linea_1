@@ -69,6 +69,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                         break;
                     case R.id.mnuEstacion:
                         Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        o.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(o);
                         finish();
                         break;

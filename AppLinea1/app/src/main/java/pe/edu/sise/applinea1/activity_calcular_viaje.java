@@ -114,36 +114,7 @@ public class activity_calcular_viaje extends AppCompatActivity {
         });
 
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                boolean fragmentTransaction=false;
-
-                switch (item.getItemId()){
-                    case R.id.mnuUsuario:
-
-                        break;
-                    case R.id.mnuRecarga:
-
-                        break;
-                    case R.id.mnuSaldo:
-
-                        break;
-                    case R.id.mnuEstacion:
-
-                        break;
-                    case R.id.mnuViaje:
-
-                        break;
-                    case R.id.mnuContacto:
-
-                        break;
-                }
-
-                return true;
-            }
-        });
     }
 
     private void setToolbar(){
