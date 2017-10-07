@@ -24,12 +24,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".LoginActivity"
             android:label="" />
-      <activity
+        <activity
             android:name=".MenuPrincipalActivity"
             android:label="" />
         <activity
@@ -40,15 +39,12 @@
             android:label="" />
         <activity
             android:name=".Registro3Activity"
-            android:label="" >
-            <receiver android:name=".ss" android:enabled="true">
+            android:label="">
             <intent-filter>
                 <action android:name="android.nfc.action.TAG_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            </receiver>
         </activity>
-
 
         <activity
             android:name=".RecargaVirtualActivity"
@@ -67,7 +63,8 @@
         <activity
             android:name=".RecargaActivity"
             android:label="Recargar Tarjeta" />
-        <activity android:name=".updatePasajeroActivity"></activity>
+        <activity android:name=".updatePasajeroActivity" />
+        <activity android:name=".Registro4Activity"></activity>
     </application>
 
 </manifest>

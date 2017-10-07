@@ -26,7 +26,7 @@ public class ClassConstante {
     //Para Listar las Estaciones
     public static String LISTAR_ESTACIONES= "ListEstacion.php";
 
-<<<<<<< HEAD
+
     //Para Restar saldo VISA
     public static String UDP_SALDO_VISA= "update_Saldo.php";
 
@@ -38,16 +38,8 @@ public class ClassConstante {
 
     //VERIFICAR ver saldo
     public static String MOSTRAR_SALDO= "ver_Saldo.php";
-=======
-
-    //Para Listar las Estaciones
-    public static String UDP_SALDO= "update_Saldo.php";
 
 
 
-    //Para Listar las Estaciones
-    public static String UDP_SALDO_VISA= "update_Saldo.php";
-
->>>>>>> 07fbe4e6c489d980dc8413af291bbfb4b4ca0098
 
 }
