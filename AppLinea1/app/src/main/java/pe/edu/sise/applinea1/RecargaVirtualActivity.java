@@ -19,6 +19,7 @@ import cz.msebera.android.httpclient.Header;
 
 import static pe.edu.sise.applinea1.ClassConstante.BUSCAR_TARJETA;
 import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
+import static pe.edu.sise.applinea1.ClassConstante.UDP_SALDO_VISA;
 
 public class RecargaVirtualActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class RecargaVirtualActivity extends AppCompatActivity {
 
     Bundle datos;
     String numero_tarjeta;
+    double monto_Recarga;
 
     ImageButton imgButt2;
     EditText num_tar_visa,fecha_ven,cv;
@@ -41,7 +43,7 @@ public class RecargaVirtualActivity extends AppCompatActivity {
 
         datos = this.getIntent().getExtras();
         numero_tarjeta = datos.getString("numero_tarjeta");
-        double monto_Recarga = datos.getDouble("monto");
+        monto_Recarga = datos.getDouble("monto");
 
 
         Toast.makeText(this, numero_tarjeta + monto_Recarga , Toast.LENGTH_SHORT).show();
@@ -61,7 +63,7 @@ public class RecargaVirtualActivity extends AppCompatActivity {
                 AsyncHttpClient client = new AsyncHttpClient();
                 try {
                     String URL_VERIFICAR = DOMINIO + BUSCAR_TARJETA;
-                    RequestParams params = new RequestParams();
+                    final RequestParams params = new RequestParams();
                     params.put("nro_Tarjeta", num_tar_visa.getText().toString());
                     params.put("fecha_vencimiento",fecha_ven.getText().toString());
                     params.put("ccv",cv.getText().toString());
@@ -73,8 +75,37 @@ public class RecargaVirtualActivity extends AppCompatActivity {
                             if (statusCode == 200 && obtieneDatosJSON(new String(responseBody)).toString().equals("ERROR-01")) {
 
                                 Toast.makeText(getApplicationContext(), "Tarjeta no concuerda", Toast.LENGTH_SHORT).show();
+
                             }else if(statusCode == 200){
                                 Toast.makeText(getApplicationContext(), "Tarjeta correctamente ingresada", Toast.LENGTH_SHORT).show();
+
+                                AsyncHttpClient client1 = new AsyncHttpClient();
+                                try {
+                                    String URL_UDP_SALDO_VISA = DOMINIO + UDP_SALDO_VISA;
+                                    RequestParams params1 = new RequestParams();
+                                    params1.put("nro_Tarjeta",num_tar_visa.getText().toString());
+                                    params1.put("saldo",monto_Recarga);
+
+                                    client1.post(URL_UDP_SALDO_VISA, params1, new AsyncHttpResponseHandler() {
+                                        @Override
+                                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                            if(statusCode == 200 && obtieneDatosJSON2(new String(responseBody)).toString().equals("ERROR-01")){
+                                                Toast.makeText(getApplicationContext(), "Tarjeta no concuerda", Toast.LENGTH_SHORT).show();
+                                            }else if(statusCode == 200){
+                                                Toast.makeText(getApplicationContext(), "Transacción correcta", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                                        }
+                                    });
+
+                                }catch (Exception e){
+                                    Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+
                             }
 
                         }
@@ -105,6 +136,25 @@ public class RecargaVirtualActivity extends AppCompatActivity {
             for (int i = 0; i < Jarray.length(); i++)
             {
                 texto = Jarray.getJSONObject(i).getString("nro_Tarjeta");
+            }
+            Log.i("texto-valor ",texto);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return texto;
+    }
+
+
+    public String obtieneDatosJSON2(String response){
+        String texto="";
+        try {
+
+            JSONObject object = new JSONObject(response);
+            JSONArray Jarray  = object.getJSONArray("tarjeta");
+
+            for (int i = 0; i < Jarray.length(); i++)
+            {
+                texto = Jarray.getJSONObject(i).getString("udptarjeta");
             }
             Log.i("texto-valor ",texto);
         }catch (Exception e){

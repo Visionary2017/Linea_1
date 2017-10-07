@@ -6,7 +6,7 @@ package Entidades;
 
 public class Estaciones {
 
-    private int id_estaciones;
+    private String id_estaciones;
     private String nombre_estacion;
     private String descripcion;
     private String direccion;
@@ -18,7 +18,7 @@ public class Estaciones {
     public Estaciones() {
     }
 
-    public Estaciones(int id_estaciones, String nombre_estacion, String descripcion, String direccion, String distrito, String latitud, String longitud) {
+    public Estaciones(String id_estaciones, String nombre_estacion, String descripcion, String direccion, String distrito, String latitud, String longitud) {
         this.id_estaciones = id_estaciones;
         this.nombre_estacion = nombre_estacion;
         this.descripcion = descripcion;
@@ -28,11 +28,46 @@ public class Estaciones {
         this.longitud = longitud;
     }
 
-    public int getId_estaciones() {
+    public Estaciones(String id_estaciones, String nombre_estacion,  String direccion, String distrito, String latitud, String longitud) {
+        this.id_estaciones = id_estaciones;
+        this.nombre_estacion = nombre_estacion;
+        this.direccion = direccion;
+        this.distrito = distrito;
+        this.latitud = latitud;
+        this.longitud = longitud;
+    }
+
+    public Estaciones(String nombre_estacion,  String direccion) {
+        this.nombre_estacion = nombre_estacion;
+        this.direccion = direccion;
+    }
+
+    public Estaciones(String nombre_estacion,  String direccion,String distrito) {
+        this.nombre_estacion = nombre_estacion;
+        this.direccion = direccion;
+        this.distrito=distrito;
+    }
+
+    public Estaciones(String nombre_estacion,  String direccion,String distrito,String Descripcion) {
+        this.nombre_estacion = nombre_estacion;
+        this.direccion = direccion;
+        this.distrito=distrito;
+        this.descripcion=Descripcion;
+    }
+
+    public Estaciones(String id_estacion ,String nombre_estacion,  String direccion,String distrito,String Descripcion) {
+        this.nombre_estacion = nombre_estacion;
+        this.direccion = direccion;
+        this.distrito=distrito;
+        this.descripcion=Descripcion;
+        this.id_estaciones=id_estacion;
+    }
+
+    public String getId_estaciones() {
         return id_estaciones;
     }
 
-    public void setId_estaciones(int id_estaciones) {
+    public void setId_estaciones(String id_estaciones) {
         this.id_estaciones = id_estaciones;
     }
 
@@ -83,4 +118,5 @@ public class Estaciones {
     public void setLongitud(String longitud) {
         this.longitud = longitud;
     }
+
 }

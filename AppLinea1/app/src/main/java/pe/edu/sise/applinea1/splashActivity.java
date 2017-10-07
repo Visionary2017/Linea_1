@@ -9,22 +9,22 @@ import android.widget.Toast;
 public class splashActivity extends AppCompatActivity {
 
     
-    private NfcAdapter nfcAdapter;
+  // private NfcAdapter nfcAdapter;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        nfcAdapter= nfcAdapter.getDefaultAdapter(this);
+      //  nfcAdapter= nfcAdapter.getDefaultAdapter(this);
 
-        if(nfcAdapter == null){
+     /*   if(nfcAdapter == null){
             Toast.makeText(this, "Este dispositivo no soporta NFC!!!", Toast.LENGTH_SHORT).show();
             finish();
         }else if(!nfcAdapter.isEnabled()){
             Toast.makeText(this, "NFC no habilitado!!!", Toast.LENGTH_SHORT).show();
             finish();
-        }
+        }*/
 
         Arrancar_Splash();
     }
@@ -46,7 +46,7 @@ public class splashActivity extends AppCompatActivity {
         timerThread.start();
     }
 
-    @Override
+/*    @Override
     protected  void onResume(){
         super.onResume();
 
@@ -68,5 +68,5 @@ public class splashActivity extends AppCompatActivity {
         super.onPause();
         finish();
     }
-
+*/
 }
