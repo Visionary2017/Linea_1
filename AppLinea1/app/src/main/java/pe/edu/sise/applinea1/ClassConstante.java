@@ -15,8 +15,7 @@ public class ClassConstante {
 
     //Para el Add_pasajero
     public static String ADD_PASAJERO = "add_Pasajero.php";
-
-
+    
     //Para el Actualizar Pasajero
     public static String UDP_PASAJERO = "update_pasajero.php";
 
@@ -25,11 +24,6 @@ public class ClassConstante {
 
     //Para Listar las Estaciones
     public static String LISTAR_ESTACIONES= "ListEstacion.php";
-
-<<<<<<< HEAD
-=======
-
->>>>>>> a2081d597ff48d1ca18b1d119f3743d10d2368aa
     //Para Restar saldo VISA
     public static String UDP_SALDO_VISA= "update_Saldo.php";
 
@@ -41,18 +35,11 @@ public class ClassConstante {
 
     //VERIFICAR ver saldo
     public static String MOSTRAR_SALDO= "ver_Saldo.php";
-<<<<<<< HEAD
     //Para Listar las Estaciones
     public static String UDP_SALDO= "update_Saldo.php";
 
 
-
     //Para Listar las Estaciones
     ///public static String UDP_SALDO_VISA= "update_Saldo.php";
-=======
-
-
-
->>>>>>> a2081d597ff48d1ca18b1d119f3743d10d2368aa
 
 }
