@@ -60,6 +60,7 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
+                <!--
                 <LinearLayout
                     android:id="@+id/linear_consulta_second"
                     android:layout_width="match_parent"
@@ -115,28 +116,62 @@
                         android:theme="@style/FaceButtonStyle" />
 
                 </LinearLayout>
+                -->
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_Numero_Tarjeta"
+                        android:textAlignment="center"
+                        android:textColor="@color/Green"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/lblNumero_TarjetaC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_Numero_Tarjeta"
+                        android:textAlignment="center"
+                        android:textColor="@color/Black"
+                        android:layout_marginTop="10dp"
+                        android:textSize="25dp" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/linear_detalle_consulta"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:background="@color/colorPrimary"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
+
 
                     <TextView
+                        android:id="@+id/lblConsultaSaldo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/btn_redondo"
                         android:text="S/. 0.00"
                         android:textAlignment="center"
-                        android:textSize="70dp"
-                        android:id="@+id/lblConsultaSaldo"
-                        />
+                        android:textSize="80dp" />
 
 
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/Black"
+
+                    >
+
+                </View>
 
 
             </LinearLayout>

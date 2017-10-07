@@ -28,4 +28,5 @@
     <string name="txt_consulta_saldo">CONSULTAR SALDO</string>
     <string name="txt_ingresar_numero_tarjeta">Ingresar Numero tarjeta</string>
     <string name="txt_consulta">CONSULTAR</string>
+    <string name="txt_Numero_Tarjeta">Numero de Tarjeta</string>
 </resources>

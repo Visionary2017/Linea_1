@@ -22,6 +22,7 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -30,6 +31,8 @@ import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
 import static pe.edu.sise.applinea1.ClassConstante.MOSTRAR_SALDO;
 import static pe.edu.sise.applinea1.ClassConstante.VER_SALDO;
 
+import static pe.edu.sise.applinea1.ClassConstante.*;
+
 public class consulta_saldo extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
@@ -37,6 +40,7 @@ public class consulta_saldo extends AppCompatActivity {
     public TextView lblConsultaSaldo;
     public Button btnConsultaSaldoC;
     public EditText txtNumeroTarjetaSaldo;
+    public TextView lblNumero_TarjetaC;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,12 @@ public class consulta_saldo extends AppCompatActivity {
         drawerLayout=(DrawerLayout) findViewById(R.id.drawer_consulta);
         navigationView=(NavigationView)findViewById(R.id.navview);
         setToolbar();
+
+        lblNumero_TarjetaC = (TextView) findViewById(R.id.lblNumero_TarjetaC);
+        lblConsultaSaldo = (TextView) findViewById(R.id.lblConsultaSaldo);
+
+        lblNumero_TarjetaC.setText(NRO_TARJETA.toString());
+        Consultar_Saldo();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -83,17 +93,17 @@ public class consulta_saldo extends AppCompatActivity {
             }
         });
 
-        lblConsultaSaldo = (TextView) findViewById(R.id.lblConsultaSaldo);
-        btnConsultaSaldoC = (Button) findViewById(R.id.btnConsultaSaldoC);
-        txtNumeroTarjetaSaldo = (EditText) findViewById(R.id.txtNumeroTarjetaSaldo);
 
+        //btnConsultaSaldoC = (Button) findViewById(R.id.btnConsultaSaldoC);
+        //txtNumeroTarjetaSaldo = (EditText) findViewById(R.id.txtNumeroTarjetaSaldo);
+/*
         btnConsultaSaldoC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Consultar_Saldo();
             }
         });
-
+*/
     }
 
     public void Consultar_Saldo(){
@@ -101,7 +111,7 @@ public class consulta_saldo extends AppCompatActivity {
         try {
             String URL_SALDO = DOMINIO + MOSTRAR_SALDO;
             RequestParams parametros = new RequestParams();
-            parametros.put("nro_tarjeta",txtNumeroTarjetaSaldo.getText().toString());
+            parametros.put("nro_tarjeta",NRO_TARJETA.toString());
 
             client.get(URL_SALDO, parametros, new AsyncHttpResponseHandler() {
                 @Override

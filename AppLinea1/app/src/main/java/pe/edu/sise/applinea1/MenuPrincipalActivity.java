@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import pe.edu.sise.applinea1.ClassConstante;
+
 public class MenuPrincipalActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
@@ -41,6 +43,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
          datos = this.getIntent().getExtras();
          numero_tarjeta = datos.getString("valor");
+         ClassConstante.NRO_TARJETA = numero_tarjeta;
 
         Toast.makeText(this, numero_tarjeta, Toast.LENGTH_SHORT).show();
 
