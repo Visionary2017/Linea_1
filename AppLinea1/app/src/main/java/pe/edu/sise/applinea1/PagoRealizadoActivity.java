@@ -1,8 +1,12 @@
 package pe.edu.sise.applinea1;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -65,9 +69,11 @@ public class PagoRealizadoActivity extends AppCompatActivity {
         imgButt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent i = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
-                i.putExtra("valor",numero_tarjeta);
+                i.putExtra("numero_tarjeta",numero_tarjeta);
                 startActivity(i);
+
             }
         });
 
@@ -124,4 +130,31 @@ public class PagoRealizadoActivity extends AppCompatActivity {
         }
         return texto;
     }
+
+    private void EnviarSMS(){
+        String numero_telefono = "+51923829802";
+        String datos = "Este es un mesaje de prueba";
+
+        try{
+            int permissionCheck = ContextCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS);
+            if(permissionCheck != PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(getApplicationContext(), "No tiene permiso para enviar SMS", Toast.LENGTH_SHORT).show();
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS},225);
+            }else{
+                Log.i("Mensaje","Se tiene permiso para enviar SMS!");
+            }
+
+            SmsManager sms = SmsManager.getDefault();
+            sms.sendTextMessage(numero_telefono,null,datos,null,null);
+            Toast.makeText(getApplicationContext(), "Mensaje Enviado!!", Toast.LENGTH_LONG).show();
+
+        }catch  (Exception e){
+            Toast.makeText(getApplicationContext(), "Mensaje no enviado, verifique permisos o datos!!!", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+
+    }
+
+
+
 }

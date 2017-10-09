@@ -22,15 +22,20 @@ import static pe.edu.sise.applinea1.ClassConstante.UDP_PASAJERO;
 
 public class updatePasajeroActivity extends AppCompatActivity {
 
+
+
     Button btnActualizar;
     EditText nombre,apellido,celular,correo;
     Bundle datos;
     String numero_tarjeta;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_pasajero);
+
 
 
         nombre = (EditText) findViewById(R.id.etNombreCompletoUpdate);
@@ -39,10 +44,16 @@ public class updatePasajeroActivity extends AppCompatActivity {
         correo = (EditText) findViewById(R.id.etCorreoUpdate);
         btnActualizar = (Button) findViewById(R.id.btnUpdate);
 
+
+
+
         datos = this.getIntent().getExtras();
        numero_tarjeta = datos.getString("numero_tarjeta");
 
         Toast.makeText(this, numero_tarjeta, Toast.LENGTH_SHORT).show();
+
+
+
 
 
         btnActualizar.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +63,9 @@ public class updatePasajeroActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
 
 
     private void UDP_Pasajero(){

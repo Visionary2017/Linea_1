@@ -49,26 +49,31 @@ public class RecargaActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.mnuUsuario:
                         Intent a= new Intent(getApplicationContext(),updatePasajeroActivity.class);
+                        a.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(a);
                         finish();
                         break;
                     case R.id.mnuRecarga:
                         Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
+                        e.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(e);
                         finish();
                         break;
                     case R.id.mnuSaldo:
                         Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
+                        i.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(i);
                         finish();
                         break;
                     case R.id.mnuEstacion:
                         Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        o.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(o);
                         finish();
                         break;
                     case R.id.mnuViaje:
                         Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
+                        u.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(u);
                         finish();
                         break;

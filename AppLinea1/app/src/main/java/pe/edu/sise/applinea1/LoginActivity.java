@@ -82,9 +82,10 @@ public class LoginActivity extends AppCompatActivity {
                         etPass.setText("");
                         etUsu.requestFocus();
                         btnLog.setEnabled(true);
-                        Intent intent = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
-                        intent.putExtra("valor",obtieneDatosJSON(new String(responseBody)).toString());
+                         Intent intent = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
+                        intent.putExtra("numero_tarjeta",obtieneDatosJSON(new String(responseBody)).toString());
                         startActivity(intent);
+                        //finish();
 
                     }
                 }

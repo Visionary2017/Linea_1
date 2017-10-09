@@ -1,16 +1,15 @@
 package pe.edu.sise.applinea1;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,16 +21,11 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import cz.msebera.android.httpclient.Header;
 
-import static pe.edu.sise.applinea1.ClassConstante.ACCESO_MENU;
 import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
 import static pe.edu.sise.applinea1.ClassConstante.MOSTRAR_SALDO;
-import static pe.edu.sise.applinea1.ClassConstante.VER_SALDO;
-
-import static pe.edu.sise.applinea1.ClassConstante.*;
 
 public class consulta_saldo extends AppCompatActivity {
 
@@ -41,6 +35,7 @@ public class consulta_saldo extends AppCompatActivity {
     public Button btnConsultaSaldoC;
     public EditText txtNumeroTarjetaSaldo;
     public TextView lblNumero_TarjetaC;
+    String numero_tarjeta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +47,10 @@ public class consulta_saldo extends AppCompatActivity {
         lblNumero_TarjetaC = (TextView) findViewById(R.id.lblNumero_TarjetaC);
         lblConsultaSaldo = (TextView) findViewById(R.id.lblConsultaSaldo);
 
-        lblNumero_TarjetaC.setText(NRO_TARJETA.toString());
+        Bundle b = getIntent().getExtras();
+        numero_tarjeta =  b.getString("numero_tarjeta");
+
+        lblNumero_TarjetaC.setText(""+numero_tarjeta.toString());
         Consultar_Saldo();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -61,26 +59,31 @@ public class consulta_saldo extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.mnuUsuario:
                         Intent a= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        a.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(a);
                         finish();
                         break;
                     case R.id.mnuRecarga:
                         Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
+                        e.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(e);
                         finish();
                         break;
                     case R.id.mnuSaldo:
                         Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
+                        i.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(i);
                         finish();
                         break;
                     case R.id.mnuEstacion:
                         Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        o.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(o);
                         finish();
                         break;
                     case R.id.mnuViaje:
                         Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
+                        u.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(u);
                         finish();
                         break;
@@ -111,7 +114,7 @@ public class consulta_saldo extends AppCompatActivity {
         try {
             String URL_SALDO = DOMINIO + MOSTRAR_SALDO;
             RequestParams parametros = new RequestParams();
-            parametros.put("nro_tarjeta",NRO_TARJETA.toString());
+            parametros.put("nro_tarjeta",numero_tarjeta.toString());
 
             client.get(URL_SALDO, parametros, new AsyncHttpResponseHandler() {
                 @Override

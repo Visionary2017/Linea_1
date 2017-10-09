@@ -1,10 +1,8 @@
 package pe.edu.sise.applinea1;
 
 import android.content.Intent;
-import android.nfc.NfcAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
 public class splashActivity extends AppCompatActivity {
 
@@ -40,6 +38,7 @@ public class splashActivity extends AppCompatActivity {
                 }finally{
                     Intent intent = new Intent(splashActivity.this,LoginActivity.class);
                     startActivity(intent);
+                    //finish();
                 }
             }
         };
