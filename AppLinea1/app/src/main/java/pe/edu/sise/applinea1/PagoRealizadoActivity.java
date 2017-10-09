@@ -41,15 +41,7 @@ public class PagoRealizadoActivity extends AppCompatActivity {
         String formattedDate = df.format(c.getTime());
 
 
-        imgButt = (ImageButton) findViewById(R.id.imageButton);
 
-        imgButt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
-                startActivity(i);
-            }
-        });
 
         Bundle b = getIntent().getExtras();
 
@@ -67,6 +59,17 @@ public class PagoRealizadoActivity extends AppCompatActivity {
         txt_fecha.setText(""+formattedDate);
 
         Consultar_Saldo();
+
+        imgButt = (ImageButton) findViewById(R.id.imageButton);
+
+        imgButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
+                i.putExtra("valor",numero_tarjeta);
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -89,7 +92,8 @@ public class PagoRealizadoActivity extends AppCompatActivity {
                     double saldo_anterior = Double.parseDouble(value) - Double.parseDouble(mont.getText().toString());
                     sal_ant.setText(""+saldo_anterior);
 
-                    Toast.makeText(getApplicationContext(), "Respuesta Exitosa.", Toast.LENGTH_SHORT).show();
+
+                   // Toast.makeText(getApplicationContext(), "Respuesta Exitosa.", Toast.LENGTH_SHORT).show();
                     }
                 }
 

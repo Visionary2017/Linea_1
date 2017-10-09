@@ -20,7 +20,6 @@ import cz.msebera.android.httpclient.Header;
 
 import static pe.edu.sise.applinea1.ClassConstante.BUSCAR_TARJETA;
 import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
-import static pe.edu.sise.applinea1.ClassConstante.MOSTRAR_SALDO;
 import static pe.edu.sise.applinea1.ClassConstante.SUMAR_SALDO_METRO;
 import static pe.edu.sise.applinea1.ClassConstante.UDP_SALDO_VISA;
 import static pe.edu.sise.applinea1.ClassConstante.VER_SALDO;
