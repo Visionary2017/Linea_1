@@ -42,7 +42,7 @@ public class Lista_Estaciones extends AppCompatActivity {
 
     private List<Estaciones> estacion;
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    public static RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -191,7 +191,13 @@ public class Lista_Estaciones extends AppCompatActivity {
             @Override
             public void onItemClick(Estaciones estacion, int position) {
 
-
+                Intent intent=new Intent(Lista_Estaciones.this,Detalle_Estacion.class);
+                intent.putExtra("id_estacion",estacion.getId_estaciones());
+                intent.putExtra("nombre",estacion.getNombre_estacion());
+                intent.putExtra("descripcion",estacion.getDescripcion());
+                intent.putExtra("latitud",estacion.getLatitud());
+                intent.putExtra("longitud",estacion.getLongitud());
+                startActivity(intent);
             }
         });
 

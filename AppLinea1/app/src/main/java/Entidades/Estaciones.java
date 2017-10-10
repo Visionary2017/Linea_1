@@ -18,7 +18,7 @@ public class Estaciones {
     public Estaciones() {
     }
 
-    public Estaciones(String id_estaciones, String nombre_estacion, String descripcion, String direccion, String distrito, String latitud, String longitud) {
+    public  Estaciones(String id_estaciones, String nombre_estacion, String descripcion, String direccion, String distrito, String latitud, String longitud) {
         this.id_estaciones = id_estaciones;
         this.nombre_estacion = nombre_estacion;
         this.descripcion = descripcion;
