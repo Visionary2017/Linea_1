@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso;
 
 public class ContactanosActivity extends AppCompatActivity {
 
-    ImageButton imgFB,imgYou;
+    ImageButton imgFB,imgYou,imgTwitter;
     private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class ContactanosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contactanos);
         imgFB=(ImageButton)findViewById(R.id.imgFacebook);
         imgYou=(ImageButton)findViewById(R.id.imgYoutube);
+        imgTwitter=(ImageButton)findViewById(R.id.imgTwitter);
 
 
         imgFB.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +46,22 @@ public class ContactanosActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String youtubeID = "com.youtube";
                 String urlPage = "https://www.youtube.com/user/Lineaunope";
+
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeID )));
+                } catch (Exception e) {
+
+                    //Abre url de pagina.
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
+                }
+            }
+        });
+
+        imgTwitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String youtubeID = "com.twitter";
+                String urlPage = "https://twitter.com/lineaunope";
 
                 try {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeID )));
