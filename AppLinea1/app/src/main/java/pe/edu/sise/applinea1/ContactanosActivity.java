@@ -3,18 +3,21 @@ package pe.edu.sise.applinea1;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.squareup.picasso.Picasso;
 
 public class ContactanosActivity extends AppCompatActivity {
 
-    ImageButton imgFB,imgYou,imgTwitter;
+    ImageButton imgFB,imgYou,imgTwitter,imgWeb;
+    Button imgCall;
     private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,8 @@ public class ContactanosActivity extends AppCompatActivity {
         imgFB=(ImageButton)findViewById(R.id.imgFacebook);
         imgYou=(ImageButton)findViewById(R.id.imgYoutube);
         imgTwitter=(ImageButton)findViewById(R.id.imgTwitter);
+        imgWeb=(ImageButton)findViewById(R.id.imgWeb);
+        imgCall=(Button)findViewById(R.id.imgCall);
 
 
         imgFB.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +75,21 @@ public class ContactanosActivity extends AppCompatActivity {
                     //Abre url de pagina.
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
                 }
+            }
+        });
+
+        imgWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String urlPage = "http://www.lineauno.pe/";
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
+            }
+        });
+
+        imgCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
