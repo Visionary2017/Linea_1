@@ -1,6 +1,7 @@
 package pe.edu.sise.applinea1;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -8,7 +9,16 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import cz.msebera.android.httpclient.Header;
+
+import static pe.edu.sise.applinea1.ClassConstante.ADD_PASAJERO;
+import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
 public class Registro2Activity extends AppCompatActivity {
 
     Button btnRegis;
@@ -18,8 +28,8 @@ public class Registro2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro2);
-        btnRegis=(Button)findViewById(R.id.btnRegistrar);
 
+        btnRegis=(Button)findViewById(R.id.btnRegistrar);
         etpass = (EditText) findViewById(R.id.etPassword);
         etValPass = (EditText) findViewById(R.id.etValidarPassword) ;
 
@@ -31,7 +41,9 @@ public class Registro2Activity extends AppCompatActivity {
         final  String apellido_completo = datos.getString("apellido_completo");
         final String celular = datos.getString("celular");
         final String correo = datos.getString("correo");
-
+        final int id_perfil = 1;
+        final int id_estado = 2;
+        final String nfc = datos.getString("nfc");
 
 
         etpass.addTextChangedListener(new TextValidator(etpass) {
@@ -48,23 +60,45 @@ public class Registro2Activity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(etpass.getText().toString().equals(etValPass.getText().toString())){
-                    Intent i=new Intent(getApplicationContext(),Registro3Activity.class);
-                    i.putExtra("numero_documento",numero_documento.toString());
-                    i.putExtra("nombre_completo",nombre_completo.toString());
-                    i.putExtra("apellido_completo",apellido_completo.toString());
-                    i.putExtra("celular",celular.toString());
-                    i.putExtra("correo",correo.toString());
-                    i.putExtra("password",etpass.getText().toString());
-                    startActivity(i);
+                    AsyncHttpClient client = new AsyncHttpClient();
+                    try{
+                        String URL_ADD = DOMINIO + ADD_PASAJERO;
+                        RequestParams params = new RequestParams();
+                        params.put("numero_documento",numero_documento.toString());
+                        params.put("nombres_completo",nombre_completo.toString());
+                        params.put("apellidos_completo",apellido_completo.toString());
+                        params.put("telefono",celular.toString());
+                        params.put("email",correo.toString());
+                        params.put("id_perfil",id_perfil);
+                        params.put("id_estado",id_estado);
+                        params.put("nro_tarjeta",nfc);
+                        params.put("password",etpass.getText().toString());
+
+                        client.post(URL_ADD, params, new AsyncHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                if(statusCode == 200){
+                                    Toast.makeText(getApplicationContext(), "Registrado Correctamente", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(getApplicationContext(),LoginActivity.class);
+                                    startActivity(i);
+                                }
+                            }
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                                Toast.makeText(getApplicationContext(), "onFail", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+
+                    }catch (Exception e){
+                        Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     etValPass.setError("No coindicen!!!");
                 }
-
             }
         });
-
-
-
 
     }
 

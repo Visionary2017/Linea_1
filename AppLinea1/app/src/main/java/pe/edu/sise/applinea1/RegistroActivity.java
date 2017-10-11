@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,9 +24,13 @@ public class RegistroActivity extends AppCompatActivity {
         btnSiguien = (Button) findViewById(R.id.btnSiguiente);
         num_doc = (EditText) findViewById(R.id.etNumeroDocumento);
         nom_com = (EditText) findViewById(R.id.etNombreCompleto);
-        ape_com = (EditText) findViewById(R.id.etApellidoCompleto) ;
+        ape_com = (EditText) findViewById(R.id.etApellidoCompleto);
         cel = (EditText) findViewById(R.id.etTelefono);
         correo = (EditText) findViewById(R.id.etCorreo);
+
+        Bundle b = getIntent().getExtras();
+        final String nfc = b.getString("nfc");
+        Toast.makeText(this, nfc, Toast.LENGTH_SHORT).show();
 
 
         btnSiguien.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +75,6 @@ public class RegistroActivity extends AppCompatActivity {
                    num_doc.setError("El número de documento debe contar con 8 dígitos");
                }
 
-
                if(matcher.matches()){
 
                 }else  {
@@ -94,6 +98,7 @@ public class RegistroActivity extends AppCompatActivity {
                        i.putExtra("apellido_completo",ape_com.getText().toString());
                        i.putExtra("celular",cel.getText().toString());
                        i.putExtra("correo",correo.getText().toString());
+                       i.putExtra("nfc",nfc);
                        startActivity(i);
                    }
 

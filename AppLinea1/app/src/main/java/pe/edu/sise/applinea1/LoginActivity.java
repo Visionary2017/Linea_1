@@ -128,14 +128,14 @@ public class LoginActivity extends AppCompatActivity {
 
     public void fnOnClickRegistro(View view){
 
-        Intent intent = new Intent(LoginActivity.this,RegistroActivity.class);
+        Intent intent = new Intent(LoginActivity.this,Registro3Activity.class);
         startActivity(intent);
 
     }
 
     public void fnOnClickVisitante(View view){
 
-        Intent intent = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
+        Intent intent = new Intent(getApplicationContext(),Registro3Activity.class);
         startActivity(intent);
 
     }
