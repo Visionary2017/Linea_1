@@ -105,6 +105,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                         break;
                     case R.id.mnuContacto:
                         Intent s=new Intent(getApplicationContext(),ContactanosActivity.class);
+                        s.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(s);
                         break;
                 }

@@ -35,13 +35,13 @@
             android:label="" />
         <activity
             android:name=".RegistroActivity"
-            android:label="Registro" />
+            android:label="Datos Completos" />
         <activity
             android:name=".Registro2Activity"
-            android:label="" />
+            android:label="Ingrese su Contraseña" />
         <activity
             android:name=".Registro3Activity"
-            android:label="">
+            android:label="Tarjeta NFC">
             <intent-filter>
                 <action android:name="android.nfc.action.TAG_DISCOVERED" />
 
@@ -53,20 +53,24 @@
             android:label="Recarga Virtual" />
         <activity
             android:name=".PagoRealizadoActivity"
-            android:label="" />
+            android:label="Pago Realizado" />
         <activity
             android:name=".Lista_Estaciones"
             android:label="Estaciones" />
         <activity
             android:name=".activity_calcular_viaje"
             android:label="Calcular Viaje" />
-        <activity android:name=".activity_resultado_calcular_viaje" />
-        <activity android:name=".consulta_saldo" />
+        <activity android:name=".activity_resultado_calcular_viaje"
+            android:label="Linea 1"/>
+        <activity android:name=".consulta_saldo"
+            android:label="Consultar Saldo"/>
         <activity
             android:name=".RecargaActivity"
             android:label="Recargar Tarjeta" />
-        <activity android:name=".updatePasajeroActivity" />
-        <activity android:name=".Detalle_Estacion" />
+        <activity android:name=".updatePasajeroActivity"
+            android:label="Actualizar Pasajero"/>
+        <activity android:name=".Detalle_Estacion"
+            android:label="Detalle Estación"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -82,7 +86,8 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".ContactanosActivity"></activity>
+        <activity android:name=".ContactanosActivity"
+            android:label="Contáctanos"></activity>
     </application>
 
 </manifest>
