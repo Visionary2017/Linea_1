@@ -29,6 +29,7 @@
     <string name="txt_ingresar_numero_tarjeta">Ingresar Numero tarjeta</string>
     <string name="txt_consulta">CONSULTAR</string>
     <string name="txt_Numero_Tarjeta">Numero de Tarjeta</string>
-    <string name="google_android_map_api_key">AIzaSyDi3wRuA9zUeu8ndFzJlcdNkSlecblDY_w</string>
+    <string name="google_android_map_api_key">AIzaSyCVjymaOjisU-UYQ85SM0wMSjVUuiuNgqw</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps_estacion">Map</string>
 </resources>
