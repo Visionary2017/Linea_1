@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pe.edu.sise.applinea1.ContactanosActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/scheduleAppBarMain2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rectangulo"
+                android:elevation="4dp"
+                android:minHeight="?attr/actionBarSize"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:textAlignment="center">
+
+
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.Toolbar>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:weightSum="1">
+
+                    <ImageButton
+                        android:id="@+id/imgFacebook"
+                        android:layout_width="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_fb"
+                        android:layout_weight="0.22" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"></LinearLayout>
+            </LinearLayout>
+
+
+        </android.support.design.widget.AppBarLayout>
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navview"
+        app:headerLayout="@layout/cabecera"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        app:itemTextColor="@color/Black"
+        app:itemIconTint="@color/Black"
+        app:menu="@menu/drawermenu"
+
+        android:layout_gravity="start">
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Cerrar Sesion"
+            android:textColor="@color/White"
+            android:theme="@style/FaceButtonStyle"
+            android:background="@drawable/btn_rectangulo"
+            android:layout_gravity="bottom"/>
+
+    </android.support.design.widget.NavigationView>
+
+
+</android.support.v4.widget.DrawerLayout>

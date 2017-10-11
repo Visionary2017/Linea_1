@@ -104,7 +104,8 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                       //  finish();
                         break;
                     case R.id.mnuContacto:
-
+                        Intent s=new Intent(getApplicationContext(),ContactanosActivity.class);
+                        startActivity(s);
                         break;
                 }
 
@@ -184,6 +185,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                // finish();
             }
         });
+
 
     }
 
