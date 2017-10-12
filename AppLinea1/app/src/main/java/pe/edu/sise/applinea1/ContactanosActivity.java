@@ -93,7 +93,7 @@ public class ContactanosActivity extends AppCompatActivity {
         imgFB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String facebookId = "fb://page/1488069544613775";
+                String facebookId = "fb://page/206969889390420";
                 String urlPage = "https://www.facebook.com/Lineauno.pe";
 
                 try {
@@ -149,7 +149,7 @@ public class ContactanosActivity extends AppCompatActivity {
         imgCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(Intent.ACTION_DIAL,Uri.parse("tel:+080011121"));
+                Intent i=new Intent(Intent.ACTION_DIAL,Uri.parse("tel:080011121"));
                 startActivity(i);
             }
         });

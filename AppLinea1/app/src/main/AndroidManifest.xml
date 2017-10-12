@@ -41,7 +41,7 @@
             android:label="Ingrese su Contraseña" />
         <activity
             android:name=".Registro3Activity"
-            android:label="Tarjeta NFC">
+            android:label="Sincronice Tarjeta NFC">
             <intent-filter>
                 <action android:name="android.nfc.action.TAG_DISCOVERED" />
 
@@ -50,7 +50,7 @@
         </activity>
         <activity
             android:name=".RecargaVirtualActivity"
-            android:label="Recarga Virtual" />
+            android:label="Datos de Tarjeta" />
         <activity
             android:name=".PagoRealizadoActivity"
             android:label="Pago Realizado" />

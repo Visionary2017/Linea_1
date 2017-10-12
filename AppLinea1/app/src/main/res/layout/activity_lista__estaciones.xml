@@ -22,15 +22,6 @@
             android:minHeight="?attr/actionBarSize"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <TextView
-                android:id="@+id/toolbar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text=""
-                android:textColor="@color/White"
-                android:textSize="15sp"
-                android:textStyle="bold" />
         </android.support.v7.widget.Toolbar>
 
 

@@ -30,28 +30,18 @@
                 android:minHeight="?attr/actionBarSize"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:textAlignment="center">
-                    <TextView
-                        android:id="@+id/toolbar_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text=""
-                        android:textColor="@color/White"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-
-
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text=""
+                    android:textColor="@color/White"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
             </android.support.v7.widget.Toolbar>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -133,7 +123,8 @@
                         android:background="@drawable/btn_rectangulo"
                         android:drawableRight="@drawable/ic_call"
                         android:text="Llamenos al 0-800-111-21"
-                        android:textStyle="bold"></Button>
+                        android:textStyle="bold"
+                        android:layout_weight="4"></Button>
 
                 </LinearLayout>
             </LinearLayout>
