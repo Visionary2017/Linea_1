@@ -1,21 +1,28 @@
 package pe.edu.sise.applinea1;
 
+import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -27,6 +34,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.impl.client.SystemDefaultCredentialsProvider;
 
 import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
 import static pe.edu.sise.applinea1.ClassConstante.MOSTRAR_SALDO;
@@ -58,6 +66,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         estacion=(ImageButton)findViewById(R.id.btnEstaciones);
         consul_Saldo = (ImageButton)findViewById(R.id.btnConsultarSaldo);
 
+        Button cerrar_Sesion = (Button) findViewById(R.id.btnCerrarSesion);
 
          datos = this.getIntent().getExtras();
          numero_tarjeta = datos.getString("numero_tarjeta");
@@ -111,6 +120,15 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 }
 
                 return true;
+            }
+        });
+
+        cerrar_Sesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                DialogoConfirmacion2 dialogo = new DialogoConfirmacion2();
+                dialogo.show(fragmentManager,"tagAlerta");
             }
         });
 
@@ -184,12 +202,20 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 i.putExtra("numero_tarjeta",numero_tarjeta.toString());
                 startActivity(i);
                // finish();
+
             }
         });
 
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        DialogoConfirmacion dialogo = new DialogoConfirmacion();
+        dialogo.show(fragmentManager,"tagAlerta");
+    }
 
 
 
@@ -265,4 +291,58 @@ public class MenuPrincipalActivity extends AppCompatActivity {
     }
 
 
+}
+
+class DialogoConfirmacion extends DialogFragment {
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(getActivity());
+
+        builder.setMessage("¿Confirma la acción seleccionada?")
+                .setTitle("Confirmacion")
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Log.i("Dialogos", "Confirmacion Aceptada.");
+                        dialog.cancel();
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Log.i("Dialogos", "Confirmacion Cancelada.");
+                        dialog.cancel();
+                    }
+                });
+
+        return builder.create();
+    }
+}
+
+
+class DialogoConfirmacion2 extends DialogFragment {
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(getActivity());
+
+        builder.setMessage("¿Desea cerrar Sesión?")
+                .setTitle("Confirmacion")
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Log.i("Dialogos", "Confirmacion Aceptada.");
+                        System.exit(0);
+                        dialog.cancel();
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Log.i("Dialogos", "Confirmacion Cancelada.");
+                        dialog.cancel();
+                    }
+                });
+
+        return builder.create();
+    }
 }

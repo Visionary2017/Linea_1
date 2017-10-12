@@ -1,8 +1,14 @@
 package pe.edu.sise.applinea1;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,26 +41,16 @@ public class updatePasajeroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_pasajero);
-
-
-
         nombre = (EditText) findViewById(R.id.etNombreCompletoUpdate);
         apellido = (EditText) findViewById(R.id.etApellidoCompletoUpdate);
         celular = (EditText) findViewById(R.id.etTelefonoUpdate);
         correo = (EditText) findViewById(R.id.etCorreoUpdate);
         btnActualizar = (Button) findViewById(R.id.btnUpdate);
 
-
-
-
         datos = this.getIntent().getExtras();
        numero_tarjeta = datos.getString("numero_tarjeta");
 
         Toast.makeText(this, numero_tarjeta, Toast.LENGTH_SHORT).show();
-
-
-
-
 
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,11 +58,7 @@ public class updatePasajeroActivity extends AppCompatActivity {
                 UDP_Pasajero();
             }
         });
-
-
     }
-
-
 
     private void UDP_Pasajero(){
 
@@ -146,6 +138,5 @@ public class updatePasajeroActivity extends AppCompatActivity {
 
         }
     }
-
 
 }
