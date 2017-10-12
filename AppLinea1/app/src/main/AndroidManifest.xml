@@ -85,7 +85,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:label="Mapa de Estación" />
         <activity android:name=".ContactanosActivity"
             android:label="Contáctanos"></activity>
     </application>

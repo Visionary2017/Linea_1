@@ -3,6 +3,7 @@ package pe.edu.sise.applinea1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -31,7 +32,7 @@ public class RecargaVirtualActivity extends AppCompatActivity {
     Bundle datos;
     String numero_tarjeta;
     double monto_Recarga;
-
+    Toolbar toolbar;
     ImageButton imgButt2;
     EditText num_tar_visa,fecha_ven,cv;
 
@@ -39,12 +40,11 @@ public class RecargaVirtualActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recarga_virtual);
-
+        toolbar=(Toolbar)findViewById(R.id.toolbar_top);
         datos = this.getIntent().getExtras();
         numero_tarjeta = datos.getString("numero_tarjeta");
         monto_Recarga = datos.getDouble("monto");
-
-
+        setToolbar();
         Toast.makeText(this, numero_tarjeta + monto_Recarga , Toast.LENGTH_SHORT).show();
 
         imgButt2 = (ImageButton) findViewById(R.id.imgbtn2);
@@ -210,8 +210,22 @@ public class RecargaVirtualActivity extends AppCompatActivity {
             }
         });
 
-        }
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
+
+    }
+    private void setToolbar(){
+
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_top);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
 
     public String obtieneDatosJSON(String response){
         String texto="";

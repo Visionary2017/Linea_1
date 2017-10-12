@@ -99,7 +99,7 @@ public class RecargaActivity extends AppCompatActivity {
                     i.putExtra("monto",roundTwoDecimals(monto));
                     startActivity(i);
                 }else{
-                    monto_Recarga.setError("Saldo no está dentro del rango.");
+                    monto_Recarga.setError("Saldo maximo de recarga S/.99.00.");
                 }
 
             }

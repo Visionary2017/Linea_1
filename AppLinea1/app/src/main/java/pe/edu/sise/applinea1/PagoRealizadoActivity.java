@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -34,12 +36,16 @@ public class PagoRealizadoActivity extends AppCompatActivity {
     TextView nue_sal,mont,sal_ant, txt_fecha;
     String numero_tarjeta;
     double monto;
+    Toolbar toolbar;
+    RecargaVirtualActivity recargaVirtualActivity;
+    RecargaActivity recargaActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pago_realizado);
-
+        toolbar=(Toolbar)findViewById(R.id.toolbar_top);;
+        setToolbar();
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
         String formattedDate = df.format(c.getTime());
@@ -73,10 +79,33 @@ public class PagoRealizadoActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
                 i.putExtra("numero_tarjeta",numero_tarjeta);
                 startActivity(i);
+                finish();
+
 
             }
         });
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
+                i.putExtra("numero_tarjeta",numero_tarjeta);
+                startActivity(i);
+                finish();
+
+
+            }
+        });
+
+
+    }
+    private void setToolbar(){
+
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_top);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_home));
     }
 
     public void Consultar_Saldo(){
