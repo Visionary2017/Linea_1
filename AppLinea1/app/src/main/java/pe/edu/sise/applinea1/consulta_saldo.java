@@ -58,22 +58,25 @@ public class consulta_saldo extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.mnuUsuario:
-                        Intent a= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        Intent a= new Intent(getApplicationContext(),updatePasajeroActivity.class);
                         a.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(a);
                         finish();
+                        //finish();
                         break;
                     case R.id.mnuRecarga:
                         Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
                         e.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(e);
                         finish();
+                        // finish();
                         break;
                     case R.id.mnuSaldo:
                         Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
                         i.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(i);
                         finish();
+                        //finish();
                         break;
                     case R.id.mnuEstacion:
                         Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
@@ -85,10 +88,14 @@ public class consulta_saldo extends AppCompatActivity {
                         Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
                         u.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(u);
+                        //  finish();
                         finish();
                         break;
                     case R.id.mnuContacto:
-
+                        Intent s=new Intent(getApplicationContext(),ContactanosActivity.class);
+                        s.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        startActivity(s);
+                        finish();
                         break;
                 }
 

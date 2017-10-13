@@ -65,6 +65,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         calcu_Viaje = (ImageButton) findViewById(R.id.btnCalcular_Viaje);
         estacion=(ImageButton)findViewById(R.id.btnEstaciones);
         consul_Saldo = (ImageButton)findViewById(R.id.btnConsultarSaldo);
+        contacto=(ImageButton)findViewById(R.id.btnContacto);
 
         Button cerrar_Sesion = (Button) findViewById(R.id.btnCerrarSesion);
 
@@ -72,7 +73,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
          numero_tarjeta = datos.getString("numero_tarjeta");
 
 
-        Toast.makeText(this, numero_tarjeta, Toast.LENGTH_SHORT).show();
+
 
         this.Botones();
        //   this.Notificar_saldo();
@@ -203,6 +204,14 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 startActivity(i);
                // finish();
 
+            }
+        });
+        contacto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent s=new Intent(getApplicationContext(),ContactanosActivity.class);
+                s.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                startActivity(s);
             }
         });
 

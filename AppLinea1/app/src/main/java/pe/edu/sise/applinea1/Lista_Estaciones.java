@@ -53,6 +53,7 @@ public class Lista_Estaciones extends AppCompatActivity {
     public TextView distrito;
     public TextView latitud;
     public TextView longitud;
+    String numero_tarjeta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,9 @@ public class Lista_Estaciones extends AppCompatActivity {
         mLayoutManager=new LinearLayoutManager(this);
         drawerLayout=(DrawerLayout) findViewById(R.id.ListaEstaciones);
         navigationView=(NavigationView)findViewById(R.id.navview);
+        Bundle b = getIntent().getExtras();
+        numero_tarjeta =  b.getString("numero_tarjeta");
+
         setToolbar();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -78,33 +82,39 @@ public class Lista_Estaciones extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.mnuUsuario:
                         Intent a= new Intent(getApplicationContext(),updatePasajeroActivity.class);
-                        //a.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        a.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(a);
                         finish();
                         break;
                     case R.id.mnuRecarga:
                         Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
-                        //e.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        e.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(e);
                         finish();
                         break;
                     case R.id.mnuSaldo:
                         Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
+                        i.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(i);
                         finish();
                         break;
                     case R.id.mnuEstacion:
                         Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
+                        o.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(o);
                         finish();
                         break;
                     case R.id.mnuViaje:
                         Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
+                        u.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(u);
                         finish();
                         break;
                     case R.id.mnuContacto:
-
+                        Intent s=new Intent(getApplicationContext(),ContactanosActivity.class);
+                        s.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        startActivity(s);
+                        finish();
                         break;
                 }
 
@@ -130,7 +140,7 @@ public class Lista_Estaciones extends AppCompatActivity {
                 //Toast.makeText(Lista_Estaciones.this, s, Toast.LENGTH_SHORT).show();
                 try{
                     loadIntoListView(s);
-                    Toast.makeText(Lista_Estaciones.this, "Hola", Toast.LENGTH_SHORT).show();
+
                 }catch (JSONException e){
                     e.printStackTrace();
                 }

@@ -38,7 +38,7 @@ public class RecargaActivity extends AppCompatActivity {
         datos = this.getIntent().getExtras();
         numero_tarjeta = datos.getString("numero_tarjeta");
 
-        Toast.makeText(this, numero_tarjeta, Toast.LENGTH_SHORT).show();
+
 
         monto_Recarga = (EditText) findViewById(R.id.etMonto_Recarga);
 
@@ -78,7 +78,10 @@ public class RecargaActivity extends AppCompatActivity {
                         finish();
                         break;
                     case R.id.mnuContacto:
-
+                        Intent s=new Intent(getApplicationContext(),ContactanosActivity.class);
+                        s.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        startActivity(s);
+                        finish();
                         break;
                 }
 

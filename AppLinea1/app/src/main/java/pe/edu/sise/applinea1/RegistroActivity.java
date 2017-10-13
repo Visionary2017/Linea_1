@@ -30,7 +30,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         final String nfc = b.getString("nfc");
-        Toast.makeText(this, nfc, Toast.LENGTH_SHORT).show();
+
 
 
         btnSiguien.setOnClickListener(new View.OnClickListener() {

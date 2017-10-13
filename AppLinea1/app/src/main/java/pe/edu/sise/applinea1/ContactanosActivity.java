@@ -53,35 +53,37 @@ public class ContactanosActivity extends AppCompatActivity {
                         Intent a= new Intent(getApplicationContext(),updatePasajeroActivity.class);
                         a.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(a);
-                        //finish();
+                        finish();
                         break;
                     case R.id.mnuRecarga:
                         Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
                         e.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(e);
-                        // finish();
+                        finish();
                         break;
                     case R.id.mnuSaldo:
                         Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
                         i.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(i);
-                        //finish();
+                        finish();
                         break;
                     case R.id.mnuEstacion:
                         Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
-                        // o.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        o.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(o);
-                        // finish();
+                        finish();
                         break;
                     case R.id.mnuViaje:
                         Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
                         u.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(u);
-                        //  finish();
+                        finish();
                         break;
                     case R.id.mnuContacto:
                         Intent s=new Intent(getApplicationContext(),ContactanosActivity.class);
+                        s.putExtra("numero_tarjeta",numero_tarjeta.toString());
                         startActivity(s);
+                        finish();
                         break;
                 }
 
