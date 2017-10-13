@@ -134,8 +134,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void fnOnClickVisitante(View view){
-
-        Intent intent = new Intent(getApplicationContext(),Registro3Activity.class);
+        Intent intent = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
+        
         startActivity(intent);
 
     }
