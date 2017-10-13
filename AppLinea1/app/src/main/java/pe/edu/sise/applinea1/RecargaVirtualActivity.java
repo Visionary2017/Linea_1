@@ -45,7 +45,6 @@ public class RecargaVirtualActivity extends AppCompatActivity {
         numero_tarjeta = datos.getString("numero_tarjeta");
         monto_Recarga = datos.getDouble("monto");
         setToolbar();
-        Toast.makeText(this, numero_tarjeta + monto_Recarga , Toast.LENGTH_SHORT).show();
 
         imgButt2 = (ImageButton) findViewById(R.id.imgbtn2);
          num_tar_visa = (EditText) findViewById(R.id.etNumTarjeta_Visa);

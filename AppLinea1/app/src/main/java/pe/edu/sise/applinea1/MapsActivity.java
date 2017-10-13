@@ -2,6 +2,7 @@ package pe.edu.sise.applinea1;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
@@ -12,7 +13,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     Double latitud;
@@ -27,6 +28,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         latitud=b.getDouble("latitud");
         longitud=b.getDouble("longitud");
         nombre=b.getString("nombre");
+        setToolbar();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -50,8 +52,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(latitud, longitud);
+        float zoom=18;
         mMap.addMarker(new MarkerOptions().position(sydney).title("Estación "+ nombre));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,zoom));
+    }
+
+    private void setToolbar(){
+
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_top);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
 
