@@ -358,34 +358,5 @@ class DialogoConfirmacion2 extends DialogFragment {
 }
 
 
-    class DialogoConfirmacion3 extends DialogFragment {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-            AlertDialog.Builder builder =
-                    new AlertDialog.Builder(getActivity());
-
-            builder.setMessage("¿Desea cerrar Sesión?")
-                    .setTitle("Confirmacion")
-                    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Log.i("Dialogos", "Confirmacion Aceptada.");
-                            MenuPrincipalActivity menu=new MenuPrincipalActivity();
-                            menu.finish();
-                            System.exit(0);
-                            dialog.cancel();
-
-
-                        }
-                    })
-                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Log.i("Dialogos", "Confirmacion Cancelada.");
-                            dialog.cancel();
-                        }
-                    });
-
-            return builder.create();
-        }
-}
 
