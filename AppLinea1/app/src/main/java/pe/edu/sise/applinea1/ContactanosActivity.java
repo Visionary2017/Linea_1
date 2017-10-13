@@ -141,7 +141,7 @@ public class ContactanosActivity extends AppCompatActivity {
         imgWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String urlPage = "http://linea1.000webhostapp.com/lineauno/index-1.htm";
+                String urlPage = "http://www.lineauno.pe/";
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
             }
         });
