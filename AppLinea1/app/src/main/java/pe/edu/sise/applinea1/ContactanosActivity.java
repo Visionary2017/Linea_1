@@ -2,13 +2,16 @@ package pe.edu.sise.applinea1;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -23,7 +26,7 @@ import com.squareup.picasso.Picasso;
 public class ContactanosActivity extends AppCompatActivity {
 
     ImageButton imgFB,imgYou,imgTwitter,imgWeb;
-    Button imgCall;
+    Button imgCall,Cerrar_Sesion;
     private Context context;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
@@ -39,6 +42,7 @@ public class ContactanosActivity extends AppCompatActivity {
         imgTwitter=(ImageButton)findViewById(R.id.imgTwitter);
         imgWeb=(ImageButton)findViewById(R.id.imgWeb);
         imgCall=(Button)findViewById(R.id.imgCall);
+        Cerrar_Sesion=(Button)findViewById(R.id.btnCerrarSesion);
         setToolbar();
 
         Bundle b = getIntent().getExtras();
@@ -142,7 +146,7 @@ public class ContactanosActivity extends AppCompatActivity {
         imgWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String urlPage = "http://www.lineauno.pe/";
+                String urlPage = "http://linea1.000webhostapp.com/lineauno/index-1.htm";
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
             }
         });
@@ -152,6 +156,38 @@ public class ContactanosActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i=new Intent(Intent.ACTION_DIAL,Uri.parse("tel:080011121"));
                 startActivity(i);
+            }
+        });
+
+        Cerrar_Sesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                DialogoConfirmacion3 dialogo = new DialogoConfirmacion3();
+                dialogo.show(fragmentManager,"tagAlerta");
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(ContactanosActivity.this);
+
+                builder.setMessage("¿Desea cerrar Sesión?")
+                        .setTitle("Confirmacion")
+                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Log.i("Dialogos", "Confirmacion Aceptada.");
+                                Intent in = new Intent(getApplicationContext(),LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                startActivity(in);
+                                dialog.cancel();
+
+
+                            }
+                        })
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Log.i("Dialogos", "Confirmacion Cancelada.");
+                                dialog.cancel();
+                            }
+                        });
+
+
             }
         });
 

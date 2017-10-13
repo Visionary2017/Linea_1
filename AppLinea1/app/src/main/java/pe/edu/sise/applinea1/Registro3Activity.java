@@ -35,10 +35,10 @@ public class Registro3Activity extends AppCompatActivity {
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
-            Toast.makeText(this, "NFC NOT supported on this devices!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "NFC NO es compatible con estos dispositivos!", Toast.LENGTH_LONG).show();
             finish();
         } else if (!nfcAdapter.isEnabled()) {
-            Toast.makeText(this, "NFC NOT Enabled!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "NFC NO habilitado!", Toast.LENGTH_LONG).show();
             finish();
         }
 

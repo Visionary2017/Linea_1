@@ -134,7 +134,7 @@ public class PagoRealizadoActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                    Toast.makeText(getApplicationContext(), "onFail", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error de conexion", Toast.LENGTH_SHORT).show();
                 }
             });
 

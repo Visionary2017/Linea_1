@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -20,6 +21,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -253,7 +255,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                    Toast.makeText(getApplicationContext(), "onFail", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error de conexion", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -337,7 +339,7 @@ class DialogoConfirmacion2 extends DialogFragment {
 
         builder.setMessage("¿Desea cerrar Sesión?")
                 .setTitle("Confirmacion")
-                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Log.i("Dialogos", "Confirmacion Aceptada.");
                         System.exit(0);
@@ -354,3 +356,36 @@ class DialogoConfirmacion2 extends DialogFragment {
         return builder.create();
     }
 }
+
+
+    class DialogoConfirmacion3 extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            AlertDialog.Builder builder =
+                    new AlertDialog.Builder(getActivity());
+
+            builder.setMessage("¿Desea cerrar Sesión?")
+                    .setTitle("Confirmacion")
+                    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Log.i("Dialogos", "Confirmacion Aceptada.");
+                            MenuPrincipalActivity menu=new MenuPrincipalActivity();
+                            menu.finish();
+                            System.exit(0);
+                            dialog.cancel();
+
+
+                        }
+                    })
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Log.i("Dialogos", "Confirmacion Cancelada.");
+                            dialog.cancel();
+                        }
+                    });
+
+            return builder.create();
+        }
+}
+
