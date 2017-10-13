@@ -7,11 +7,12 @@ import android.view.View;
 
 public class activity_resultado_calcular_viaje extends AppCompatActivity {
     Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultado_calcular_viaje);
-        toolbar=(Toolbar)findViewById(R.id.toolbar_top);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_top);
         setToolbar();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -20,11 +21,10 @@ public class activity_resultado_calcular_viaje extends AppCompatActivity {
                 finish();
             }
         });
-
     }
-    private void setToolbar(){
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_top);
+    private void setToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

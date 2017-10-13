@@ -23,23 +23,24 @@ public class EstacionesAdapter extends RecyclerView.Adapter<EstacionesAdapter.Vi
     private OnItemClickListener itemClickListener;
     private Context context;
 
-    public EstacionesAdapter(List<Estaciones> estacion,int layout,OnItemClickListener listener){
-        this.estacion=estacion;
-        this.layout=layout;
-        this.itemClickListener=listener;
+    public EstacionesAdapter(List<Estaciones> estacion, int layout, OnItemClickListener listener) {
+        this.estacion = estacion;
+        this.layout = layout;
+        this.itemClickListener = listener;
     }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view= LayoutInflater.from(parent.getContext()).inflate(layout,parent,false);
-        context=parent.getContext();
-        ViewHolder vh=new ViewHolder(view);
-        return vh   ;
+        View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
+        context = parent.getContext();
+        ViewHolder vh = new ViewHolder(view);
+        return vh;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(estacion.get(position),itemClickListener);
+        holder.bind(estacion.get(position), itemClickListener);
     }
 
     @Override
@@ -56,21 +57,23 @@ public class EstacionesAdapter extends RecyclerView.Adapter<EstacionesAdapter.Vi
         public TextView latitud;
         public TextView longitud;
         public ImageView ImageViewEstacion;
+
         public ViewHolder(View itemView) {
             super(itemView);
 
-            id_estacion=(TextView) itemView.findViewById(R.id.txtidEstacion);
-            descipcion=(TextView)itemView.findViewById(R.id.txtDescripcion);
-            nombre_estacion=(TextView) itemView.findViewById(R.id.txtNombreEstacion);
-            direccion=(TextView)itemView.findViewById(R.id.txtDireccion);
-            distrito=(TextView)itemView.findViewById(R.id.txtDistrito);
-            latitud=(TextView)itemView.findViewById(R.id.txtLatitud);
-            longitud=(TextView)itemView.findViewById(R.id.txtLongitud);
-            ImageViewEstacion=(ImageView)itemView.findViewById(R.id.ImgEstaciones);
+            id_estacion = (TextView) itemView.findViewById(R.id.txtidEstacion);
+            descipcion = (TextView) itemView.findViewById(R.id.txtDescripcion);
+            nombre_estacion = (TextView) itemView.findViewById(R.id.txtNombreEstacion);
+            direccion = (TextView) itemView.findViewById(R.id.txtDireccion);
+            distrito = (TextView) itemView.findViewById(R.id.txtDistrito);
+            latitud = (TextView) itemView.findViewById(R.id.txtLatitud);
+            longitud = (TextView) itemView.findViewById(R.id.txtLongitud);
+            ImageViewEstacion = (ImageView) itemView.findViewById(R.id.ImgEstaciones);
         }
+
         //
-        private void bind(final Estaciones estacion,final OnItemClickListener listener){
-            id_estacion.setText( estacion.getId_estaciones());
+        private void bind(final Estaciones estacion, final OnItemClickListener listener) {
+            id_estacion.setText(estacion.getId_estaciones());
             nombre_estacion.setText(estacion.getNombre_estacion());
             direccion.setText(estacion.getDireccion());
             distrito.setText(estacion.getDistrito());
@@ -81,13 +84,13 @@ public class EstacionesAdapter extends RecyclerView.Adapter<EstacionesAdapter.Vi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onItemClick(estacion,getAdapterPosition());
+                    listener.onItemClick(estacion, getAdapterPosition());
                 }
             });
         }
     }
 
-    public interface OnItemClickListener{
-        void onItemClick(Estaciones estacion,int position);
+    public interface OnItemClickListener {
+        void onItemClick(Estaciones estacion, int position);
     }
 }

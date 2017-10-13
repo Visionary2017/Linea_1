@@ -23,7 +23,6 @@ import java.nio.ByteBuffer;
 import cz.msebera.android.httpclient.Header;
 
 
-
 public class Registro3Activity extends AppCompatActivity {
 
     private NfcAdapter nfcAdapter;
@@ -54,20 +53,20 @@ public class Registro3Activity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         Intent intent = getIntent();
         String action = intent.getAction();
 
-        if(nfcAdapter.ACTION_TAG_DISCOVERED.equals(action)){
+        if (nfcAdapter.ACTION_TAG_DISCOVERED.equals(action)) {
             Tag tag = intent.getParcelableExtra(nfcAdapter.EXTRA_TAG);
             String tagInfo = tag.toString();
             byte[] tagId = tag.getId();
             tagInfo = "" + ByteBuffer.wrap(tagId).getInt();
-            Intent i = new Intent(getApplicationContext(),RegistroActivity.class);
-            i.putExtra("nfc",tagInfo);
+            Intent i = new Intent(getApplicationContext(), RegistroActivity.class);
+            i.putExtra("nfc", tagInfo);
             startActivity(i);
-        }else{
+        } else {
 
         }
 

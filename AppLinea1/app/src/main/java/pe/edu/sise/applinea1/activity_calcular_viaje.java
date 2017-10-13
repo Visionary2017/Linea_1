@@ -16,9 +16,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 
 public class activity_calcular_viaje extends AppCompatActivity {
-
-
-    Spinner spinner_origen,spinner_destino;
+    Spinner spinner_origen, spinner_destino;
     Button calcu_Viaje;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -28,14 +26,14 @@ public class activity_calcular_viaje extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcular_viaje);
 
-       Button calcu_Viaje = (Button) findViewById(R.id.btnCalcular);
-        drawerLayout=(DrawerLayout) findViewById(R.id.calcular_viaje);
-        navigationView=(NavigationView)findViewById(R.id.navview);
+        Button calcu_Viaje = (Button) findViewById(R.id.btnCalcular);
+        drawerLayout = (DrawerLayout) findViewById(R.id.calcular_viaje);
+        navigationView = (NavigationView) findViewById(R.id.navview);
         Spinner spinner_origen = (Spinner) findViewById(R.id.spinner_origen);
         Spinner spinner_destino = (Spinner) findViewById(R.id.spinner_destino);
         setToolbar();
 
-        String[] datos = new String[] {
+        String[] datos = new String[]{
                 "--Seleccione--",
                 "Villa El Salvador",
                 "Parque Industrial",
@@ -66,7 +64,7 @@ public class activity_calcular_viaje extends AppCompatActivity {
 
         };
 
-        String[] datos2 = new String[] {
+        String[] datos2 = new String[]{
                 "--Seleccione--",
                 "Bayóvar",
                 "Santa Rosa",
@@ -108,18 +106,15 @@ public class activity_calcular_viaje extends AppCompatActivity {
         calcu_Viaje.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),activity_resultado_calcular_viaje.class);
+                Intent i = new Intent(getApplicationContext(), activity_resultado_calcular_viaje.class);
                 startActivity(i);
             }
         });
-
-
-
     }
 
-    private void setToolbar(){
+    private void setToolbar() {
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_top);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -128,10 +123,9 @@ public class activity_calcular_viaje extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
-
                 return true;
         }
         return super.onOptionsItemSelected(item);

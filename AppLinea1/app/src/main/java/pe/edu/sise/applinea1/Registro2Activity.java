@@ -19,6 +19,7 @@ import cz.msebera.android.httpclient.Header;
 
 import static pe.edu.sise.applinea1.ClassConstante.ADD_PASAJERO;
 import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
+
 public class Registro2Activity extends AppCompatActivity {
 
     Button btnRegis;
@@ -29,60 +30,58 @@ public class Registro2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro2);
 
-        btnRegis=(Button)findViewById(R.id.btnRegistrar);
+        btnRegis = (Button) findViewById(R.id.btnRegistrar);
         etpass = (EditText) findViewById(R.id.etPassword);
-        etValPass = (EditText) findViewById(R.id.etValidarPassword) ;
-
+        etValPass = (EditText) findViewById(R.id.etValidarPassword);
 
         //Recuperar datos
         Bundle datos = this.getIntent().getExtras();
         final String numero_documento = datos.getString("numero_documento");
         final String nombre_completo = datos.getString("nombre_completo");
-        final  String apellido_completo = datos.getString("apellido_completo");
+        final String apellido_completo = datos.getString("apellido_completo");
         final String celular = datos.getString("celular");
         final String correo = datos.getString("correo");
         final int id_perfil = 1;
         final int id_estado = 2;
         final String nfc = datos.getString("nfc");
 
-
         etpass.addTextChangedListener(new TextValidator(etpass) {
             @Override
             public void validate(EditText editText, String text) {
-                if( text.length() < 8 )
-                    etpass.setError( "La contraseña es muy corta" );
+                if (text.length() < 8)
+                    etpass.setError("La contraseña es muy corta");
             }
         });
-
 
         btnRegis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(etpass.getText().toString().equals(etValPass.getText().toString())){
+                if (etpass.getText().toString().equals(etValPass.getText().toString())) {
                     AsyncHttpClient client = new AsyncHttpClient();
-                    try{
+                    try {
                         String URL_ADD = DOMINIO + ADD_PASAJERO;
                         RequestParams params = new RequestParams();
-                        params.put("numero_documento",numero_documento.toString());
-                        params.put("nombres_completo",nombre_completo.toString());
-                        params.put("apellidos_completo",apellido_completo.toString());
-                        params.put("telefono",celular.toString());
-                        params.put("email",correo.toString());
-                        params.put("id_perfil",id_perfil);
-                        params.put("id_estado",id_estado);
-                        params.put("nro_tarjeta",nfc);
-                        params.put("password",etpass.getText().toString());
+                        params.put("numero_documento", numero_documento.toString());
+                        params.put("nombres_completo", nombre_completo.toString());
+                        params.put("apellidos_completo", apellido_completo.toString());
+                        params.put("telefono", celular.toString());
+                        params.put("email", correo.toString());
+                        params.put("id_perfil", id_perfil);
+                        params.put("id_estado", id_estado);
+                        params.put("nro_tarjeta", nfc);
+                        params.put("password", etpass.getText().toString());
 
                         client.post(URL_ADD, params, new AsyncHttpResponseHandler() {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                if(statusCode == 200){
+                                if (statusCode == 200) {
                                     Toast.makeText(getApplicationContext(), "Registrado Correctamente", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(getApplicationContext(),LoginActivity.class);
+                                    Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                                     startActivity(i);
                                 }
                             }
+
                             @Override
                             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                                 Toast.makeText(getApplicationContext(), "Error de conexion", Toast.LENGTH_SHORT).show();
@@ -91,10 +90,10 @@ public class Registro2Activity extends AppCompatActivity {
                         });
 
 
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                }else{
+                } else {
                     etValPass.setError("No coindicen!!!");
                 }
             }

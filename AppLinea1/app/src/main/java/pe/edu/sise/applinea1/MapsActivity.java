@@ -22,12 +22,12 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback  {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private static final int LOCATION_REQUEST_CODE = 1;
     private GoogleMap mMap;
-    Double latitud,milatitud;
-    Double longitud,milongitud;
+    Double latitud, milatitud;
+    Double longitud, milongitud;
     String nombre;
     Toolbar toolbar;
     MapsActivity mapsActivity;
@@ -103,9 +103,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-    private void setToolbar(){
+    private void setToolbar() {
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_top);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

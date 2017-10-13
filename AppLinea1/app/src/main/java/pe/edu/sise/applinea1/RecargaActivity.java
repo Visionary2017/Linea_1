@@ -30,15 +30,13 @@ public class RecargaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recarga);
-        drawerLayout=(DrawerLayout) findViewById(R.id.drawer_recarga);
-        navigationView=(NavigationView)findViewById(R.id.navview);
-        btnSiguiente=(Button)findViewById(R.id.btnSiguienteRecargar);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_recarga);
+        navigationView = (NavigationView) findViewById(R.id.navview);
+        btnSiguiente = (Button) findViewById(R.id.btnSiguienteRecargar);
         setToolbar();
 
         datos = this.getIntent().getExtras();
         numero_tarjeta = datos.getString("numero_tarjeta");
-
-
 
         monto_Recarga = (EditText) findViewById(R.id.etMonto_Recarga);
 
@@ -46,44 +44,43 @@ public class RecargaActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.mnuUsuario:
-                        Intent a= new Intent(getApplicationContext(),updatePasajeroActivity.class);
-                        a.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent a = new Intent(getApplicationContext(), updatePasajeroActivity.class);
+                        a.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(a);
                         finish();
                         break;
                     case R.id.mnuRecarga:
-                        Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
-                        e.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent e = new Intent(getApplicationContext(), RecargaActivity.class);
+                        e.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(e);
                         finish();
                         break;
                     case R.id.mnuSaldo:
-                        Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
-                        i.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent i = new Intent(getApplicationContext(), consulta_saldo.class);
+                        i.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(i);
                         finish();
                         break;
                     case R.id.mnuEstacion:
-                        Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
-                        o.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent o = new Intent(getApplicationContext(), Lista_Estaciones.class);
+                        o.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(o);
                         finish();
                         break;
                     case R.id.mnuViaje:
-                        Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
-                        u.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent u = new Intent(getApplicationContext(), activity_calcular_viaje.class);
+                        u.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(u);
                         finish();
                         break;
                     case R.id.mnuContacto:
-                        Intent s=new Intent(getApplicationContext(),ContactanosActivity.class);
+                        Intent s = new Intent(getApplicationContext(), ContactanosActivity.class);
                         startActivity(s);
                         finish();
                         break;
                 }
-
                 return true;
             }
         });
@@ -91,35 +88,30 @@ public class RecargaActivity extends AppCompatActivity {
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //LEO MI VARIABLE DDE ENTRADA
                 double monto = Double.parseDouble(monto_Recarga.getText().toString());
 
-                if(roundTwoDecimals(monto) >=0.1 && roundTwoDecimals(monto) <= 99){
-                    Intent i=new Intent(getApplicationContext(),RecargaVirtualActivity.class);
-                    i.putExtra("numero_tarjeta",numero_tarjeta);
-                    i.putExtra("monto",roundTwoDecimals(monto));
+                if (roundTwoDecimals(monto) >= 0.1 && roundTwoDecimals(monto) <= 99) {
+                    Intent i = new Intent(getApplicationContext(), RecargaVirtualActivity.class);
+                    i.putExtra("numero_tarjeta", numero_tarjeta);
+                    i.putExtra("monto", roundTwoDecimals(monto));
                     startActivity(i);
-                }else{
+                } else {
                     monto_Recarga.setError("Saldo maximo de recarga S/.99.00.");
                 }
-
             }
         });
-
-
     }
 
-    double roundTwoDecimals(double d)
-    {
+    double roundTwoDecimals(double d) {
         DecimalFormat twoDForm = new DecimalFormat("#.##");
         return Double.valueOf(twoDForm.format(d));
     }
 
 
-    private void setToolbar(){
+    private void setToolbar() {
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_top);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -128,7 +120,7 @@ public class RecargaActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
 

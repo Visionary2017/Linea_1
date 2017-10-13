@@ -54,63 +54,64 @@ public class Lista_Estaciones extends AppCompatActivity {
     public TextView latitud;
     public TextView longitud;
     String numero_tarjeta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista__estaciones);
-        getJson(DOMINIO+LISTAR_ESTACIONES);
-        id_estacion=(TextView) findViewById(R.id.txtidEstacion);
-        descipcion=(TextView)findViewById(R.id.txtDescripcion);
-        nombre_estacion=(TextView) findViewById(R.id.txtNombreEstacion);
-        direccion=(TextView)findViewById(R.id.txtDireccion);
-        distrito=(TextView)findViewById(R.id.txtDistrito);
-        latitud=(TextView)findViewById(R.id.txtLatitud);
-        longitud=(TextView)findViewById(R.id.txtLongitud);
-        recyclerView=(RecyclerView)findViewById(R.id.RecyclerViewEstaciones);
-        mLayoutManager=new LinearLayoutManager(this);
-        drawerLayout=(DrawerLayout) findViewById(R.id.ListaEstaciones);
-        navigationView=(NavigationView)findViewById(R.id.navview);
+        getJson(DOMINIO + LISTAR_ESTACIONES);
+        id_estacion = (TextView) findViewById(R.id.txtidEstacion);
+        descipcion = (TextView) findViewById(R.id.txtDescripcion);
+        nombre_estacion = (TextView) findViewById(R.id.txtNombreEstacion);
+        direccion = (TextView) findViewById(R.id.txtDireccion);
+        distrito = (TextView) findViewById(R.id.txtDistrito);
+        latitud = (TextView) findViewById(R.id.txtLatitud);
+        longitud = (TextView) findViewById(R.id.txtLongitud);
+        recyclerView = (RecyclerView) findViewById(R.id.RecyclerViewEstaciones);
+        mLayoutManager = new LinearLayoutManager(this);
+        drawerLayout = (DrawerLayout) findViewById(R.id.ListaEstaciones);
+        navigationView = (NavigationView) findViewById(R.id.navview);
         setToolbar();
 
         Bundle b = getIntent().getExtras();
-        numero_tarjeta =  b.getString("numero_tarjeta");
+        numero_tarjeta = b.getString("numero_tarjeta");
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.mnuUsuario:
-                        Intent a= new Intent(getApplicationContext(),updatePasajeroActivity.class);
-                        a.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent a = new Intent(getApplicationContext(), updatePasajeroActivity.class);
+                        a.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(a);
                         finish();
                         break;
                     case R.id.mnuRecarga:
-                        Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
-                        e.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent e = new Intent(getApplicationContext(), RecargaActivity.class);
+                        e.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(e);
                         finish();
                         break;
                     case R.id.mnuSaldo:
-                        Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
-                        i.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent i = new Intent(getApplicationContext(), consulta_saldo.class);
+                        i.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(i);
                         finish();
                         break;
                     case R.id.mnuEstacion:
-                        Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
-                        o.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent o = new Intent(getApplicationContext(), Lista_Estaciones.class);
+                        o.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(o);
                         finish();
                         break;
                     case R.id.mnuViaje:
-                        Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
-                        u.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent u = new Intent(getApplicationContext(), activity_calcular_viaje.class);
+                        u.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(u);
                         finish();
                         break;
                     case R.id.mnuContacto:
-                        Intent s=new Intent(getApplicationContext(),ContactanosActivity.class);
+                        Intent s = new Intent(getApplicationContext(), ContactanosActivity.class);
                         startActivity(s);
                         finish();
                         break;
@@ -119,13 +120,11 @@ public class Lista_Estaciones extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
 
     private void getJson(final String s) {
 
-        class GetJson extends AsyncTask<Void,Void,String>{
+        class GetJson extends AsyncTask<Void, Void, String> {
 
             @Override
             protected void onPreExecute() {
@@ -136,23 +135,22 @@ public class Lista_Estaciones extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 //Toast.makeText(Lista_Estaciones.this, s, Toast.LENGTH_SHORT).show();
-                try{
+                try {
                     loadIntoListView(s);
-                }catch (JSONException e){
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
 
             @Override
             protected String doInBackground(Void... params) {
                 try {
-                    URL url=new URL(s);
-                    HttpURLConnection con=(HttpURLConnection)url.openConnection();
-                    StringBuilder sb=new StringBuilder();
-                    BufferedReader bufferedReader=new BufferedReader((new InputStreamReader(con.getInputStream())));
+                    URL url = new URL(s);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader((new InputStreamReader(con.getInputStream())));
                     String json;
-                    while((json=bufferedReader.readLine())!=null){
+                    while ((json = bufferedReader.readLine()) != null) {
                         sb.append(json + "\n");
                     }
                     return sb.toString().trim();
@@ -163,47 +161,47 @@ public class Lista_Estaciones extends AppCompatActivity {
                 return null;
             }
         }
-        GetJson geteJson=new GetJson();
+        GetJson geteJson = new GetJson();
         geteJson.execute();
     }
 
     private void loadIntoListView(String json) throws JSONException {
         JSONObject object = new JSONObject(json);
-        JSONArray Jarray  = object.getJSONArray("estacion");
+        JSONArray Jarray = object.getJSONArray("estacion");
         final String[] heroes = new String[Jarray.length()];
-        String id_estacion=null;
+        String id_estacion = null;
         String Nombre = null;
-        String Direccion=null;
-        String Distrito=null;
-        String Descripcion=null;
-        String Latitud=null;
-        String Longitud=null;
-        ArrayList<Estaciones> arrayList=new ArrayList<>() ;
+        String Direccion = null;
+        String Distrito = null;
+        String Descripcion = null;
+        String Latitud = null;
+        String Longitud = null;
+        ArrayList<Estaciones> arrayList = new ArrayList<>();
         for (int i = 0; i < Jarray.length(); i++) {
 
-            id_estacion=Jarray.getJSONObject(i).getString("id_estacion");
+            id_estacion = Jarray.getJSONObject(i).getString("id_estacion");
             Nombre = Jarray.getJSONObject(i).getString("nombre_estacion");
-            Distrito=Jarray.getJSONObject(i).getString("distrito");
-            Direccion=Jarray.getJSONObject(i).getString("direccion");
-            Latitud=Jarray.getJSONObject(i).getString("latitud");
-            Longitud=Jarray.getJSONObject(i).getString("longitud");
-            Descripcion=Jarray.getJSONObject(i).getString("descripcion");
+            Distrito = Jarray.getJSONObject(i).getString("distrito");
+            Direccion = Jarray.getJSONObject(i).getString("direccion");
+            Latitud = Jarray.getJSONObject(i).getString("latitud");
+            Longitud = Jarray.getJSONObject(i).getString("longitud");
+            Descripcion = Jarray.getJSONObject(i).getString("descripcion");
 
-            arrayList.add(new Estaciones(id_estacion,Nombre,Descripcion,Direccion,Distrito,Latitud,Longitud));
+            arrayList.add(new Estaciones(id_estacion, Nombre, Descripcion, Direccion, Distrito, Latitud, Longitud));
         }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,heroes );
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, heroes);
 
-        estacion=arrayList;
-        mAdapter=new EstacionesAdapter(estacion, R.layout.item_estaciones, new EstacionesAdapter.OnItemClickListener() {
+        estacion = arrayList;
+        mAdapter = new EstacionesAdapter(estacion, R.layout.item_estaciones, new EstacionesAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Estaciones estacion, int position) {
 
-                Intent intent=new Intent(Lista_Estaciones.this,Detalle_Estacion.class);
-                intent.putExtra("id_estacion",estacion.getId_estaciones());
-                intent.putExtra("nombre",estacion.getNombre_estacion());
-                intent.putExtra("descripcion",estacion.getDescripcion());
-                intent.putExtra("latitud",estacion.getLatitud());
-                intent.putExtra("longitud",estacion.getLongitud());
+                Intent intent = new Intent(Lista_Estaciones.this, Detalle_Estacion.class);
+                intent.putExtra("id_estacion", estacion.getId_estaciones());
+                intent.putExtra("nombre", estacion.getNombre_estacion());
+                intent.putExtra("descripcion", estacion.getDescripcion());
+                intent.putExtra("latitud", estacion.getLatitud());
+                intent.putExtra("longitud", estacion.getLongitud());
                 startActivity(intent);
             }
         });
@@ -215,9 +213,8 @@ public class Lista_Estaciones extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
     }
 
-    private void setToolbar(){
-
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_top);
+    private void setToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -225,8 +222,7 @@ public class Lista_Estaciones extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
 
@@ -234,7 +230,5 @@ public class Lista_Estaciones extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
 }

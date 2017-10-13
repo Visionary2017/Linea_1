@@ -23,10 +23,8 @@ import static pe.edu.sise.applinea1.ClassConstante.ACCESO_MENU;
 import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
 
 public class LoginActivity extends AppCompatActivity {
-
     //View toolbar;
     TextView tvRegistro, tvVisitante;
-
     EditText etUsu, etPass;
     Button btnLog;
 
@@ -37,9 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //toolbar = (View) findViewById(R.id.toolbarLogin);
         tvRegistro = (TextView) findViewById(R.id.tvRegistro);
-        tvVisitante = (TextView) findViewById(R.id.tvVisitante);
-       // toolbar.setEnabled(false);
-
+        // toolbar.setEnabled(false);
 
         etUsu = (EditText) findViewById(R.id.etUsua);
         etPass = (EditText) findViewById(R.id.etContrasena);
@@ -53,16 +49,13 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
-
-
-    public void Acceso_Menu(){
+    public void Acceso_Menu() {
         AsyncHttpClient client = new AsyncHttpClient();
         try {
-            String URL_LOGIN = DOMINIO + ACCESO_MENU ;
+            String URL_LOGIN = DOMINIO + ACCESO_MENU;
             RequestParams parametros = new RequestParams();
-            parametros.put("usuario",etUsu.getText().toString());
-            parametros.put("password",etPass.getText().toString());
+            parametros.put("usuario", etUsu.getText().toString());
+            parametros.put("password", etPass.getText().toString());
 
 
             client.get(URL_LOGIN, parametros, new AsyncHttpResponseHandler() {
@@ -72,21 +65,19 @@ public class LoginActivity extends AppCompatActivity {
                         etPass.setText("");
                         btnLog.setEnabled(true);
                         Toast.makeText(getApplicationContext(), "Credenciales incorrectas.", Toast.LENGTH_SHORT).show();
-                    }else if(statusCode == 200 && obtieneDatosJSON(new String(responseBody)).toString().equals("ERROR-02")){
+                    } else if (statusCode == 200 && obtieneDatosJSON(new String(responseBody)).toString().equals("ERROR-02")) {
                         etPass.setText("");
                         btnLog.setEnabled(true);
                         Toast.makeText(getApplicationContext(), "Debe Llenar los datos.", Toast.LENGTH_SHORT).show();
-                    }else if(statusCode == 200){
+                    } else if (statusCode == 200) {
                         /*session.createLoginSession("Android Hive", "anroidhive@gmail.com");*/
                         etUsu.setText("");
                         etPass.setText("");
                         etUsu.requestFocus();
                         btnLog.setEnabled(true);
-                         Intent intent = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
-                        intent.putExtra("numero_tarjeta",obtieneDatosJSON(new String(responseBody)).toString());
+                        Intent intent = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
+                        intent.putExtra("numero_tarjeta", obtieneDatosJSON(new String(responseBody)).toString());
                         startActivity(intent);
-                        //finish();
-
                     }
                 }
 
@@ -97,42 +88,40 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
 
-    public String obtieneDatosJSON(String response){
-        String texto="";
+    public String obtieneDatosJSON(String response) {
+        String texto = "";
         try {
             //JSONObject jsonObject2 = new JSONObject(response);
             //texto = jsonArray2.getString("nombres_completo");
             //JSONArray jsonArray2 = new JSONArray(response);
             //texto = (jsonArray2.getJSONObject(0).getString("nombres_completo"));
             JSONObject object = new JSONObject(response);
-            JSONArray Jarray  = object.getJSONArray("persona");
+            JSONArray Jarray = object.getJSONArray("persona");
 
-            for (int i = 0; i < Jarray.length(); i++)
-            {
+            for (int i = 0; i < Jarray.length(); i++) {
                 texto = Jarray.getJSONObject(i).getString("nro_tarjeta");
             }
-            Log.i("texto-valor ",texto);
-        }catch (Exception e){
+            Log.i("texto-valor ", texto);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return texto;
     }
 
-   //////////////////
+    //////////////////
 
-    public void fnOnClickRegistro(View view){
+    public void fnOnClickRegistro(View view) {
 
-        Intent intent = new Intent(LoginActivity.this,Registro3Activity.class);
+        Intent intent = new Intent(LoginActivity.this, Registro3Activity.class);
         startActivity(intent);
 
     }
-
 
 
 }

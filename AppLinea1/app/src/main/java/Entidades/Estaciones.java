@@ -5,7 +5,6 @@ package Entidades;
  */
 
 public class Estaciones {
-
     private String id_estaciones;
     private String nombre_estacion;
     private String descripcion;
@@ -14,11 +13,10 @@ public class Estaciones {
     private String latitud;
     private String longitud;
 
-
     public Estaciones() {
     }
 
-    public  Estaciones(String id_estaciones, String nombre_estacion, String descripcion, String direccion, String distrito, String latitud, String longitud) {
+    public Estaciones(String id_estaciones, String nombre_estacion, String descripcion, String direccion, String distrito, String latitud, String longitud) {
         this.id_estaciones = id_estaciones;
         this.nombre_estacion = nombre_estacion;
         this.descripcion = descripcion;
@@ -28,7 +26,7 @@ public class Estaciones {
         this.longitud = longitud;
     }
 
-    public Estaciones(String id_estaciones, String nombre_estacion,  String direccion, String distrito, String latitud, String longitud) {
+    public Estaciones(String id_estaciones, String nombre_estacion, String direccion, String distrito, String latitud, String longitud) {
         this.id_estaciones = id_estaciones;
         this.nombre_estacion = nombre_estacion;
         this.direccion = direccion;
@@ -37,30 +35,30 @@ public class Estaciones {
         this.longitud = longitud;
     }
 
-    public Estaciones(String nombre_estacion,  String direccion) {
+    public Estaciones(String nombre_estacion, String direccion) {
         this.nombre_estacion = nombre_estacion;
         this.direccion = direccion;
     }
 
-    public Estaciones(String nombre_estacion,  String direccion,String distrito) {
+    public Estaciones(String nombre_estacion, String direccion, String distrito) {
         this.nombre_estacion = nombre_estacion;
         this.direccion = direccion;
-        this.distrito=distrito;
+        this.distrito = distrito;
     }
 
-    public Estaciones(String nombre_estacion,  String direccion,String distrito,String Descripcion) {
+    public Estaciones(String nombre_estacion, String direccion, String distrito, String Descripcion) {
         this.nombre_estacion = nombre_estacion;
         this.direccion = direccion;
-        this.distrito=distrito;
-        this.descripcion=Descripcion;
+        this.distrito = distrito;
+        this.descripcion = Descripcion;
     }
 
-    public Estaciones(String id_estacion ,String nombre_estacion,  String direccion,String distrito,String Descripcion) {
+    public Estaciones(String id_estacion, String nombre_estacion, String direccion, String distrito, String Descripcion) {
         this.nombre_estacion = nombre_estacion;
         this.direccion = direccion;
-        this.distrito=distrito;
-        this.descripcion=Descripcion;
-        this.id_estaciones=id_estacion;
+        this.distrito = distrito;
+        this.descripcion = Descripcion;
+        this.id_estaciones = id_estacion;
     }
 
     public String getId_estaciones() {

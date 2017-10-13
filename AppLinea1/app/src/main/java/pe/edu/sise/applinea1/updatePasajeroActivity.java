@@ -36,7 +36,7 @@ import static pe.edu.sise.applinea1.ClassConstante.UDP_PASAJERO;
 public class updatePasajeroActivity extends AppCompatActivity {
 
     Button btnActualizar;
-    EditText nombre,apellido,celular,correo;
+    EditText nombre, apellido, celular, correo;
     Bundle datos;
     String numero_tarjeta;
     private NavigationView navigationView;
@@ -46,8 +46,8 @@ public class updatePasajeroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_pasajero);
-        navigationView=(NavigationView)findViewById(R.id.navview);
-        drawerLayout=(DrawerLayout) findViewById(R.id.drawer_ActualizarContacto);
+        navigationView = (NavigationView) findViewById(R.id.navview);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_ActualizarContacto);
         nombre = (EditText) findViewById(R.id.etNombreCompletoUpdate);
         apellido = (EditText) findViewById(R.id.etApellidoCompletoUpdate);
         celular = (EditText) findViewById(R.id.etTelefonoUpdate);
@@ -55,50 +55,49 @@ public class updatePasajeroActivity extends AppCompatActivity {
         btnActualizar = (Button) findViewById(R.id.btnUpdate);
         setToolbar();
         datos = this.getIntent().getExtras();
-       numero_tarjeta = datos.getString("numero_tarjeta");
+        numero_tarjeta = datos.getString("numero_tarjeta");
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.mnuUsuario:
-                        Intent a= new Intent(getApplicationContext(),updatePasajeroActivity.class);
-                        a.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent a = new Intent(getApplicationContext(), updatePasajeroActivity.class);
+                        a.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(a);
                         finish();
                         break;
                     case R.id.mnuRecarga:
-                        Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
-                        e.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent e = new Intent(getApplicationContext(), RecargaActivity.class);
+                        e.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(e);
                         finish();
                         break;
                     case R.id.mnuSaldo:
-                        Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
-                        i.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent i = new Intent(getApplicationContext(), consulta_saldo.class);
+                        i.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(i);
                         finish();
                         break;
                     case R.id.mnuEstacion:
-                        Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
-                        o.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent o = new Intent(getApplicationContext(), Lista_Estaciones.class);
+                        o.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(o);
                         finish();
                         break;
                     case R.id.mnuViaje:
-                        Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
-                        u.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent u = new Intent(getApplicationContext(), activity_calcular_viaje.class);
+                        u.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(u);
                         finish();
                         break;
                     case R.id.mnuContacto:
-                        Intent s=new Intent(getApplicationContext(),ContactanosActivity.class);
+                        Intent s = new Intent(getApplicationContext(), ContactanosActivity.class);
                         startActivity(s);
                         finish();
                         break;
                 }
-
                 return true;
             }
         });
@@ -110,7 +109,7 @@ public class updatePasajeroActivity extends AppCompatActivity {
         });
     }
 
-    private void UDP_Pasajero(){
+    private void UDP_Pasajero() {
 
         String validemail = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                 "\\@" +
@@ -121,55 +120,55 @@ public class updatePasajeroActivity extends AppCompatActivity {
                 ")+";
 
         String email = correo.getText().toString();
-        Matcher matcher= Pattern.compile(validemail).matcher(email);
+        Matcher matcher = Pattern.compile(validemail).matcher(email);
 
-        if(nombre.getText().toString().trim().equalsIgnoreCase("")){
+        if (nombre.getText().toString().trim().equalsIgnoreCase("")) {
             nombre.setError("Ingresar Nombres");
         }
 
-        if(apellido.getText().toString().trim().equalsIgnoreCase("")){
+        if (apellido.getText().toString().trim().equalsIgnoreCase("")) {
             apellido.setError("Ingresar Apellidos");
         }
 
-        if(celular.getText().toString().trim().equalsIgnoreCase("")){
+        if (celular.getText().toString().trim().equalsIgnoreCase("")) {
             celular.setError("Ingresar Celular");
         }
 
-        if(correo.getText().toString().trim().equalsIgnoreCase("")){
+        if (correo.getText().toString().trim().equalsIgnoreCase("")) {
             correo.setError("Ingresar Correo");
         }
 
-        if(matcher.matches()){
+        if (matcher.matches()) {
 
-        }else  {
+        } else {
             correo.setError("Ingresar correo válido!!!");
         }
 
-        if(    !nombre.getText().toString().trim().equalsIgnoreCase("") &&
+        if (!nombre.getText().toString().trim().equalsIgnoreCase("") &&
                 !apellido.getText().toString().trim().equalsIgnoreCase("") &&
                 !celular.getText().toString().trim().equalsIgnoreCase("") &&
-                !correo.getText().toString().trim().equalsIgnoreCase("")){
+                !correo.getText().toString().trim().equalsIgnoreCase("")) {
 
-            if(!matcher.matches()){
+            if (!matcher.matches()) {
                 correo.setError("Ingresar correo válido!!!");
-            }else  {
+            } else {
                 AsyncHttpClient client = new AsyncHttpClient();
-                try{
+                try {
                     String URL_UPDATE = DOMINIO + UDP_PASAJERO;
                     RequestParams params = new RequestParams();
-                    params.put("nombres_completo",nombre.getText().toString());
-                    params.put("apellidos_completo",apellido.getText().toString());
-                    params.put("telefono",celular.getText().toString());
-                    params.put("email",correo.getText().toString());
-                    params.put("nro_tarjeta",numero_tarjeta);
+                    params.put("nombres_completo", nombre.getText().toString());
+                    params.put("apellidos_completo", apellido.getText().toString());
+                    params.put("telefono", celular.getText().toString());
+                    params.put("email", correo.getText().toString());
+                    params.put("nro_tarjeta", numero_tarjeta);
 
                     client.post(URL_UPDATE, params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                            if(statusCode == 200){
+                            if (statusCode == 200) {
                                 Toast.makeText(updatePasajeroActivity.this, "Actualizado correctamente.", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(getApplicationContext(),MenuPrincipalActivity.class);
-                                i.putExtra("valor",numero_tarjeta);
+                                Intent i = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
+                                i.putExtra("valor", numero_tarjeta);
                                 startActivity(i);
                                 finish();
                             }
@@ -181,16 +180,15 @@ public class updatePasajeroActivity extends AppCompatActivity {
                         }
                     });
 
-                }catch (Exception e){
+                } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
-
         }
     }
-    private void setToolbar(){
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_top);
+    private void setToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -198,11 +196,9 @@ public class updatePasajeroActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
-
                 return true;
         }
         return super.onOptionsItemSelected(item);

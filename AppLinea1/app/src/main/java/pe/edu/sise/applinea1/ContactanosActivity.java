@@ -25,66 +25,67 @@ import com.squareup.picasso.Picasso;
 
 public class ContactanosActivity extends AppCompatActivity {
 
-    ImageButton imgFB,imgYou,imgTwitter,imgWeb;
-    Button imgCall,Cerrar_Sesion;
+    ImageButton imgFB, imgYou, imgTwitter, imgWeb;
+    Button imgCall, Cerrar_Sesion;
     private Context context;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     String numero_tarjeta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactanos);
-        navigationView=(NavigationView)findViewById(R.id.navview);
-        drawerLayout=(DrawerLayout) findViewById(R.id.drawer_contacto);
-        imgFB=(ImageButton)findViewById(R.id.imgFacebook);
-        imgYou=(ImageButton)findViewById(R.id.imgYoutube);
-        imgTwitter=(ImageButton)findViewById(R.id.imgTwitter);
-        imgWeb=(ImageButton)findViewById(R.id.imgWeb);
-        imgCall=(Button)findViewById(R.id.imgCall);
-        Cerrar_Sesion=(Button)findViewById(R.id.btnCerrarSesion);
+        navigationView = (NavigationView) findViewById(R.id.navview);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_contacto);
+        imgFB = (ImageButton) findViewById(R.id.imgFacebook);
+        imgYou = (ImageButton) findViewById(R.id.imgYoutube);
+        imgTwitter = (ImageButton) findViewById(R.id.imgTwitter);
+        imgWeb = (ImageButton) findViewById(R.id.imgWeb);
+        imgCall = (Button) findViewById(R.id.imgCall);
+        Cerrar_Sesion = (Button) findViewById(R.id.btnCerrarSesion);
         setToolbar();
 
         Bundle b = getIntent().getExtras();
-        numero_tarjeta =  b.getString("numero_tarjeta");
+        numero_tarjeta = b.getString("numero_tarjeta");
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.mnuUsuario:
-                        Intent a= new Intent(getApplicationContext(),updatePasajeroActivity.class);
-                        a.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent a = new Intent(getApplicationContext(), updatePasajeroActivity.class);
+                        a.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(a);
                         finish();
                         break;
                     case R.id.mnuRecarga:
-                        Intent e= new Intent(getApplicationContext(),RecargaActivity.class);
-                        e.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent e = new Intent(getApplicationContext(), RecargaActivity.class);
+                        e.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(e);
                         finish();
                         break;
                     case R.id.mnuSaldo:
-                        Intent i= new Intent(getApplicationContext(),consulta_saldo.class);
-                        i.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent i = new Intent(getApplicationContext(), consulta_saldo.class);
+                        i.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(i);
                         finish();
                         break;
                     case R.id.mnuEstacion:
-                        Intent o= new Intent(getApplicationContext(),Lista_Estaciones.class);
-                        o.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent o = new Intent(getApplicationContext(), Lista_Estaciones.class);
+                        o.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(o);
                         finish();
                         break;
                     case R.id.mnuViaje:
-                        Intent u= new Intent(getApplicationContext(),activity_calcular_viaje.class);
-                        u.putExtra("numero_tarjeta",numero_tarjeta.toString());
+                        Intent u = new Intent(getApplicationContext(), activity_calcular_viaje.class);
+                        u.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(u);
                         finish();
                         break;
                     case R.id.mnuContacto:
-                        Intent s=new Intent(getApplicationContext(),ContactanosActivity.class);
+                        Intent s = new Intent(getApplicationContext(), ContactanosActivity.class);
                         startActivity(s);
                         finish();
                         break;
@@ -94,7 +95,6 @@ public class ContactanosActivity extends AppCompatActivity {
             }
         });
 
-
         imgFB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,7 +102,7 @@ public class ContactanosActivity extends AppCompatActivity {
                 String urlPage = "https://www.facebook.com/Lineauno.pe";
 
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookId )));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookId)));
                 } catch (Exception e) {
 
                     //Abre url de pagina.
@@ -118,7 +118,7 @@ public class ContactanosActivity extends AppCompatActivity {
                 String urlPage = "https://www.youtube.com/user/Lineaunope";
 
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeID )));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeID)));
                 } catch (Exception e) {
 
                     //Abre url de pagina.
@@ -134,7 +134,7 @@ public class ContactanosActivity extends AppCompatActivity {
                 String urlPage = "https://twitter.com/lineaunope";
 
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeID )));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeID)));
                 } catch (Exception e) {
 
                     //Abre url de pagina.
@@ -154,48 +154,14 @@ public class ContactanosActivity extends AppCompatActivity {
         imgCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(Intent.ACTION_DIAL,Uri.parse("tel:080011121"));
+                Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:080011121"));
                 startActivity(i);
             }
         });
-
-        Cerrar_Sesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                DialogoConfirmacion3 dialogo = new DialogoConfirmacion3();
-                dialogo.show(fragmentManager,"tagAlerta");
-                AlertDialog.Builder builder =
-                        new AlertDialog.Builder(ContactanosActivity.this);
-
-                builder.setMessage("¿Desea cerrar Sesión?")
-                        .setTitle("Confirmacion")
-                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Log.i("Dialogos", "Confirmacion Aceptada.");
-                                Intent in = new Intent(getApplicationContext(),LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                                startActivity(in);
-                                dialog.cancel();
-
-
-                            }
-                        })
-                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Log.i("Dialogos", "Confirmacion Cancelada.");
-                                dialog.cancel();
-                            }
-                        });
-
-
-            }
-        });
-
     }
 
-    private void setToolbar(){
-
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_top);
+    private void setToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -203,8 +169,7 @@ public class ContactanosActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
 
