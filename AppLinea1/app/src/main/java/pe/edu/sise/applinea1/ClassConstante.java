@@ -1,7 +1,7 @@
 package pe.edu.sise.applinea1;
 
 public class ClassConstante {
-    //public static String DOMINIO = "http://192.168.1.35:8080/Archivos_Linea1/";
+    //public static String DOMINIO = "http://192.168.1.36:8080/Archivos_Linea1/";
     public static String DOMINIO = "https://linea1.000webhostapp.com/Linea1/";
     public static String URL_IMG_MENU = "Imagenes/Estacion";
     //public static String ENTIDAD_CATEGORIA = "Entidad_Persona.php";
@@ -26,6 +26,8 @@ public class ClassConstante {
     //Para Listar las Estaciones
     public static String UDP_SALDO= "update_Saldo.php";
     public static String NRO_TARJETA = "0";
+    public static String SERVICE_LINEA_CALCULAR = "http://www.lineauno.pe/includes/calcular_viaje_ajax.php";
+    public static String CONSULTA_ESTADO = "consulta_estacion.php";
     //Para Listar las Estaciones
     //public static String UDP_SALDO_VISA= "update_Saldo.php";
 }
