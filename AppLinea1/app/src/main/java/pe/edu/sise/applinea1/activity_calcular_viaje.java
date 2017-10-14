@@ -42,13 +42,14 @@ public class activity_calcular_viaje extends AppCompatActivity {
     public static int value_origen = 0;
     public static int value_destino = 0;
     public static int value_opcion = 0;
+    public int[] values =new int[27];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcular_viaje);
 
-        Button calcu_Viaje = (Button) findViewById(R.id.btnCalcular);
+        calcu_Viaje = (Button) findViewById(R.id.btnCalcular);
         drawerLayout = (DrawerLayout) findViewById(R.id.calcular_viaje);
         navigationView = (NavigationView) findViewById(R.id.navview);
         Spinner spinner_origen = (Spinner) findViewById(R.id.spinner_origen);
@@ -85,6 +86,14 @@ public class activity_calcular_viaje extends AppCompatActivity {
                 "Bayóvar"
 
         };
+
+        int v = 0;
+        int y = 26;
+        for (int x=1; x<=26;x++){
+            v = v + 1;
+            values[v] = y;
+            y = y - 1;
+        }
 
         String[] datos2 = new String[]{
                 "--Seleccione--",
@@ -137,7 +146,9 @@ public class activity_calcular_viaje extends AppCompatActivity {
 
                 if(selected_Origen != "--Seleccione--"){
                     value_opcion = 1;
-                    ObtenerIdEstacion(selected_Origen);
+                    value_origen = position;
+                    //calcu_Viaje.setEnabled(false);
+                    //ObtenerIdEstacion(selected_Origen);
                     Toast.makeText(getApplicationContext(), "Origen " + selected_Origen, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -154,7 +165,9 @@ public class activity_calcular_viaje extends AppCompatActivity {
                 String selected_Destino = parent.getItemAtPosition(position).toString();
                 if(selected_Destino != "--Seleccione--"){
                     value_opcion = 2;
-                    ObtenerIdEstacion(selected_Destino);
+                    value_destino = values[position];
+                    //calcu_Viaje.setEnabled(false);
+                    //ObtenerIdEstacion(selected_Destino);
                     Toast.makeText(getApplicationContext(), "Destino : " + selected_Destino, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -233,12 +246,14 @@ public class activity_calcular_viaje extends AppCompatActivity {
 
                             if(value_opcion == 1){
                                 value_origen = value;
+                                calcu_Viaje.setEnabled(true);
                             }else if(value_opcion == 2){
-                                value_destino = value;
+                                calcu_Viaje.setEnabled(true);
                             }
 
                         }else{
                             Toast.makeText(getApplicationContext(), "Debe Seleccionar las estaciones", Toast.LENGTH_SHORT).show();
+                            calcu_Viaje.setEnabled(true);
                         }
                     }
                 }
