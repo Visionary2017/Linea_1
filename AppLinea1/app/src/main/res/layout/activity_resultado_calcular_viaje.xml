@@ -35,7 +35,22 @@
             </android.support.v7.widget.Toolbar>
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp"
+                >
 
+                <org.sufficientlysecure.htmltextview.HtmlTextView
+                    android:layout_centerInParent="true"
+                    android:id="@+id/html_text"
+                    android:textAppearance="@android:style/TextAppearance.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+            <!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="89dp"
@@ -180,14 +195,13 @@
                 </LinearLayout>
 
             </LinearLayout>
-
+            -->
+            </LinearLayout>
 
 
         </android.support.design.widget.AppBarLayout>
 
 
     </LinearLayout>
-
-
 
 </android.support.v4.widget.DrawerLayout>
