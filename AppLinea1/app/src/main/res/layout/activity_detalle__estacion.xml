@@ -28,37 +28,46 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
 
 
     <TextView
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtNombreEstacion_Detalle"
-        android:textSize="25dp"
+        android:textSize="28dp"
         android:textStyle="bold"
+        android:textColor="@color/Black"
         android:textAlignment="center"/>
 
     <TextView
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20dp"
+        android:background="@drawable/btn_redondo"
+        android:layout_gravity="center_vertical|right"
+        android:padding="10dp"
         android:id="@+id/txtDetalle_Estacion"/>
+
+
 
     <Button
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnVerMapa"
-        android:text="Observar mapa"/>
-
+        android:layout_gravity="center"
+        android:drawableLeft="@drawable/ic_maps"
+        android:text="Visualizar en maps de Google"
+        android:padding="15dp"
+        />
 
 </LinearLayout>
 

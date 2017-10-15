@@ -126,9 +126,9 @@ public class activity_calcular_viaje extends AppCompatActivity {
         };
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, datos);
+                android.R.layout.simple_spinner_dropdown_item, datos);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, datos2);
+                android.R.layout.simple_spinner_dropdown_item, datos2);
         spinner_origen.setAdapter(adapter);
         spinner_destino.setAdapter(adapter2);
 

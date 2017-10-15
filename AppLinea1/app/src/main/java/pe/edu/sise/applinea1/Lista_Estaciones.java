@@ -1,5 +1,6 @@
 package pe.edu.sise.applinea1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -13,10 +14,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +41,7 @@ import java.util.List;
 
 import Entidades.Estaciones;
 import Entidades.EstacionesAdapter;
+import cz.msebera.android.httpclient.Header;
 
 import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
 import static pe.edu.sise.applinea1.ClassConstante.LISTAR_ESTACIONES;
@@ -55,11 +63,20 @@ public class Lista_Estaciones extends AppCompatActivity {
     public TextView longitud;
     String numero_tarjeta;
 
+
+    //private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager lManager;
+    private static RecyclerView.Adapter adapter;
+
+    public ArrayList<Entidad_Estacion> list;
+
+    public Context thiscontext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista__estaciones);
-        getJson(DOMINIO + LISTAR_ESTACIONES);
+        //getJson(DOMINIO + LISTAR_ESTACIONES);
         id_estacion = (TextView) findViewById(R.id.txtidEstacion);
         descipcion = (TextView) findViewById(R.id.txtDescripcion);
         nombre_estacion = (TextView) findViewById(R.id.txtNombreEstacion);
@@ -120,8 +137,12 @@ public class Lista_Estaciones extends AppCompatActivity {
                 return true;
             }
         });
+
+        ObtDatosEstacion();
+
     }
 
+    /*
     private void getJson(final String s) {
 
         class GetJson extends AsyncTask<Void, Void, String> {
@@ -164,7 +185,9 @@ public class Lista_Estaciones extends AppCompatActivity {
         GetJson geteJson = new GetJson();
         geteJson.execute();
     }
+    */
 
+/*
     private void loadIntoListView(String json) throws JSONException {
         JSONObject object = new JSONObject(json);
         JSONArray Jarray = object.getJSONArray("estacion");
@@ -206,12 +229,99 @@ public class Lista_Estaciones extends AppCompatActivity {
             }
         });
 
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(mAdapter);
     }
+*/
+
+
+    public void ObtDatosEstacion(){
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        //String url = "http://10.0.2.2:8080/Android-Web/Entidad_Categoria.php";
+        String url = DOMINIO + LISTAR_ESTACIONES;
+
+        RequestParams parametros = new RequestParams();
+
+        client.get(url, parametros, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200)
+                {
+                    list = new ArrayList<Entidad_Estacion>();
+                    list = obtieneDatosJSONEstacion(new String(responseBody));
+
+
+                    adapter = new EstacionAdapter(list, R.layout.item_estaciones, new EstacionAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(Entidad_Estacion estacion, int position) {
+
+                            Intent intent = new Intent(Lista_Estaciones.this, Detalle_Estacion.class);
+                            intent.putExtra("id_estacion", estacion.getId_estacion());
+                            intent.putExtra("nombre", estacion.getDescripcion());
+                            intent.putExtra("descripcion", estacion.getDescripcionestacion());
+                            intent.putExtra("latitud", estacion.getLatitud());
+                            intent.putExtra("longitud", estacion.getLongitud());
+                            startActivity(intent);
+                        }
+                    });
+
+                    recyclerView = (RecyclerView) findViewById(R.id.RecyclerViewEstaciones);
+                    recyclerView.setHasFixedSize(true);
+
+                    //Layout Manager
+                    lManager = new LinearLayoutManager(getApplicationContext());
+                    recyclerView.setLayoutManager(lManager);
+
+                    // Crear el adaptador
+                    //adapter = new EstacionAdapter(list);
+
+                    recyclerView.setAdapter(adapter);
+
+                    /*for (Entidad_Categoria item: list) {
+                        Log.i("Lista-Categoria",item.getDescripcion());
+                    }
+                    */
+                }
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Toast.makeText(getApplicationContext(), "onFail", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public ArrayList<Entidad_Estacion> obtieneDatosJSONEstacion(String response){
+        Entidad_Estacion obj = new Entidad_Estacion();
+        ArrayList<Entidad_Estacion> list = new ArrayList<Entidad_Estacion>();
+
+        try {
+
+            //JSONArray jsonArray2 = new JSONArray(response);
+            JSONObject object = new JSONObject(response);
+            JSONArray Jarray = object.getJSONArray("estacion");
+            for(int i=0;i<Jarray.length();i++) {
+                obj = new Entidad_Estacion();
+                obj.setId_estacion(Jarray.getJSONObject(i).getInt("id_estacion"));
+                obj.setDescripcion(Jarray.getJSONObject(i).getString("nombre_estacion"));
+                obj.setDescripcionGeneral(Jarray.getJSONObject(i).getString("distrito"));
+                obj.setDireccion(Jarray.getJSONObject(i).getString("direccion"));
+                obj.setIcon(Jarray.getJSONObject(i).getString("image"));
+                obj.setLatitud(Jarray.getJSONObject(i).getString("latitud"));
+                obj.setLongitud(Jarray.getJSONObject(i).getString("longitud"));
+                obj.setDescripcionestacion(Jarray.getJSONObject(i).getString("descripcion"));
+                list.add(obj);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+
 
     private void setToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_top);
