@@ -8,8 +8,344 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center"
+        >
 
+        <!--MENU V2-->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="6"
+            >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/btnActualizarUsuario"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            android:layout_margin="20dp"
+                            android:background="@drawable/btn_redondo_v2"
+                            android:elevation="6dp"
+                            android:gravity="center"
+                            >
+
+
+                            <ImageButton
+                                android:id="@+id/btnActualizarUsuario1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:background="@null"
+                                android:paddingBottom="10dp"
+                                android:src="@drawable/bloggif_59c1419548f48"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:textAlignment="center"
+                                android:text="ACTUALIZAR "
+                                android:textColor="@color/White"
+                                android:textSize="12sp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:text="USUARIO"
+                                android:textColor="@color/White"
+                                android:textSize="12sp"
+                                android:textStyle="bold"></TextView>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/btnRecargar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            android:layout_margin="20dp"
+                            android:background="@drawable/btn_redondo_v2"
+                            android:elevation="6dp"
+                            >
+
+                        <ImageButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:clickable="false"
+                            android:paddingBottom="10dp"
+                            android:src="@drawable/recargar"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:textAlignment="center"
+                            android:text="RECARGA"
+                            android:textColor="@color/White"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:textAlignment="center"
+                            android:text="SALDO"
+                            android:textColor="@color/White"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="6"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                >
+
+                <LinearLayout
+                    android:id="@+id/btnCalcular_Viaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/btn_redondo_v2"
+                    android:elevation="6dp"
+                    android:gravity="center"
+                    >
+
+
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:paddingBottom="10dp"
+                        android:clickable="false"
+                        android:src="@drawable/recarga"/>
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:textAlignment="center"
+                        android:text="CONSULTAR "
+                        android:textColor="@color/White"
+                        android:textSize="12sp"
+                        android:textStyle="bold"></TextView>
+
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:clickable="false"
+                        android:text="SALDO"
+                        android:textColor="@color/White"
+                        android:textSize="12sp"
+                        android:textStyle="bold"></TextView>
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                >
+
+                <LinearLayout
+                    android:id="@+id/btnEstaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/btn_redondo_v2"
+                    android:elevation="6dp"
+                    >
+
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:paddingBottom="10dp"
+                        android:clickable="false"
+                        android:src="@drawable/estaciones"/>
+
+                    <TextView
+                        android:id="@+id/textView31"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:textAlignment="center"
+                        android:text="ESTACIONES"
+                        android:textColor="@color/White"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/textView33"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:textAlignment="center"
+                        android:text="TREN"
+                        android:textColor="@color/White"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="6"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                >
+
+                <LinearLayout
+                    android:id="@+id/btnConsultarSaldo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/btn_redondo_v2"
+                    android:elevation="6dp"
+                    android:gravity="center"
+                    >
+
+
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:paddingBottom="10dp"
+                        android:clickable="false"
+                        android:src="@drawable/calcular_viaje"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:textAlignment="center"
+                        android:text="CALCULAR "
+                        android:textColor="@color/White"
+                        android:textSize="12sp"
+                        android:textStyle="bold"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:clickable="false"
+                        android:text="VIAJE"
+                        android:textColor="@color/White"
+                        android:textSize="12sp"
+                        android:textStyle="bold"></TextView>
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                >
+
+                <LinearLayout
+                    android:id="@+id/btnContacto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/btn_redondo_v2"
+                    android:elevation="6dp"
+                    >
+
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:paddingBottom="10dp"
+                        android:clickable="false"
+                        android:src="@drawable/contacto"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:textAlignment="center"
+                        android:text="CONTACTO"
+                        android:textColor="@color/White"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:textAlignment="center"
+                        android:text="LINEA 1"
+                        android:textColor="@color/White"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!--MENU V1-->
+
+        <!--
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -228,6 +564,17 @@
 
 
         </LinearLayout>
+        -->
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        >
 
         <TextView
             android:id="@+id/textView10"
@@ -239,7 +586,8 @@
             android:text="Linea1 ©"
             android:textAlignment="center"
             android:textColor="@color/Black"
-            android:textSize="10dp"></TextView>
+            android:textSize="10dp"/>
+
     </LinearLayout>
 
 

@@ -23,6 +23,8 @@ import android.widget.ImageButton;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+
 public class ContactanosActivity extends AppCompatActivity {
 
     ImageButton imgFB, imgYou, imgTwitter, imgWeb;
@@ -32,10 +34,20 @@ public class ContactanosActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     String numero_tarjeta;
 
+    // Session Manager Class
+    SessionManagement session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactanos);
+
+        session = new SessionManagement(getApplicationContext());
+
+        HashMap<String, String> user = session.getUserDetails();
+        // name
+        String tarjeta = user.get(SessionManagement.KEY_NRO_TARJETA);
+
         navigationView = (NavigationView) findViewById(R.id.navview);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_contacto);
         imgFB = (ImageButton) findViewById(R.id.imgFacebook);
@@ -46,8 +58,8 @@ public class ContactanosActivity extends AppCompatActivity {
         Cerrar_Sesion = (Button) findViewById(R.id.btnCerrarSesion);
         setToolbar();
 
-        Bundle b = getIntent().getExtras();
-        numero_tarjeta = b.getString("numero_tarjeta");
+        /*Bundle b = getIntent().getExtras();*/
+        numero_tarjeta = tarjeta;
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

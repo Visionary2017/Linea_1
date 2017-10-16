@@ -26,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -34,6 +35,8 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.impl.client.SystemDefaultCredentialsProvider;
@@ -49,88 +52,105 @@ public class MenuPrincipalActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private FragmentTransaction fragmentTransaction;
-    ImageButton act_Usuario, recarga, consul_Saldo, estacion, calcu_Viaje, contacto;
+    LinearLayout act_Usuario, recarga, consul_Saldo, estacion, calcu_Viaje, contacto;
 
     Bundle datos;
     String numero_tarjeta;
+
+    // Session Manager Class
+    SessionManagement session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
-        setToolbar();
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.navview);
-        act_Usuario = (ImageButton) findViewById(R.id.btnActualizarUsuario);
-        recarga = (ImageButton) findViewById(R.id.btnRecargar);
-        calcu_Viaje = (ImageButton) findViewById(R.id.btnCalcular_Viaje);
-        estacion = (ImageButton) findViewById(R.id.btnEstaciones);
-        consul_Saldo = (ImageButton) findViewById(R.id.btnConsultarSaldo);
-        contacto = (ImageButton) findViewById(R.id.btnContacto);
+        session = new SessionManagement(getApplicationContext());
+        session.checkLogin();
 
-        Button cerrar_Sesion = (Button) findViewById(R.id.btnCerrarSesion);
+        if(session.isLoggedIn()) {
 
-        datos = this.getIntent().getExtras();
-        numero_tarjeta = datos.getString("numero_tarjeta");
 
-        this.Botones();
-        //   this.Notificar_saldo();
-        this.Consultar_Saldo();
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            // get user data from session
+            HashMap<String, String> user = session.getUserDetails();
+            // name
+            String tarjeta = user.get(SessionManagement.KEY_NRO_TARJETA);
 
-                switch (item.getItemId()) {
-                    case R.id.mnuUsuario:
-                        Intent a = new Intent(getApplicationContext(), updatePasajeroActivity.class);
-                        a.putExtra("numero_tarjeta", numero_tarjeta.toString());
-                        startActivity(a);
-                        //finish();
-                        break;
-                    case R.id.mnuRecarga:
-                        Intent e = new Intent(getApplicationContext(), RecargaActivity.class);
-                        e.putExtra("numero_tarjeta", numero_tarjeta.toString());
-                        startActivity(e);
-                        // finish();
-                        break;
-                    case R.id.mnuSaldo:
-                        Intent i = new Intent(getApplicationContext(), consulta_saldo.class);
-                        i.putExtra("numero_tarjeta", numero_tarjeta.toString());
-                        startActivity(i);
-                        //finish();
-                        break;
-                    case R.id.mnuEstacion:
-                        Intent o = new Intent(getApplicationContext(), Lista_Estaciones.class);
-                        o.putExtra("numero_tarjeta", numero_tarjeta.toString());
-                        startActivity(o);
-                        // finish();
-                        break;
-                    case R.id.mnuViaje:
-                        Intent u = new Intent(getApplicationContext(), activity_calcular_viaje.class);
-                        u.putExtra("numero_tarjeta", numero_tarjeta.toString());
-                        startActivity(u);
-                        //  finish();
-                        break;
-                    case R.id.mnuContacto:
-                        Intent s = new Intent(getApplicationContext(), ContactanosActivity.class);
-                        s.putExtra("numero_tarjeta", numero_tarjeta.toString());
-                        startActivity(s);
-                        break;
+            setToolbar();
+            drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            navigationView = (NavigationView) findViewById(R.id.navview);
+            act_Usuario = (LinearLayout) findViewById(R.id.btnActualizarUsuario);
+            recarga = (LinearLayout) findViewById(R.id.btnRecargar);
+            calcu_Viaje = (LinearLayout) findViewById(R.id.btnCalcular_Viaje);
+            estacion = (LinearLayout) findViewById(R.id.btnEstaciones);
+            consul_Saldo = (LinearLayout) findViewById(R.id.btnConsultarSaldo);
+            contacto = (LinearLayout) findViewById(R.id.btnContacto);
+
+            Button cerrar_Sesion = (Button) findViewById(R.id.btnCerrarSesion);
+
+        /*datos = this.getIntent().getExtras();*/
+            numero_tarjeta = tarjeta;
+
+            this.Botones();
+            //   this.Notificar_saldo();
+            this.Consultar_Saldo();
+            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                    switch (item.getItemId()) {
+                        case R.id.mnuUsuario:
+                            Intent a = new Intent(getApplicationContext(), updatePasajeroActivity.class);
+                            a.putExtra("numero_tarjeta", numero_tarjeta.toString());
+                            startActivity(a);
+                            //finish();
+                            break;
+                        case R.id.mnuRecarga:
+                            Intent e = new Intent(getApplicationContext(), RecargaActivity.class);
+                            e.putExtra("numero_tarjeta", numero_tarjeta.toString());
+                            startActivity(e);
+                            // finish();
+                            break;
+                        case R.id.mnuSaldo:
+                            Intent i = new Intent(getApplicationContext(), consulta_saldo.class);
+                            i.putExtra("numero_tarjeta", numero_tarjeta.toString());
+                            startActivity(i);
+                            //finish();
+                            break;
+                        case R.id.mnuEstacion:
+                            Intent o = new Intent(getApplicationContext(), Lista_Estaciones.class);
+                            o.putExtra("numero_tarjeta", numero_tarjeta.toString());
+                            startActivity(o);
+                            // finish();
+                            break;
+                        case R.id.mnuViaje:
+                            Intent u = new Intent(getApplicationContext(), activity_calcular_viaje.class);
+                            u.putExtra("numero_tarjeta", numero_tarjeta.toString());
+                            startActivity(u);
+                            //  finish();
+                            break;
+                        case R.id.mnuContacto:
+                            Intent s = new Intent(getApplicationContext(), ContactanosActivity.class);
+                            s.putExtra("numero_tarjeta", numero_tarjeta.toString());
+                            startActivity(s);
+                            break;
+                    }
+
+                    return true;
                 }
+            });
 
-                return true;
-            }
-        });
+            cerrar_Sesion.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    DialogoConfirmacion2 dialogo = new DialogoConfirmacion2();
+                    dialogo.show(fragmentManager, "tagAlerta");
+                }
+            });
 
-        cerrar_Sesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                DialogoConfirmacion2 dialogo = new DialogoConfirmacion2();
-                dialogo.show(fragmentManager, "tagAlerta");
-            }
-        });
+
+        }
 
     }
 
@@ -221,9 +241,15 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        /*FragmentManager fragmentManager = getSupportFragmentManager();
         DialogoConfirmacion dialogo = new DialogoConfirmacion();
-        dialogo.show(fragmentManager, "tagAlerta");
+        dialogo.show(fragmentManager, "tagAlerta");*/
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+        startActivity(intent);
+        finish();
+        //System.exit(0);
     }
 
 
@@ -301,6 +327,10 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 }
 
 class DialogoConfirmacion extends DialogFragment {
+
+    // Session Manager Class
+    SessionManagement session;
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -328,8 +358,12 @@ class DialogoConfirmacion extends DialogFragment {
 
 
 class DialogoConfirmacion2 extends DialogFragment {
+    // Session Manager Class
+    SessionManagement session;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        session = new SessionManagement(getContext());
 
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(getActivity());
@@ -339,7 +373,8 @@ class DialogoConfirmacion2 extends DialogFragment {
                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Log.i("Dialogos", "Confirmacion Aceptada.");
-                        System.exit(0);
+                        session.logoutUser();
+                        //System.exit(0);
                         dialog.cancel();
                     }
                 })

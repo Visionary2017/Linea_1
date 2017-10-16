@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,6 +44,9 @@ public class updatePasajeroActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
 
+    // Session Manager Class
+    SessionManagement session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +59,19 @@ public class updatePasajeroActivity extends AppCompatActivity {
         correo = (EditText) findViewById(R.id.etCorreoUpdate);
         btnActualizar = (Button) findViewById(R.id.btnUpdate);
         setToolbar();
-        datos = this.getIntent().getExtras();
-        numero_tarjeta = datos.getString("numero_tarjeta");
+
+        session = new SessionManagement(getApplicationContext());
+
+        HashMap<String, String> user = session.getUserDetails();
+        // name
+        String tarjeta = user.get(SessionManagement.KEY_NRO_TARJETA);
+
+        /*datos = this.getIntent().getExtras();*/
+        numero_tarjeta = tarjeta;
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 switch (item.getItemId()) {
                     case R.id.mnuUsuario:
                         Intent a = new Intent(getApplicationContext(), updatePasajeroActivity.class);

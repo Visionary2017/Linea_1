@@ -27,11 +27,15 @@ public class LoginActivity extends AppCompatActivity {
     TextView tvRegistro, tvVisitante;
     EditText etUsu, etPass;
     Button btnLog;
-
+    // Session Manager Class
+    SessionManagement session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // Session Manager
+        session = new SessionManagement(getApplicationContext());
 
         //toolbar = (View) findViewById(R.id.toolbarLogin);
         tvRegistro = (TextView) findViewById(R.id.tvRegistro);
@@ -75,8 +79,10 @@ public class LoginActivity extends AppCompatActivity {
                         etPass.setText("");
                         etUsu.requestFocus();
                         btnLog.setEnabled(true);
+                        String nro_tarjeta = obtieneDatosJSON(new String(responseBody)).toString();
+                        session.createLoginSession(nro_tarjeta);
                         Intent intent = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
-                        intent.putExtra("numero_tarjeta", obtieneDatosJSON(new String(responseBody)).toString());
+                        intent.putExtra("numero_tarjeta", nro_tarjeta);
                         startActivity(intent);
                     }
                 }
@@ -93,6 +99,16 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+        startActivity(intent);
+        finish();
+        //System.exit(0);
+    }
 
     public String obtieneDatosJSON(String response) {
         String texto = "";

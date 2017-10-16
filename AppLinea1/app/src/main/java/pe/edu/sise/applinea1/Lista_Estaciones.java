@@ -37,6 +37,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import Entidades.Estaciones;
@@ -72,10 +73,19 @@ public class Lista_Estaciones extends AppCompatActivity {
 
     public Context thiscontext;
 
+    // Session Manager Class
+    SessionManagement session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista__estaciones);
+        session = new SessionManagement(getApplicationContext());
+
+        HashMap<String, String> user = session.getUserDetails();
+        // name
+        String tarjeta = user.get(SessionManagement.KEY_NRO_TARJETA);
+
         //getJson(DOMINIO + LISTAR_ESTACIONES);
         id_estacion = (TextView) findViewById(R.id.txtidEstacion);
         descipcion = (TextView) findViewById(R.id.txtDescripcion);
@@ -90,8 +100,8 @@ public class Lista_Estaciones extends AppCompatActivity {
         navigationView = (NavigationView) findViewById(R.id.navview);
         setToolbar();
 
-        Bundle b = getIntent().getExtras();
-        numero_tarjeta = b.getString("numero_tarjeta");
+        //Bundle b = getIntent().getExtras();
+        numero_tarjeta = tarjeta;
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -339,6 +349,17 @@ public class Lista_Estaciones extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+        startActivity(intent);
+        finish();
+        //System.exit(0);
     }
 
 }

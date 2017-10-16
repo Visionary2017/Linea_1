@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
 
 public class RecargaActivity extends AppCompatActivity {
 
@@ -26,17 +27,27 @@ public class RecargaActivity extends AppCompatActivity {
     Bundle datos;
     String numero_tarjeta;
 
+    // Session Manager Class
+    SessionManagement session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recarga);
+
+        session = new SessionManagement(getApplicationContext());
+
+        HashMap<String, String> user = session.getUserDetails();
+        // name
+        String tarjeta = user.get(SessionManagement.KEY_NRO_TARJETA);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_recarga);
         navigationView = (NavigationView) findViewById(R.id.navview);
         btnSiguiente = (Button) findViewById(R.id.btnSiguienteRecargar);
         setToolbar();
 
-        datos = this.getIntent().getExtras();
-        numero_tarjeta = datos.getString("numero_tarjeta");
+        /*datos = this.getIntent().getExtras()*/;
+        numero_tarjeta = tarjeta;
 
         monto_Recarga = (EditText) findViewById(R.id.etMonto_Recarga);
 

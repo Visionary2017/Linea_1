@@ -12,7 +12,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:background="@color/Black"/>
+        android:src="@drawable/ic_user_nav"/>
 
     <TextView
         android:id="@+id/textView"
@@ -28,7 +28,7 @@
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="A linea 1"
+        android:text="A Linea 1"
         android:textColor="@color/White"
         android:textStyle="bold"/>
 
