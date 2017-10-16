@@ -170,6 +170,17 @@ public class ContactanosActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button cerrar_Sesion = (Button) findViewById(R.id.btnCerrarSesion);
+
+        cerrar_Sesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                DialogoConfirmacion2 dialogo = new DialogoConfirmacion2();
+                dialogo.show(fragmentManager, "tagAlerta");
+            }
+        });
     }
 
     private void setToolbar() {

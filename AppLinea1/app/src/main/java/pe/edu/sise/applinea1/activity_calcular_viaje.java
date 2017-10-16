@@ -3,6 +3,7 @@ package pe.edu.sise.applinea1;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -234,6 +235,17 @@ public class activity_calcular_viaje extends AppCompatActivity {
                 }
 
                 return true;
+            }
+        });
+
+        Button cerrar_Sesion = (Button) findViewById(R.id.btnCerrarSesion);
+
+        cerrar_Sesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                DialogoConfirmacion2 dialogo = new DialogoConfirmacion2();
+                dialogo.show(fragmentManager, "tagAlerta");
             }
         });
 
