@@ -268,7 +268,7 @@ public class Lista_Estaciones extends AppCompatActivity {
                         @Override
                         public void onItemClick(Entidad_Estacion estacion, int position) {
 
-                            Intent intent = new Intent(Lista_Estaciones.this, Detalle_Estacion.class);
+                            Intent intent = new Intent(getApplicationContext(), Detalle_Estacion.class);
                             intent.putExtra("id_estacion", estacion.getId_estacion());
                             intent.putExtra("nombre", estacion.getDescripcion());
                             intent.putExtra("descripcion", estacion.getDescripcionestacion());
