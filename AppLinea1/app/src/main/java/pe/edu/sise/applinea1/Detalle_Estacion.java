@@ -69,7 +69,8 @@ public class Detalle_Estacion extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(getApplicationContext(), Lista_Estaciones.class);
+                startActivity(intent);
             }
         });
     }

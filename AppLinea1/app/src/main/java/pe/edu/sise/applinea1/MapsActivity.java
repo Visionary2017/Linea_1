@@ -54,7 +54,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                //finish()
+                Intent intent = new Intent(getApplicationContext(), Lista_Estaciones.class);
+                startActivity(intent);
             }
         });
     }
@@ -111,5 +113,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
+    public void onBackPressed() {
+        //super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), Lista_Estaciones.class);
+        startActivity(intent);
+        //System.exit(0);
+    }
 
 }

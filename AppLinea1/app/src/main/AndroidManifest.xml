@@ -97,6 +97,7 @@
             />
         <activity android:name=".Detalle_Estacion"
             android:label="Detalle Estación"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             />
         <!--
@@ -113,6 +114,7 @@
 
         <activity
             android:name=".MapsActivity"
+            android:noHistory="true"
             android:label="Mapa de Estación" />
         <activity android:name=".ContactanosActivity"
             android:label="Contáctanos"></activity>
