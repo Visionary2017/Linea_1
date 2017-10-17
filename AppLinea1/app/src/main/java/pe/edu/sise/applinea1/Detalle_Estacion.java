@@ -20,11 +20,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Detalle_Estacion extends AppCompatActivity {
 
-    String id_estacion;
-    String Nombre;
-    String descripcion;
-    String latitud;
-    String longitud;
+    public String id_estacion = "";
+    public String Nombre = "";
+    public String descripcion = "";
+    public String latitud = "";
+    public String longitud = "";
     private TextView txtnombre;
     private TextView txtdescripcion;
     private Button btnMapa;
@@ -43,27 +43,32 @@ public class Detalle_Estacion extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar_top);
         setToolbar();
 
-        Bundle b = getIntent().getExtras();
-        id_estacion = b.getString("id_estacion");
-        Nombre = b.getString("nombre");
-        descripcion = b.getString("descripcion");
-        latitud = b.getString("latitud");
-        longitud = b.getString("longitud");
+
+        if (id_estacion == ""){
+            Bundle b = getIntent().getExtras();
+            id_estacion = b.getString("id_estacion");
+            Nombre = b.getString("nombre");
+            descripcion = b.getString("descripcion");
+            latitud = b.getString("latitud");
+            longitud = b.getString("longitud");
+        }
 
         txtnombre.setText(Nombre);
         txtdescripcion.setText("Estación " + descripcion);
-        lat = Double.parseDouble(latitud);
-        lon = Double.parseDouble(longitud);
+        /*lat = Double.parseDouble(latitud);
+        lon = Double.parseDouble(longitud);*/
 
         btnMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Detalle_Estacion.this, MapsActivity.class);
-                intent.putExtra("latitud", lat);
-                intent.putExtra("longitud", lon);
+                intent.putExtra("id_estacion",id_estacion);
+                intent.putExtra("descripcion",descripcion);
+                intent.putExtra("latitud", latitud);
+                intent.putExtra("longitud", longitud);
                 intent.putExtra("nombre", Nombre);
                 startActivity(intent);
-                Toast.makeText(Detalle_Estacion.this, "Latitud: " + lat + "Longitud: " + lon, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Detalle_Estacion.this, "Latitud: " + lat + "Longitud: " + lon, Toast.LENGTH_SHORT).show();
             }
         });
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

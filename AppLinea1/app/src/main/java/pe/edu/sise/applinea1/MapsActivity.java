@@ -26,11 +26,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private static final int LOCATION_REQUEST_CODE = 1;
     private GoogleMap mMap;
-    Double latitud, milatitud;
-    Double longitud, milongitud;
+    String latitud, milatitud;
+    String longitud, milongitud;
     String nombre;
     Toolbar toolbar;
     MapsActivity mapsActivity;
+    public String id_estacion = "";
+    public String descripcion = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_maps);
         toolbar = (Toolbar) findViewById(R.id.toolbar_top);
         Bundle b = getIntent().getExtras();
-        latitud = b.getDouble("latitud");
-        longitud = b.getDouble("longitud");
+        id_estacion = b.getString("id_estacion");
+        descripcion = b.getString("descripcion");
+        latitud = b.getString("latitud");
+        longitud = b.getString("longitud");
         nombre = b.getString("nombre");
         setToolbar();
 
@@ -54,8 +58,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //finish()
-                Intent intent = new Intent(getApplicationContext(), Lista_Estaciones.class);
+                //finish();
+                Intent intent = new Intent(getApplicationContext(), Detalle_Estacion.class);
+                intent.putExtra("id_estacion",id_estacion);
+                intent.putExtra("descripcion",descripcion);
+                intent.putExtra("latitud", latitud);
+                intent.putExtra("longitud", longitud);
+                intent.putExtra("nombre", nombre);
                 startActivity(intent);
             }
         });
@@ -75,8 +84,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        Double lat = Double.parseDouble(latitud);
+        Double lon = Double.parseDouble(longitud);
+
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(latitud, longitud);
+        LatLng sydney = new LatLng(lat, lon);
         float zoom = 18;
         mMap.addMarker(new MarkerOptions().position(sydney).title("Estación " + nombre));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoom));
@@ -113,9 +125,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
+
     public void onBackPressed() {
         //super.onBackPressed();
-        Intent intent = new Intent(getApplicationContext(), Lista_Estaciones.class);
+        Intent intent = new Intent(getApplicationContext(), Detalle_Estacion.class);
+        intent.putExtra("id_estacion",id_estacion);
+        intent.putExtra("descripcion",descripcion);
+        intent.putExtra("latitud", latitud);
+        intent.putExtra("longitud", longitud);
+        intent.putExtra("nombre", nombre);
         startActivity(intent);
         //System.exit(0);
     }
