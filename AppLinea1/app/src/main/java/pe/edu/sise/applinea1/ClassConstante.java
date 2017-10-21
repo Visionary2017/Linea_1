@@ -30,4 +30,8 @@ public class ClassConstante {
     public static String CONSULTA_ESTADO = "consulta_estacion.php";
     //Para Listar las Estaciones
     //public static String UDP_SALDO_VISA= "update_Saldo.php";
+
+    //Consultar tarjeta tren
+    public static String CONSULTA_TARJETA_TREN = "verificar_tarjeta_tren.php";
+
 }

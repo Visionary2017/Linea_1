@@ -18,15 +18,21 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.nio.ByteBuffer;
 
 import cz.msebera.android.httpclient.Header;
+
+import static pe.edu.sise.applinea1.ClassConstante.CONSULTA_TARJETA_TREN;
+import static pe.edu.sise.applinea1.ClassConstante.DOMINIO;
 
 
 public class Registro3Activity extends AppCompatActivity {
 
     private NfcAdapter nfcAdapter;
-
+    String tagInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,17 +66,22 @@ public class Registro3Activity extends AppCompatActivity {
 
         if (nfcAdapter.ACTION_TAG_DISCOVERED.equals(action)) {
             Tag tag = intent.getParcelableExtra(nfcAdapter.EXTRA_TAG);
-            String tagInfo = tag.toString();
+            tagInfo = tag.toString();
             byte[] tagId = tag.getId();
             tagInfo = "" + ByteBuffer.wrap(tagId).getInt();
+
             Intent i = new Intent(getApplicationContext(), RegistroActivity.class);
             i.putExtra("nfc", tagInfo);
             startActivity(i);
+
+
         } else {
 
         }
 
     }
+
+
 
 
 }
