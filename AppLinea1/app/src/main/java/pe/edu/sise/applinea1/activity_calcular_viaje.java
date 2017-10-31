@@ -1,5 +1,6 @@
 package pe.edu.sise.applinea1;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -252,9 +253,11 @@ public class activity_calcular_viaje extends AppCompatActivity {
     }
 
     public void Calcular_Viaje() {
-
-
         AsyncHttpClient client = new AsyncHttpClient();
+        final ProgressDialog progressDialog=new ProgressDialog(activity_calcular_viaje.this);
+        progressDialog.setTitle("Calculando");
+        progressDialog.setMessage("Espere por favor...");
+        progressDialog.show();
         try {
 
             if(value_origen > 0 && value_destino > 0){
@@ -269,6 +272,7 @@ public class activity_calcular_viaje extends AppCompatActivity {
                         if (statusCode == 200) {
                             Intent intent = new Intent(getApplicationContext(), activity_resultado_calcular_viaje.class);
                             intent.putExtra("html_text", obtieneDatosJSON(new String(responseBody)).toString());
+                            progressDialog.cancel();
                             startActivity(intent);
                         }
                     }
@@ -276,14 +280,17 @@ public class activity_calcular_viaje extends AppCompatActivity {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                         Toast.makeText(getApplicationContext(), "onFail", Toast.LENGTH_SHORT).show();
+                        progressDialog.cancel();
                         //btnLog.setEnabled(true);
                     }
                 });
             }else{
+                progressDialog.cancel();
                 Toast.makeText(getApplicationContext(), "Seleccione ambas estaciones", Toast.LENGTH_SHORT).show();
             }
 
         } catch (Exception e) {
+            progressDialog.cancel();
             Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }

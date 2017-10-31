@@ -1,5 +1,6 @@
 package pe.edu.sise.applinea1;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -55,17 +56,24 @@ public class RecargaVirtualActivity extends AppCompatActivity {
             public void onClick(View v) {
                 /*Intent i  = new Intent(getApplicationContext(),PagoRealizadoActivity.class);
                 startActivity(i);*/
+                final ProgressDialog progressDialog=new ProgressDialog(RecargaVirtualActivity.this);
+                progressDialog.setTitle("Cargando Datos");
+                progressDialog.setMessage("Espere por favor...");
+                progressDialog.show();
 
                 if (num_tar_visa.getText().toString().trim().equalsIgnoreCase("")) {
                     num_tar_visa.setError("Ingresar Número de Tarjeta.");
+                    progressDialog.cancel();
                 }
 
                 if (fecha_ven.getText().toString().trim().equalsIgnoreCase("")) {
                     fecha_ven.setError("Ingresar fecha de expiración.");
+                    progressDialog.cancel();
                 }
 
                 if (cv.getText().toString().trim().equalsIgnoreCase("")) {
                     cv.setError("Ingresar código de verificación.");
+                    progressDialog.cancel();
                 }
 
 
@@ -75,6 +83,7 @@ public class RecargaVirtualActivity extends AppCompatActivity {
 
                     if (num_tar_visa.getText().length() <= 15) {
                         num_tar_visa.setError("Ingresar Tarjeta completa.");
+                        progressDialog.cancel();
                     } else {
                         AsyncHttpClient client = new AsyncHttpClient();
                         try {
@@ -89,10 +98,11 @@ public class RecargaVirtualActivity extends AppCompatActivity {
                                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
                                     if (statusCode == 200 && obtieneDatosJSON(new String(responseBody)).toString().equals("ERROR-01")) {
-
+                                        progressDialog.cancel();
                                         Toast.makeText(getApplicationContext(), "Datos incorrectos, ingresar nuevamente.", Toast.LENGTH_SHORT).show();
 
                                     } else if (statusCode == 200) {
+                                        progressDialog.cancel();
                                         Toast.makeText(getApplicationContext(), "Tarjeta correctamente ingresada", Toast.LENGTH_SHORT).show();
 
                                         //VERIFICAR QUE TENGA SALDO
@@ -111,10 +121,11 @@ public class RecargaVirtualActivity extends AppCompatActivity {
                                                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
                                                     if (statusCode == 200 && obtieneDatosJSON2(new String(responseBody)).toString().equals("ERROR-01")) {
-
+                                                        progressDialog.cancel();
                                                         Toast.makeText(getApplicationContext(), "No cuenta con el saldo suficiente.", Toast.LENGTH_SHORT).show();
 
                                                     } else if (statusCode == 200) {
+                                                        progressDialog.cancel();
                                                         Toast.makeText(getApplicationContext(), "Cuenta con saldo suficiente", Toast.LENGTH_SHORT).show();
 
                                                         AsyncHttpClient client2 = new AsyncHttpClient();
@@ -128,8 +139,10 @@ public class RecargaVirtualActivity extends AppCompatActivity {
                                                                 @Override
                                                                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                                                                     if (statusCode == 200 && obtieneDatosJSON3(new String(responseBody)).toString().equals("ERROR-01")) {
+                                                                        progressDialog.cancel();
                                                                         //Toast.makeText(getApplicationContext(), "Tarjeta no concuerda", Toast.LENGTH_SHORT).show();
                                                                     } else if (statusCode == 200) {
+                                                                        progressDialog.cancel();
                                                                         Toast.makeText(getApplicationContext(), "Transacción correcta", Toast.LENGTH_SHORT).show();
 
                                                                         AsyncHttpClient client3 = new AsyncHttpClient();
@@ -143,9 +156,9 @@ public class RecargaVirtualActivity extends AppCompatActivity {
                                                                                 @Override
                                                                                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                                                                                     if (statusCode == 200 && obtieneDatosJSON3(new String(responseBody)).toString().equals("ERROR-01")) {
-
+                                                                                        progressDialog.cancel();
                                                                                     } else if (statusCode == 200) {
-
+                                                                                        progressDialog.cancel();
                                                                                         Intent i = new Intent(getApplicationContext(), PagoRealizadoActivity.class);
                                                                                         i.putExtra("numero_tarjeta", numero_tarjeta);
                                                                                         i.putExtra("monto_recarga", monto_Recarga);
@@ -155,12 +168,13 @@ public class RecargaVirtualActivity extends AppCompatActivity {
 
                                                                                 @Override
                                                                                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                                                                                    progressDialog.cancel();
                                                                                 }
                                                                             });
 
                                                                         } catch (Exception e) {
                                                                             Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                            progressDialog.cancel();
                                                                         }
 
                                                                     }
@@ -168,12 +182,13 @@ public class RecargaVirtualActivity extends AppCompatActivity {
 
                                                                 @Override
                                                                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                                                                    progressDialog.cancel();
                                                                 }
                                                             });
 
                                                         } catch (Exception e) {
                                                             Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                            progressDialog.cancel();
                                                         }
                                                     }
 
@@ -181,11 +196,12 @@ public class RecargaVirtualActivity extends AppCompatActivity {
 
                                                 @Override
                                                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                                                    progressDialog.cancel();
                                                 }
                                             });
 
                                         } catch (Exception e) {
+                                            progressDialog.cancel();
                                             Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     }
@@ -195,11 +211,13 @@ public class RecargaVirtualActivity extends AppCompatActivity {
                                 @Override
                                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                                     //Toast.makeText(RecargaVirtualActivity.this, "No esta en la BD", Toast.LENGTH_SHORT).show();
+                                    progressDialog.cancel();
                                 }
                             });
 
                         } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            progressDialog.cancel();
                         }
                     }
                 }

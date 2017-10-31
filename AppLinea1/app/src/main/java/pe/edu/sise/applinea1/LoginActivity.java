@@ -1,12 +1,16 @@
 package pe.edu.sise.applinea1;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLog;
     // Session Manager Class
     SessionManagement session;
+    ProgressBar progressBarCircular;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +49,25 @@ public class LoginActivity extends AppCompatActivity {
         etUsu = (EditText) findViewById(R.id.etUsua);
         etPass = (EditText) findViewById(R.id.etContrasena);
         btnLog = (Button) findViewById(R.id.btnLogin);
+        progressBarCircular=(ProgressBar)findViewById(R.id.progressBar2);
+
 
         btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Acceso_Menu();
+                Cargando();
             }
         });
+
+
+    }
+
+    private void Cargando(){
+        ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
+        progressDialog.setTitle("Ingresando");
+        progressDialog.setMessage("Cargando...Espere por favor...");
+        progressDialog.show();
     }
 
     public void Acceso_Menu() {
@@ -69,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         etPass.setText("");
                         btnLog.setEnabled(true);
                         Toast.makeText(getApplicationContext(), "Credenciales incorrectas.", Toast.LENGTH_SHORT).show();
+
                     } else if (statusCode == 200 && obtieneDatosJSON(new String(responseBody)).toString().equals("ERROR-02")) {
                         etPass.setText("");
                         btnLog.setEnabled(true);

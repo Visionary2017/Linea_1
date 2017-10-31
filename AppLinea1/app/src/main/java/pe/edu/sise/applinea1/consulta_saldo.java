@@ -1,5 +1,6 @@
 package pe.edu.sise.applinea1;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -113,6 +114,10 @@ public class consulta_saldo extends AppCompatActivity {
 
     public void Consultar_Saldo() {
         AsyncHttpClient client = new AsyncHttpClient();
+        final ProgressDialog progressDialog=new ProgressDialog(consulta_saldo.this);
+        progressDialog.setTitle("Cargando");
+        progressDialog.setMessage("Espere por favor...");
+        progressDialog.show();
         try {
             String URL_SALDO = DOMINIO + MOSTRAR_SALDO;
             RequestParams parametros = new RequestParams();
@@ -128,17 +133,20 @@ public class consulta_saldo extends AppCompatActivity {
                         String value = obtieneDatosJSON(new String(responseBody)).toString();
                         lblConsultaSaldo.setText("S/. " + value);
                         Toast.makeText(getApplicationContext(), "Respuesta Exitosa.", Toast.LENGTH_SHORT).show();
+                        progressDialog.cancel();
                     }
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     Toast.makeText(getApplicationContext(), "Error de conexion", Toast.LENGTH_SHORT).show();
+                    progressDialog.cancel();
                 }
             });
 
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            progressDialog.cancel();
         }
     }
 

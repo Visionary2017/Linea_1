@@ -1,10 +1,12 @@
 package pe.edu.sise.applinea1;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -21,13 +23,18 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private static final int LOCATION_REQUEST_CODE = 1;
     private GoogleMap mMap;
-    String latitud, milatitud;
-    String longitud, milongitud;
+    Location loc;
+    LocationManager locationManager;
+    String latitud;
+    String longitud;
+    Double milatitud,milongitud;
     String nombre;
     Toolbar toolbar;
     MapsActivity mapsActivity;
@@ -46,8 +53,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         longitud = b.getString("longitud");
         nombre = b.getString("nombre");
         setToolbar();
-
-
+        locationManager=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -95,7 +101,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         float zoom = 18;
         mMap.addMarker(new MarkerOptions().position(sydney).title("Estación " + nombre));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoom));
-
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);

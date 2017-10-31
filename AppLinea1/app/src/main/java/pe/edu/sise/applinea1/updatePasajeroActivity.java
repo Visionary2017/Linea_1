@@ -1,6 +1,7 @@
 package pe.edu.sise.applinea1;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -72,6 +73,7 @@ public class updatePasajeroActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
                 switch (item.getItemId()) {
                     case R.id.mnuUsuario:
                         Intent a = new Intent(getApplicationContext(), updatePasajeroActivity.class);
@@ -128,10 +130,17 @@ public class updatePasajeroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 UDP_Pasajero();
+                Cargando();
             }
         });
     }
 
+    private void Cargando(){
+        ProgressDialog progressDialog=new ProgressDialog(updatePasajeroActivity.this);
+        progressDialog.setTitle("Actualizando");
+        progressDialog.setMessage("Espere por favor...");
+        progressDialog.show();
+    }
     private void UDP_Pasajero() {
 
         String validemail = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +

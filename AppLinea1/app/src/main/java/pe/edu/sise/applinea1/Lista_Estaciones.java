@@ -1,5 +1,6 @@
 package pe.edu.sise.applinea1;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -101,6 +102,7 @@ public class Lista_Estaciones extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.ListaEstaciones);
         navigationView = (NavigationView) findViewById(R.id.navview);
         setToolbar();
+        Cargando();
 
         //Bundle b = getIntent().getExtras();
         numero_tarjeta = tarjeta;
@@ -165,103 +167,17 @@ public class Lista_Estaciones extends AppCompatActivity {
 
     }
 
-    /*
-    private void getJson(final String s) {
+    private void Cargando(){
 
-        class GetJson extends AsyncTask<Void, Void, String> {
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                //Toast.makeText(Lista_Estaciones.this, s, Toast.LENGTH_SHORT).show();
-                try {
-                    loadIntoListView(s);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            protected String doInBackground(Void... params) {
-                try {
-                    URL url = new URL(s);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder();
-                    BufferedReader bufferedReader = new BufferedReader((new InputStreamReader(con.getInputStream())));
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null) {
-                        sb.append(json + "\n");
-                    }
-                    return sb.toString().trim();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                return null;
-            }
-        }
-        GetJson geteJson = new GetJson();
-        geteJson.execute();
     }
-    */
-
-/*
-    private void loadIntoListView(String json) throws JSONException {
-        JSONObject object = new JSONObject(json);
-        JSONArray Jarray = object.getJSONArray("estacion");
-        final String[] heroes = new String[Jarray.length()];
-        String id_estacion = null;
-        String Nombre = null;
-        String Direccion = null;
-        String Distrito = null;
-        String Descripcion = null;
-        String Latitud = null;
-        String Longitud = null;
-        ArrayList<Estaciones> arrayList = new ArrayList<>();
-        for (int i = 0; i < Jarray.length(); i++) {
-
-            id_estacion = Jarray.getJSONObject(i).getString("id_estacion");
-            Nombre = Jarray.getJSONObject(i).getString("nombre_estacion");
-            Distrito = Jarray.getJSONObject(i).getString("distrito");
-            Direccion = Jarray.getJSONObject(i).getString("direccion");
-            Latitud = Jarray.getJSONObject(i).getString("latitud");
-            Longitud = Jarray.getJSONObject(i).getString("longitud");
-            Descripcion = Jarray.getJSONObject(i).getString("descripcion");
-
-            arrayList.add(new Estaciones(id_estacion, Nombre, Descripcion, Direccion, Distrito, Latitud, Longitud));
-        }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, heroes);
-
-        estacion = arrayList;
-        mAdapter = new EstacionesAdapter(estacion, R.layout.item_estaciones, new EstacionesAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Estaciones estacion, int position) {
-
-                Intent intent = new Intent(Lista_Estaciones.this, Detalle_Estacion.class);
-                intent.putExtra("id_estacion", estacion.getId_estaciones());
-                intent.putExtra("nombre", estacion.getNombre_estacion());
-                intent.putExtra("descripcion", estacion.getDescripcion());
-                intent.putExtra("latitud", estacion.getLatitud());
-                intent.putExtra("longitud", estacion.getLongitud());
-                startActivity(intent);
-            }
-        });
-
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(mAdapter);
-    }
-*/
 
 
     public void ObtDatosEstacion(){
         AsyncHttpClient client = new AsyncHttpClient();
+        final ProgressDialog progressDialog=new ProgressDialog(Lista_Estaciones.this);
+        progressDialog.setTitle("Cargando");
+        progressDialog.setMessage("Espere por favor...");
+        progressDialog.show();
 
         //String url = "http://10.0.2.2:8080/Android-Web/Entidad_Categoria.php";
         String url = DOMINIO + LISTAR_ESTACIONES;
@@ -307,11 +223,15 @@ public class Lista_Estaciones extends AppCompatActivity {
                         Log.i("Lista-Categoria",item.getDescripcion());
                     }
                     */
+
                 }
+                progressDialog.cancel();
             }
+
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getApplicationContext(), "onFail", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error de Conexion", Toast.LENGTH_SHORT).show();
+                progressDialog.cancel();
             }
         });
     }
