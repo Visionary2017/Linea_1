@@ -114,12 +114,14 @@ public class RecargaActivity extends AppCompatActivity {
                 //LEO MI VARIABLE DDE ENTRADA
                 double monto = Double.parseDouble(monto_Recarga.getText().toString());
 
-                if (roundTwoDecimals(monto) >= 0.1 && roundTwoDecimals(monto) <= 99) {
+                if(monto_Recarga.getText().toString().trim()==null){
+                    Toast.makeText(RecargaActivity.this, "Ingrese monto de Recarga", Toast.LENGTH_SHORT).show();
+                }else if (roundTwoDecimals(monto) >= 0.1 && roundTwoDecimals(monto) <= 99) {
                     Intent i = new Intent(getApplicationContext(), RecargaVirtualActivity.class);
                     i.putExtra("numero_tarjeta", numero_tarjeta);
                     i.putExtra("monto", roundTwoDecimals(monto));
                     startActivity(i);
-                } else {
+               } else {
                     monto_Recarga.setError("Saldo maximo de recarga S/.99.00.");
                 }
             }

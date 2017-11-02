@@ -130,7 +130,7 @@
                         android:background="@drawable/btn_rectangulo"
                         android:gravity="center_horizontal|center"
                         android:padding="6dp"
-                        android:text="Siguiente Paso"
+                        android:text="Registrar"
                         android:textColor="@color/White"
                         android:theme="@style/FaceButtonStyle" />
 

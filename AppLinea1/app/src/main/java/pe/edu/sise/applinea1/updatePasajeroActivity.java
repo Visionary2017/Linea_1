@@ -130,19 +130,16 @@ public class updatePasajeroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 UDP_Pasajero();
-                Cargando();
             }
         });
     }
 
-    private void Cargando(){
-        ProgressDialog progressDialog=new ProgressDialog(updatePasajeroActivity.this);
+
+    private void UDP_Pasajero() {
+        final ProgressDialog progressDialog=new ProgressDialog(updatePasajeroActivity.this);
         progressDialog.setTitle("Actualizando");
         progressDialog.setMessage("Espere por favor...");
         progressDialog.show();
-    }
-    private void UDP_Pasajero() {
-
         String validemail = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                 "\\@" +
                 "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
@@ -156,33 +153,39 @@ public class updatePasajeroActivity extends AppCompatActivity {
 
         if (nombre.getText().toString().trim().equalsIgnoreCase("")) {
             nombre.setError("Ingresar Nombres");
+            progressDialog.cancel();
         }
 
         if (apellido.getText().toString().trim().equalsIgnoreCase("")) {
             apellido.setError("Ingresar Apellidos");
+            progressDialog.cancel();
         }
 
         if (celular.getText().toString().trim().equalsIgnoreCase("")) {
             celular.setError("Ingresar Celular");
+            progressDialog.cancel();
         }
 
         if (correo.getText().toString().trim().equalsIgnoreCase("")) {
             correo.setError("Ingresar Correo");
+            progressDialog.cancel();
         }
 
         if (matcher.matches()) {
 
         } else {
             correo.setError("Ingresar correo válido!!!");
+            progressDialog.cancel();
         }
 
         if (!nombre.getText().toString().trim().equalsIgnoreCase("") &&
                 !apellido.getText().toString().trim().equalsIgnoreCase("") &&
                 !celular.getText().toString().trim().equalsIgnoreCase("") &&
                 !correo.getText().toString().trim().equalsIgnoreCase("")) {
-
+            progressDialog.cancel();
             if (!matcher.matches()) {
                 correo.setError("Ingresar correo válido!!!");
+                progressDialog.cancel();
             } else {
                 AsyncHttpClient client = new AsyncHttpClient();
                 try {
@@ -198,6 +201,7 @@ public class updatePasajeroActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                             if (statusCode == 200) {
+                                progressDialog.cancel();
                                 Toast.makeText(updatePasajeroActivity.this, "Actualizado correctamente.", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
                                 i.putExtra("valor", numero_tarjeta);
@@ -209,11 +213,13 @@ public class updatePasajeroActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                             Toast.makeText(updatePasajeroActivity.this, "No se actualizó!!!", Toast.LENGTH_SHORT).show();
+                            progressDialog.cancel();
                         }
                     });
 
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    progressDialog.cancel();
                 }
             }
         }

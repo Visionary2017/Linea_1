@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLog;
     // Session Manager Class
     SessionManagement session;
-    ProgressBar progressBarCircular;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
         etUsu = (EditText) findViewById(R.id.etUsua);
         etPass = (EditText) findViewById(R.id.etContrasena);
         btnLog = (Button) findViewById(R.id.btnLogin);
-        progressBarCircular=(ProgressBar)findViewById(R.id.progressBar2);
 
 
         btnLog.setOnClickListener(new View.OnClickListener() {
