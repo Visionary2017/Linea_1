@@ -89,9 +89,9 @@ public class RecargaActivity extends AppCompatActivity {
                         break;
                     case R.id.mnuContacto:
                         Intent s = new Intent(getApplicationContext(), ContactanosActivity.class);
-                        startActivity(s);
-                        finish();
-                        break;
+                    startActivity(s);
+                    finish();
+                    break;
                 }
                 return true;
             }

@@ -44,7 +44,7 @@ private RegistroActivity registroActivity;
 
         Bundle b = getIntent().getExtras();
         final String nfc = b.getString("nfc");
-        Toast.makeText(this, nfc, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, nfc, Toast.LENGTH_SHORT).show();
 
 
         AsyncHttpClient client = new AsyncHttpClient();
@@ -57,14 +57,10 @@ private RegistroActivity registroActivity;
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     if (statusCode == 200 && obtieneDatosJSON(new String(responseBody)).toString().equals("ERROR-01")) {
-
-
-                        Intent i = new Intent(getApplicationContext(),Registro3Activity.class);
-                        startActivity(i);
-                        registroActivity.finishActivity(0);
-
+                    CerrarView();
+                        Toast.makeText(getApplicationContext(), "Tarjeta no Permitida!", Toast.LENGTH_SHORT).show();
                     } else if (statusCode == 200) {
-                        Toast.makeText(getApplicationContext(), "Tarjeta Encontrada!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Tarjeta Válida!", Toast.LENGTH_SHORT).show();
                         btnSiguien.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -164,5 +160,11 @@ private RegistroActivity registroActivity;
             e.printStackTrace();
         }
         return texto;
+    }
+
+    public void CerrarView(){
+        Intent i = new Intent(this,Registro3Activity.class);
+        startActivity(i);
+        finish();
     }
 }

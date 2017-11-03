@@ -41,8 +41,8 @@ public class Registro2Activity extends AppCompatActivity {
         final String apellido_completo = datos.getString("apellido_completo");
         final String celular = datos.getString("celular");
         final String correo = datos.getString("correo");
-        final int id_perfil = 1;
-        final int id_estado = 2;
+        final int id_perfil = 2;
+        final int id_estado = 1;
         final String nfc = datos.getString("nfc");
 
         etpass.addTextChangedListener(new TextValidator(etpass) {
@@ -88,7 +88,6 @@ public class Registro2Activity extends AppCompatActivity {
 
                             }
                         });
-
 
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();

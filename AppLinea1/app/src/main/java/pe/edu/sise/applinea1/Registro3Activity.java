@@ -73,8 +73,6 @@ public class Registro3Activity extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), RegistroActivity.class);
             i.putExtra("nfc", tagInfo);
             startActivity(i);
-
-
         } else {
 
         }
