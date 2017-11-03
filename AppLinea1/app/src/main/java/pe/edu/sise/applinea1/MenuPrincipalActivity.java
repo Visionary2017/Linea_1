@@ -2,12 +2,15 @@ package pe.edu.sise.applinea1;
 
 import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -306,11 +309,19 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
     private void Mensaje(String titulo, String Mensaje1, String Info) {
         mBuilder = new NotificationCompat.Builder(this)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(Mensaje1))
                 .setSmallIcon(R.drawable.ic_logo)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_linea1_launcher))
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setPriority(Notification.PRIORITY_MAX)
+                .setVibrate(new long[]{0, 300, 200, 300})
                 .setContentTitle(titulo)
                 .setContentText(Mensaje1)
-                .setContentInfo(Info);
+                .setAutoCancel(true)
+                .setSubText(Info);
+
+
 
         //Activity
         Intent intent = new Intent(getApplicationContext(), RecargaActivity.class);
