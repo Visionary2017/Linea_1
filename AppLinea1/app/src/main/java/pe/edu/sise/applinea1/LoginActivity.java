@@ -109,11 +109,13 @@ public class LoginActivity extends AppCompatActivity {
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     Toast.makeText(getApplicationContext(), "onFail", Toast.LENGTH_SHORT).show();
                     btnLog.setEnabled(true);
+                    progressDialog.cancel();
                 }
             });
 
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Error - " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            progressDialog.cancel();
         }
     }
 
