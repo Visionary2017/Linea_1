@@ -54,22 +54,21 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Acceso_Menu();
-                Cargando();
+
             }
         });
 
 
     }
 
-    private void Cargando(){
-        ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
-        progressDialog.setTitle("Ingresando");
-        progressDialog.setMessage("Cargando...Espere por favor...");
-        progressDialog.show();
-    }
+
 
     public void Acceso_Menu() {
         AsyncHttpClient client = new AsyncHttpClient();
+        final ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
+        progressDialog.setTitle("Ingresando");
+        progressDialog.setMessage("Cargando...Espere por favor...");
+        progressDialog.show();
         try {
             String URL_LOGIN = DOMINIO + ACCESO_MENU;
             RequestParams parametros = new RequestParams();
@@ -84,11 +83,13 @@ public class LoginActivity extends AppCompatActivity {
                         etPass.setText("");
                         btnLog.setEnabled(true);
                         Toast.makeText(getApplicationContext(), "Credenciales incorrectas.", Toast.LENGTH_SHORT).show();
+                        progressDialog.cancel();
 
                     } else if (statusCode == 200 && obtieneDatosJSON(new String(responseBody)).toString().equals("ERROR-02")) {
                         etPass.setText("");
                         btnLog.setEnabled(true);
                         Toast.makeText(getApplicationContext(), "Debe Llenar los datos.", Toast.LENGTH_SHORT).show();
+                        progressDialog.cancel();
                     } else if (statusCode == 200) {
                         /*session.createLoginSession("Android Hive", "anroidhive@gmail.com");*/
                         etUsu.setText("");
@@ -100,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
                         intent.putExtra("numero_tarjeta", nro_tarjeta);
                         startActivity(intent);
+                        progressDialog.cancel();
                     }
                 }
 

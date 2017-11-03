@@ -62,7 +62,7 @@ public class consulta_saldo extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.mnuUsuario:
-                        Intent a = new Intent(getApplicationContext(), Lista_Estaciones.class);
+                        Intent a = new Intent(getApplicationContext(), updatePasajeroActivity.class);
                         a.putExtra("numero_tarjeta", numero_tarjeta.toString());
                         startActivity(a);
                         finish();
