@@ -79,6 +79,7 @@ public class Registro2Activity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "Registrado Correctamente", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                                     startActivity(i);
+                                    finish();
                                 }
                             }
 
